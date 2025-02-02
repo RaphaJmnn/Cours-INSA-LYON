@@ -35,7 +35,8 @@
 Le cours condensé pour préparer tes IE avec des exercices d'application inséré au milieu du cours !
 C'est la deuxième version mais il manque toujours des exercices d'applications. (En cristallo par exmemple) Et il manque une partie sur l'hybridation...
 
-Pour faire avancer le poly, n'hésite pas à faire des remarques par mail (\href{raphael.jamann@insa-lyon.fr}{raphael.jamann@insa-lyon.fr}) ou sur \textit{github} \href{https://github.com/RaphaJmnn/Cours-INSA-LYON}{\faGithub} que j'essaierai de prendre en compte !
+Pour faire avancer le poly, n'hésite pas à faire des remarques par mail (\href{raphael.jamann@insa-lyon.fr}{raphael.jamann@insa-lyon.fr})
+ou sur \textit{github} \href{https://github.com/RaphaJmnn/Cours-INSA-LYON}{\faGithub} que j'essaierai de prendre en compte !
 
 
 \newpage
@@ -782,9 +783,6 @@ Voir le tableau \ref{fig:Electronégativité} sur la $3^{\text{ème}}$ de couver
 
 
 
-
-\newpage
-
 \section{Spectroscopie des Rayon X}
 
 \subsection{Nature et production des Rayons X}
@@ -801,7 +799,7 @@ La source de rayons X la plus utilisée est le tube à rayons X (Figure \ref{fig
 \end{itemize}
 
 \setlength{\intextsep}{0pt}
-\begin{wrapfigure}[5]{r}{0.5\textwidth}
+\begin{wrapfigure}[7]{r}{0.5\textwidth}
     \centering
     \vspace{-1cm}
     \includegraphics[width=0.45\textwidth]{Fig/tube-a-rayon-x.png} 
@@ -810,8 +808,9 @@ La source de rayons X la plus utilisée est le tube à rayons X (Figure \ref{fig
 \end{wrapfigure}
 \vspace{1.5cm}
 On applique une forte différence de potentiel (plusieurs dizaines de kV) 
-entre la cathode et l'anode afin d'accélérer les électrons. Lors de l'impact des électrons sur la 
-cible (AC), des rayons X sont émis.
+entre la cathode et l'anode afin d'accélérer les électrons.
+\textbf{Leur énergie cinétique $E_c = U e$ avec $U$ en Volt et $e$ en Coulomb ce qui donne des Joules.}
+Lors de l'impact des électrons sur la  cible (AC), des rayons X sont émis.
 
 \vspace{2cm}
 \subsection{Spectre d'émission des rayons X}
@@ -1001,7 +1000,7 @@ Il est important de pouvoir monochromatiser un signal (c'est à dire ne garder q
 Il faut donc \textbf{laisser passer la raie la plus intense} ($K\text{-}L$) \textbf{et absorber la raie la moins intense} ($K\text{-}M$) qui est la plus énergétique.
 Le filtre permettant cette monochromatisation doit respecter ces conditions:
 \begin{itemize}[label=$\ast$]
-    \item  $\lambda_{K\text{-}M (AC)} < \lambda_{K (filtre)} < \lambda_{K\text{-}L (AC)}$
+    \item  $\lambda_{K\text{-}M (AC)} < \lambda_{K (filtre)} < \lambda_{K\text{-}L (AC)} \quad$ ou $E_{K\text{-}M (AC)} > E_{K (filtre)} > E_{K\text{-}L (AC)}$
     \item Pour un métal de numéro atomique $Z$, une règle générale dit que le filtre doit être un métal de numéro atomique $Z-1$ pour assurer une bonne monochromatisation.
 \end{itemize}
 
@@ -1125,16 +1124,18 @@ On calcule le nombre d'électrons après une \textbf{ionisation fictive} :
 
 $$\text{Nombre d'oxydation} = \text{Électrons de valence} - \text{Électrons après ionisation fictive}$$
 
-Ainsi, $H$ aura souvent $n.o. = 1$, avec une valence ayant un électron de plus que son nombre d'électrons fictifs.\\
-Dans une rédox, l'oxydant a le $n.o.$ le plus élevé.
-
-Pour un ion, il s'agit de la charge de l'ion.\\
-Pour une molécule formée d'atome identiques, $n.o. = 0$.\\
-Le Fluor sera toujours $-\mathrm{I}$ sauf s'il est liée à lui-même, et l'Oxygène $-\mathrm{II}$, sauf s'il est lié au Fluor ou à lui même.
-
-La somme des $n.o.$ dans une molécule est nulle (ou vaut la charge de l'ion polyatomique).
-
-
+\vspace{5mm}
+\noindent\textbf{Quelques infos importantes:}
+\begin{itemize}[label=$\ast$]
+    \item Pour une molécule formée d'atome identiques, $n.o. = 0$.
+    \item L'Hydrogène $H$ aura souvent $n.o. = \mathrm{I}$.
+    \item Le Fluor $F$ aura toujours $-\mathrm{I}$ sauf s'il est liée à lui-même.
+    \item l'Oxygène $O$ aura toujours $-\mathrm{II}$, sauf s'il est lié au Fluor ou à lui même.
+    \item Dans une rédox, l'oxydant a le $n.o.$ le plus élevé.
+    \item Pour un ion, $n.o. = \text{charge de l'ion}$
+    \item Le nombre d'oxydation d'un atome $X$ donne le nombre d'électrons échangés par atome $X$.
+    \item La somme des $n.o.$ dans une molécule est nulle (ou vaut la charge de l'ion polyatomique).
+\end{itemize}
 
 
 \section{Modèle du cristal parfait}\label{ch:modele-du-cristal-parfait}
