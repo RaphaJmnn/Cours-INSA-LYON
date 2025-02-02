@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.18)  2 FEB 2025 19:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.18)  2 FEB 2025 19:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1241,10 +1241,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <Fig/Domaines_du_spectre_électromagnétique.png, id=440, 1927.2pt x 298.11375pt>
 File: Fig/Domaines_du_spectre_électromagnétique.png Graphic file (type png)
 <use Fig/Domaines_du_spectre_électromagnétique.png>
-Package pdftex.def Info: Fig/Domaines_du_spectre_électromagnétique.png  used on input line 72.
+Package pdftex.def Info: Fig/Domaines_du_spectre_électromagnétique.png  used on input line 70.
 (pdftex.def)             Requested size: 443.57848pt x 68.61475pt.
 
-Overfull \hbox (23.55789pt too wide) in paragraph at lines 96--97
+Overfull \hbox (23.55789pt too wide) in paragraph at lines 94--95
 [] [] 
  []
 
@@ -1256,12 +1256,12 @@ Overfull \hbox (23.55789pt too wide) in paragraph at lines 96--97
 <Fig/Spectro-emission.png, id=467, 900.966pt x 391.4625pt>
 File: Fig/Spectro-emission.png Graphic file (type png)
 <use Fig/Spectro-emission.png>
-Package pdftex.def Info: Fig/Spectro-emission.png  used on input line 111.
+Package pdftex.def Info: Fig/Spectro-emission.png  used on input line 109.
 (pdftex.def)             Requested size: 332.68385pt x 144.55214pt.
 <Fig/Spectro-absorption.png, id=468, 1019.007pt x 429.40425pt>
 File: Fig/Spectro-absorption.png Graphic file (type png)
 <use Fig/Spectro-absorption.png>
-Package pdftex.def Info: Fig/Spectro-absorption.png  used on input line 121.
+Package pdftex.def Info: Fig/Spectro-absorption.png  used on input line 119.
 (pdftex.def)             Requested size: 332.68385pt x 140.19028pt.
 
 
@@ -1285,7 +1285,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <Fig/Grotrian-hydrogene-v2.png, id=489, 613.0905pt x 581.7735pt>
 File: Fig/Grotrian-hydrogene-v2.png Graphic file (type png)
 <use Fig/Grotrian-hydrogene-v2.png>
-Package pdftex.def Info: Fig/Grotrian-hydrogene-v2.png  used on input line 161.
+Package pdftex.def Info: Fig/Grotrian-hydrogene-v2.png  used on input line 159.
 (pdftex.def)             Requested size: 332.68385pt x 315.69763pt.
 
 
@@ -1300,7 +1300,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <Fig/Spectre-hydrogene.png, id=498, 867.84225pt x 212.59425pt>
 File: Fig/Spectre-hydrogene.png Graphic file (type png)
 <use Fig/Spectre-hydrogene.png>
-Package pdftex.def Info: Fig/Spectre-hydrogene.png  used on input line 183.
+Package pdftex.def Info: Fig/Spectre-hydrogene.png  used on input line 181.
 (pdftex.def)             Requested size: 399.21791pt x 97.79778pt.
 
 
@@ -1337,22 +1337,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <Fig/densité-proba.jpg, id=536, 827.34094pt x 484.81125pt>
 File: Fig/densité-proba.jpg Graphic file (type jpg)
 <use Fig/densité-proba.jpg>
-Package pdftex.def Info: Fig/densité-proba.jpg  used on input line 447.
+Package pdftex.def Info: Fig/densité-proba.jpg  used on input line 445.
 (pdftex.def)             Requested size: 159.68776pt x 93.57242pt.
 <Fig/contour-proba.jpg, id=537, 784.43062pt x 447.92343pt>
 File: Fig/contour-proba.jpg Graphic file (type jpg)
 <use Fig/contour-proba.jpg>
-Package pdftex.def Info: Fig/contour-proba.jpg  used on input line 453.
+Package pdftex.def Info: Fig/contour-proba.jpg  used on input line 451.
 (pdftex.def)             Requested size: 159.68776pt x 91.18242pt.
 <Fig/orbitales.jpg, id=538, 244.0317pt x 144.7809pt>
 File: Fig/orbitales.jpg Graphic file (type jpg)
 <use Fig/orbitales.jpg>
-Package pdftex.def Info: Fig/orbitales.jpg  used on input line 461.
+Package pdftex.def Info: Fig/orbitales.jpg  used on input line 459.
 (pdftex.def)             Requested size: 354.86412pt x 210.56314pt.
 <Fig/spin.jpg, id=540, 293.59688pt x 271.76532pt>
 File: Fig/spin.jpg Graphic file (type jpg)
 <use Fig/spin.jpg>
-Package pdftex.def Info: Fig/spin.jpg  used on input line 482.
+Package pdftex.def Info: Fig/spin.jpg  used on input line 480.
 (pdftex.def)             Requested size: 133.07489pt x 123.17653pt.
 
 
@@ -1369,7 +1369,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <Fig/Densité de probo radiale orbitale 3s 3p 3d.png, id=552, 855.79726pt x 254.1495pt>
 File: Fig/Densité de probo radiale orbitale 3s 3p 3d.png Graphic file (type png)
 <use Fig/Densité de probo radiale orbitale 3s 3p 3d.png>
-Package pdftex.def Info: Fig/Densité de probo radiale orbitale 3s 3p 3d.png  used on input line 502.
+Package pdftex.def Info: Fig/Densité de probo radiale orbitale 3s 3p 3d.png  used on input line 500.
 (pdftex.def)             Requested size: 221.78923pt x 65.86401pt.
 \openout6 = `main.mytable'.
 
@@ -1393,23 +1393,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 \pgf@layerboxsaved@pgfPTbacklayer=\box103
 \pgf@layerbox@pgfPTpaperlayer=\box104
 \pgf@layerboxsaved@pgfPTpaperlayer=\box105
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 670.
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 668.
  (c:/ProgramData/texlive/2024/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 ) (c:/Users/jaman/texmf/tex/latex/pgf-periodictable/pgfPT.coordinates.tex)
 <pgfPT_radio_symbol.pdf, id=573, 11.94965pt x 11.94965pt>
 File: pgfPT_radio_symbol.pdf Graphic file (type pdf)
 <use pgfPT_radio_symbol.pdf>
-Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 670.
+Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 668.
 (pdftex.def)             Requested size: 0.0pt x 0.0pt.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <5> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 670.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 668.
 \pgfPT@tmpwd=\dimen421
 \pgfPT@tmpht=\dimen422
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 670.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 668.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 670.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 668.
 
 
 [16
@@ -1417,7 +1417,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <8> not available
 {c:/ProgramData/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}] (c:/Users/jaman/texmf/tex/latex/pgf-periodictable/pgfPT.coordinates.tex)
 File: pgfPT_radio_symbol.pdf Graphic file (type pdf)
 <use pgfPT_radio_symbol.pdf>
-Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 718.
+Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 716.
 (pdftex.def)             Requested size: 5.00403pt x 5.00394pt.
 \pgfPT@tmpwd=\dimen423
 \pgfPT@tmpht=\dimen424
@@ -1433,49 +1433,49 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [17] (c:/Users/jaman/texmf/tex/latex/pgf-periodictable/pgfPT.coordinates.tex)
 File: pgfPT_radio_symbol.pdf Graphic file (type pdf)
 <use pgfPT_radio_symbol.pdf>
-Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 749.
+Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 747.
 (pdftex.def)             Requested size: 3.95998pt x 3.95996pt.
 \pgfPT@tmpwd=\dimen425
 \pgfPT@tmpht=\dimen426
 File: pgfPT_radio_symbol.pdf Graphic file (type pdf)
 <use pgfPT_radio_symbol.pdf>
-Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 749.
+Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 747.
 (pdftex.def)             Requested size: 4.39995pt x 4.4pt.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <4.49997> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 749.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 747.
 
-Overfull \hbox (1.97034pt too wide) in paragraph at lines 749--749
+Overfull \hbox (1.97034pt too wide) in paragraph at lines 747--747
 [][]  
  []
 
 
-Overfull \hbox (13.12526pt too wide) in paragraph at lines 737--750
+Overfull \hbox (13.12526pt too wide) in paragraph at lines 735--748
 [][] 
  []
 
 (c:/Users/jaman/texmf/tex/latex/pgf-periodictable/pgfPT.coordinates.tex)
 File: pgfPT_radio_symbol.pdf Graphic file (type pdf)
 <use pgfPT_radio_symbol.pdf>
-Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 775.
+Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 773.
 (pdftex.def)             Requested size: 3.95998pt x 3.95996pt.
 \pgfPT@tmpwd=\dimen427
 \pgfPT@tmpht=\dimen428
 File: pgfPT_radio_symbol.pdf Graphic file (type pdf)
 <use pgfPT_radio_symbol.pdf>
-Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 775.
+Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 773.
 (pdftex.def)             Requested size: 4.39995pt x 4.4pt.
 
-Overfull \hbox (18.11218pt too wide) in paragraph at lines 775--775
+Overfull \hbox (18.11218pt too wide) in paragraph at lines 773--773
 [][]  
  []
 
 
-Overfull \hbox (13.12526pt too wide) in paragraph at lines 760--776
+Overfull \hbox (13.12526pt too wide) in paragraph at lines 758--774
 [][] 
  []
 
 
-LaTeX Warning: Reference `fig:Electronégativité' on page 18 undefined on input line 783.
+LaTeX Warning: Reference `fig:Electronégativité' on page 18 undefined on input line 781.
 
 
 
@@ -1485,17 +1485,17 @@ LaTeX Warning: Reference `fig:Electronégativité' on page 18 undefined on input
 <Fig/tube-a-rayon-x.png, id=613, 1204.5pt x 709.65125pt>
 File: Fig/tube-a-rayon-x.png Graphic file (type png)
 <use Fig/tube-a-rayon-x.png>
-Package pdftex.def Info: Fig/tube-a-rayon-x.png  used on input line 809.
+Package pdftex.def Info: Fig/tube-a-rayon-x.png  used on input line 807.
 (pdftex.def)             Requested size: 199.60895pt x 117.59633pt.
 <Fig/origine-fond-continu.png, id=616, 610.07925pt x 509.5035pt>
 File: Fig/origine-fond-continu.png Graphic file (type png)
 <use Fig/origine-fond-continu.png>
-Package pdftex.def Info: Fig/origine-fond-continu.png  used on input line 840.
+Package pdftex.def Info: Fig/origine-fond-continu.png  used on input line 838.
 (pdftex.def)             Requested size: 191.6229pt x 160.03575pt.
 <Fig/Spectre-RX-fond-continu.png, id=617, 551.661pt x 413.1435pt>
 File: Fig/Spectre-RX-fond-continu.png Graphic file (type png)
 <use Fig/Spectre-RX-fond-continu.png>
-Package pdftex.def Info: Fig/Spectre-RX-fond-continu.png  used on input line 846.
+Package pdftex.def Info: Fig/Spectre-RX-fond-continu.png  used on input line 844.
 (pdftex.def)             Requested size: 191.6229pt x 143.50548pt.
 
 
@@ -1505,17 +1505,17 @@ Package pdftex.def Info: Fig/Spectre-RX-fond-continu.png  used on input line 846
 <Fig/Spectre-RX.png, id=630, 626.34pt x 498.663pt>
 File: Fig/Spectre-RX.png Graphic file (type png)
 <use Fig/Spectre-RX.png>
-Package pdftex.def Info: Fig/Spectre-RX.png  used on input line 880.
+Package pdftex.def Info: Fig/Spectre-RX.png  used on input line 878.
 (pdftex.def)             Requested size: 191.6229pt x 152.55994pt.
 <Fig/origine-raies-rx.png, id=631, 588.39825pt x 461.92575pt>
 File: Fig/origine-raies-rx.png Graphic file (type png)
 <use Fig/origine-raies-rx.png>
-Package pdftex.def Info: Fig/origine-raies-rx.png  used on input line 886.
+Package pdftex.def Info: Fig/origine-raies-rx.png  used on input line 884.
 (pdftex.def)             Requested size: 191.6229pt x 150.43422pt.
 <Fig/Grotrian-RX.png, id=632, 548.0475pt x 570.33075pt>
 File: Fig/Grotrian-RX.png Graphic file (type png)
 <use Fig/Grotrian-RX.png>
-Package pdftex.def Info: Fig/Grotrian-RX.png  used on input line 899.
+Package pdftex.def Info: Fig/Grotrian-RX.png  used on input line 897.
 (pdftex.def)             Requested size: 199.60895pt x 207.7295pt.
 
 
@@ -1523,7 +1523,7 @@ Package pdftex.def Info: Fig/Grotrian-RX.png  used on input line 899.
 <Fig/Moseley.jpg, id=645, 475.7775pt x 680.5425pt>
 File: Fig/Moseley.jpg Graphic file (type jpg)
 <use Fig/Moseley.jpg>
-Package pdftex.def Info: Fig/Moseley.jpg  used on input line 927.
+Package pdftex.def Info: Fig/Moseley.jpg  used on input line 925.
 (pdftex.def)             Requested size: 221.78923pt x 317.24857pt.
 
 
@@ -1535,22 +1535,22 @@ Package pdftex.def Info: Fig/Moseley.jpg  used on input line 927.
 <Fig/Beer-Lambert-law-X-rays-to-solid-matter-interaction.png, id=661, 461.87595pt x 295.6006pt>
 File: Fig/Beer-Lambert-law-X-rays-to-solid-matter-interaction.png Graphic file (type png)
 <use Fig/Beer-Lambert-law-X-rays-to-solid-matter-interaction.png>
-Package pdftex.def Info: Fig/Beer-Lambert-law-X-rays-to-solid-matter-interaction.png  used on input line 988.
+Package pdftex.def Info: Fig/Beer-Lambert-law-X-rays-to-solid-matter-interaction.png  used on input line 986.
 (pdftex.def)             Requested size: 221.78923pt x 141.94981pt.
 <Fig/filtre-rx.png, id=662, 506.49225pt x 380.01974pt>
 File: Fig/filtre-rx.png Graphic file (type png)
 <use Fig/filtre-rx.png>
-Package pdftex.def Info: Fig/filtre-rx.png  used on input line 1014.
+Package pdftex.def Info: Fig/filtre-rx.png  used on input line 1012.
 (pdftex.def)             Requested size: 170.33325pt x 127.80173pt.
 <Fig/coef_absorption.png, id=663, 582.37575pt x 424.58624pt>
 File: Fig/coef_absorption.png Graphic file (type png)
 <use Fig/coef_absorption.png>
-Package pdftex.def Info: Fig/coef_absorption.png  used on input line 1020.
+Package pdftex.def Info: Fig/coef_absorption.png  used on input line 1018.
 (pdftex.def)             Requested size: 149.04039pt x 108.66002pt.
 
 
 [23 <./Fig/Beer-Lambert-law-X-rays-to-solid-matter-interaction.png> <./Fig/filtre-rx.png> <./Fig/coef_absorption.png>]
-Overfull \hbox (29.91078pt too wide) in paragraph at lines 1059--1067
+Overfull \hbox (29.91078pt too wide) in paragraph at lines 1057--1065
 [][] 
  []
 
@@ -1559,7 +1559,7 @@ Overfull \hbox (29.91078pt too wide) in paragraph at lines 1059--1067
 [24
 
 ]
-Overfull \hbox (11.33017pt too wide) in paragraph at lines 1089--1111
+Overfull \hbox (11.33017pt too wide) in paragraph at lines 1087--1109
 [][] 
  []
 
@@ -1570,7 +1570,7 @@ Overfull \hbox (11.33017pt too wide) in paragraph at lines 1089--1111
 [26
 
 ]
-Overfull \hbox (12.24593pt too wide) in paragraph at lines 1223--1224
+Overfull \hbox (12.24593pt too wide) in paragraph at lines 1221--1222
 [][]  
  []
 
@@ -1579,7 +1579,7 @@ Overfull \hbox (12.24593pt too wide) in paragraph at lines 1223--1224
 [27
 
 ]
-Overfull \hbox (11.34857pt too wide) in paragraph at lines 1439--1440
+Overfull \hbox (11.34857pt too wide) in paragraph at lines 1437--1438
  [][] 
  []
 
@@ -1598,7 +1598,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <Fig/bravais.jpg, id=710, 528.47438pt x 761.84625pt>
 File: Fig/bravais.jpg Graphic file (type jpg)
 <use Fig/bravais.jpg>
-Package pdftex.def Info: Fig/bravais.jpg  used on input line 1601.
+Package pdftex.def Info: Fig/bravais.jpg  used on input line 1599.
 (pdftex.def)             Requested size: 310.50357pt x 447.6138pt.
 
 
@@ -1618,36 +1618,36 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 ] (c:/Users/jaman/texmf/tex/latex/pgf-periodictable/pgfPT.coordinates.tex)
 File: pgfPT_radio_symbol.pdf Graphic file (type pdf)
 <use pgfPT_radio_symbol.pdf>
-Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 1683.
+Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 1681.
 (pdftex.def)             Requested size: 5.00403pt x 5.00394pt.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 1683.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 1681.
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <10> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 1683.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 1681.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 1683.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 1681.
 \pgfPT@tmpwd=\dimen429
 \pgfPT@tmpht=\dimen430
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 1683.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 1681.
 
-Overfull \hbox (0.57361pt too wide) in paragraph at lines 1683--1683
+Overfull \hbox (0.57361pt too wide) in paragraph at lines 1681--1681
  [][][][][] 
  []
 
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <4.79993> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 1683.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 1681.
 
-Overfull \hbox (1.53699pt too wide) in paragraph at lines 1683--1683
+Overfull \hbox (1.53699pt too wide) in paragraph at lines 1681--1681
 []\T1/phv/b/n/4.79993 synth�tique[]  
  []
 
 LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <4.49997> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 1683.
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 1681.
 LaTeX Font Info:    Font shape `T1/phv/b/it' in size <4.49997> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 1683.
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 1681.
 
-Overfull \hbox (47.85pt too wide) in paragraph at lines 1665--1685
+Overfull \hbox (47.85pt too wide) in paragraph at lines 1663--1683
 [] [][][][][][] 
  []
 
@@ -1658,26 +1658,26 @@ Overfull \hbox (47.85pt too wide) in paragraph at lines 1665--1685
 ] (c:/Users/jaman/texmf/tex/latex/pgf-periodictable/pgfPT.coordinates.tex)
 File: pgfPT_radio_symbol.pdf Graphic file (type pdf)
 <use pgfPT_radio_symbol.pdf>
-Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 1709.
+Package pdftex.def Info: pgfPT_radio_symbol.pdf  used on input line 1707.
 (pdftex.def)             Requested size: 5.00403pt x 5.00394pt.
 \pgfPT@tmpwd=\dimen431
 \pgfPT@tmpht=\dimen432
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 1709.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 1707.
 
-Overfull \hbox (0.57361pt too wide) in paragraph at lines 1709--1709
+Overfull \hbox (0.57361pt too wide) in paragraph at lines 1707--1707
  [][][][][] 
  []
 
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <5.7599> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 1709.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 1707.
 
-Overfull \hbox (6.92438pt too wide) in paragraph at lines 1709--1709
+Overfull \hbox (6.92438pt too wide) in paragraph at lines 1707--1707
 []\T1/phv/b/n/5.7599 synth�tique[]  
  []
 
 
-Overfull \hbox (41.69861pt too wide) in paragraph at lines 1693--1710
+Overfull \hbox (41.69861pt too wide) in paragraph at lines 1691--1708
 [] [] 
  []
 
@@ -1704,13 +1704,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  43798 strings out of 473362
  911868 string characters out of 5718966
- 1981020 words of memory out of 5000000
+ 1980020 words of memory out of 5000000
  66062 multiletter control sequences out of 15000+600000
  639398 words of font info for 150 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,27n,145p,2002b,1584s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc0900.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0500.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb><c:/ProgramData/texlive/2024/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (32 pages, 4091745 bytes).
+Output written on main.pdf (32 pages, 4091797 bytes).
 PDF statistics:
  929 PDF objects out of 1000 (max. 8388607)
  744 compressed objects within 8 object streams
