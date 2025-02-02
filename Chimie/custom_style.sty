@@ -1,0 +1,100 @@
+% custom_style.sty - Custom LaTeX package
+
+\ProvidesPackage{custom_style}
+
+% Language setting
+\RequirePackage[french]{babel}
+
+% Page size and margins
+\RequirePackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\RequirePackage[T1]{fontenc}
+\RequirePackage{float}
+\RequirePackage{amsmath, amssymb, amsfonts}
+\RequirePackage{graphicx, makecell, diagbox}
+\RequirePackage[colorlinks=true, linkcolor=blue!35!black, citecolor=blue, urlcolor=blue]{hyperref}
+\RequirePackage{siunitx, bm, pstricks, wrapfig, subcaption, collect, tikz}
+\RequirePackage[fr]{pgf-PeriodicTable}
+\RequirePackage{pdflscape, chemfig, upgreek, chemmacros, nicefrac}
+\RequirePackage[version=4]{mhchem}
+\RequirePackage{lastpage, fancyhdr, titlesec, tocloft}
+\RequirePackage{enumitem}
+
+% Define colors
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+% Define title
+\newcommand*{\getTitle}{Architecture de la mati\`ere}
+
+% Fancy header and footer styles
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0.4pt}
+    \fancyfoot[C]{\thepage/\pageref{LastPage}}
+    \fancyfoot[L]{\sn{Raphael} \sn{J}}
+    \fancyfoot[R]{FIMI S1 - INSA Lyon}
+}
+
+\fancypagestyle{non-chapter-style}{
+    \fancyhf{}
+    \fancyhead[L]{\leftmark}
+    \fancyhead[R]{\getTitle}
+    \fancyfoot[R]{FIMI S1 - INSA Lyon}
+    \fancyfoot[C]{\thepage/\pageref{LastPage}}
+    \fancyfoot[L]{\sn{Raphael} \sn{J}}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0.4pt}
+}
+\pagestyle{non-chapter-style}
+
+% Adjust table of contents
+\setlength{\cftsecnumwidth}{3em}
+\DeclareSIUnit{\angstrom}{\text{\r{A}}}
+
+% Define a smaller font size
+\newcommand\Tiny{\fontsize{3.4}{5}\selectfont}
+
+% Customize section numbering
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\alph{subsubsection}}
+
+% Redefine \section
+\makeatletter
+\renewcommand{\section}{%
+  \clearpage
+  \thispagestyle{plain}
+  \@startsection{section}{1}{\z@}{3.5ex \@plus 1ex \@minus .2ex}{2.3ex \@plus .2ex}{\normalfont\Large\bfseries}}
+\makeatother
+
+% Define case quantique function
+\newcommand*\haut{\fbox{$\mathord\uparrow\phantom{\downarrow}$}}
+\newcommand*\dwn{\fbox{$\mathord\downarrow\phantom{\uparrow}$}}
+\newcommand*\updwn{\fbox{$\uparrow\downarrow$}}
+\newcommand*\emp{\fbox{$\phantom{\downarrow}\phantom{\downarrow}$}}
+
+\newcommand{\electron}[2]{%
+    \setlength\tabcolsep{0pt}% remove extra horizontal space from tabular
+    \begin{tabular}{c}#2\\[2pt]#1\end{tabular}%
+}
+
+\newcommand{\comment}[1]{}
+\newcommand{\sn}[1]{\small\scshape#1\upshape}
+
+% Define command for duplicating tables
+\definecollection{mytable}
+\newcounter{duptable}
+\newcounter{tmp}
+\makeatletter
+\newcommand\resttable{
+    \let\oldlabel\label
+    \let\label\@gobble
+    \setcounter{tmp}{\value{table}}
+    \setcounter{table}{\value{duptable}}
+    \includecollection{mytable}
+    \let\label\oldlabel
+    \setcounter{table}{\value{tmp}}
+}
+\makeatother
