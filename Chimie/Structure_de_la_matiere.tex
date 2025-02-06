@@ -1463,7 +1463,7 @@ e.g. un cube en maille intérieur centrée, est $CN8$.
         }
 
         % Vertices (Face centers)
-        \foreach \x/\y/\z in {0.5/0/0, 0.5/1/0, 0.5/0/1, 0.5/1/1, 0/0.5/0, 1/0.5/0, 0/0.5/1, 1/0.5/1, 0/0/0.5, 1/0/0.5, 0/1/0.5, 1/1/0.5} {
+        \foreach \x/\y/\z in {0.5/0.5/0.5, 0.5/0/0, 0.5/1/0, 0.5/0/1, 0.5/1/1, 0/0.5/0, 1/0.5/0, 0/0.5/1, 1/0.5/1, 0/0/0.5, 1/0/0.5, 0/1/0.5, 1/1/0.5} {
             \fill[blue] (\x,\y,\z) circle (0.03);
         }
 
@@ -1481,7 +1481,7 @@ e.g. un cube en maille intérieur centrée, est $CN8$.
         }
 
         % coordinates (Face centers)
-        \foreach \x/\y/\z in {0.5/0/0, 0.5/1/0, 0.5/0/1, 0/0.5/0, 1/0.5/0, 0/0.5/1, 0/0/0.5, 1/0/0.5, 0/1/0.5, 1/1/0.5} {
+        \foreach \x/\y/\z in {0.5/0.5/0.5, 0.5/0/0, 0.5/1/0, 0.5/0/1, 0/0.5/0, 1/0.5/0, 0/0.5/1, 0/0/0.5, 1/0/0.5, 0/1/0.5, 1/1/0.5} {
             \node[blue!70!white, font=\scriptsize] at (\x,\y-0.08,\z) {(\x, \y, \z)};
         }
          % coordinates (Face centers)
@@ -1490,7 +1490,7 @@ e.g. un cube en maille intérieur centrée, est $CN8$.
         }
     \end{tikzpicture}
 
-    \caption{Coordonnées des noeuds dans une maille cubique toutes faces centrées.}
+    \caption{Coordonnées des sommets du cube et des sites octaédriques (maille CFC)}
     \label{fig:maille}
 \end{wrapfigure}
 
@@ -1502,11 +1502,12 @@ On a besoin d'autant de coordonnées que de nombre d'espèces appartenant en pro
 \noindent\textbf{Les coordonnées réduites sont alors:}
 \vspace{3mm}
 \begin{itemize}[label=$\ast$]
-    \item \textcolor{red}{\Large $\left(0, 0, 0\right)$}.
-    \item \textcolor{blue}{\Large $\left(\nicefrac{1}{2}, 0, 0\right), \left(0, \nicefrac{1}{2}, 0\right), \left(0, 0, \nicefrac{1}{2}\right)$}
+    \item \textcolor{red}{\Large $\left(0, 0, 0\right)$}
+    \item \textcolor{blue}{\Large $\left(\nicefrac{1}{2}, 0, 0\right), \left(0, \nicefrac{1}{2}, 0\right), \left(0, 0, \nicefrac{1}{2}\right), \left(\nicefrac{1}{2}, \nicefrac{1}{2}, \nicefrac{1}{2}\right)$} \\
+    \textcolor{blue}{\textit{4 sites octaédriques en propre dans une maille CFC.}} 
 \end{itemize}
 
-\vspace{0.8cm}
+\vspace{5mm}
 
 \subsubsection{Remarques}
 
@@ -1534,7 +1535,7 @@ dans chacun des modes de réseau possibles (primitif P, base centrée S, intéri
 toutes faces centrées F) ? }\\
 \textit{b) Tracez les axes de symétrie du système orthorhombique. Préciser l'ordre de symétrie des axes.}
 
-\vspace{5mm}\noindent\textbf{Réponses:}
+\vfill\noindent\textbf{Réponses:}
 
 \textbf{a)} $\quad \text{Composition motif} = \dfrac{\text{contenu maille}}{\text{nb noeuds}}$
 
