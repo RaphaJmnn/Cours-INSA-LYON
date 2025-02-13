@@ -1050,15 +1050,19 @@ Les atomes s'attirent mutuellement (électrons de A avec noyau de B) mais, quand
     On a alors des charges formelles $^+$ pour le donneur et $^-$ pour le receveur.
 \end{itemize}
 
+\vspace{3mm}
 \noindent\textbf{Longueur des liaisons:} Si la liaison est double, la liaison sera plus courte (atomes plus rapprochés).
 
+\vspace{3mm}
 \noindent\textbf{Règles du duet et de l'octet:} L'Hydrogène sera entouré de deux électrons (duet), puis de 8 électrons pour C, N, O, F.
 Pour $n \ge 3$, chaque électron de valence peut former un doublet (extension de la règle de l'octet car possibilité d'absorption par la couche $d$).
 
+\vspace{3mm}
 \noindent\textbf{Théorie de la mésomérie:} Les liaisons double/triples peuvent se délocaliser, ce qui donne des forumules mésomères.
 Mais les formules mésomères n'ont pas de réalité physique, on définie alors ce qu'est un hybride de résonance.
 Les formules mésomères les plus probables sont alors celles qui minimisent la séparation des charges et qui attribuent les charges formelles négatives aux atomes les plus électronégatifs.
 
+\vspace{3mm}
 \noindent\textbf{Valence :} Le nombre de liaisons covalentes qu'un élément établit (correspond en général au nombre d'électrons non appariés, en désappariant au maximum les cases quantiques pleines).\\
 Voir le tableau \ref{tab:Valence}. 
 
@@ -1082,7 +1086,7 @@ Voir le tableau \ref{tab:Valence}.
 L'atome le plus électronégatif attire les électrons vers lui : liaison polarisée pour $0,4 < \Delta\chi < 2$.\\
 Moment dipolaire de l'atome le plus électronégatif ($\chi$ supérieur, noté $\delta^-$) vers le moins électronégatif :\\
 $\mu = q \times d$ où $d$ est la longueur de la liaison et $q = \delta \times e$ ($\delta$ pourcentage d'ionicité, dépend de $\Delta \chi$).\\
-Molécule apolaire : aucune polarité individuelle.
+Molécule apolaire : aucune polarité individuelle. \\
 Molécule non polaire : somme des moments dipolaires nuls.
 
 
@@ -1133,7 +1137,7 @@ géométrie tétragonale avec 4 liaison identiques. Il y a donc eu hybridation d
 \vspace{5mm}
 \noindent\textbf{Hybridation:} Réorganisation des orbitales (énergie et géométrie).
 
-\subsubsection{Quelques infos importantes:}
+\subsection{Quelques infos importantes:}
 
 \begin{wrapfigure}[2]{r}{0.4\textwidth}
     \centering
@@ -1156,7 +1160,7 @@ géométrie tétragonale avec 4 liaison identiques. Il y a donc eu hybridation d
 \end{itemize}
 
 
-\subsubsection{Exemple:}
+\subsection{Exemple:}
 
 Molécule d'Acétone: \ce{C3H6O}
 
@@ -1173,12 +1177,12 @@ Molécule d'Acétone: \ce{C3H6O}
 $C \quad $ \electron{2s}{\updwn} \quad \electron{2p}{\haut \ \haut \ \emp} \quad $\Longrightarrow \quad C^*$ \quad \electron{2s}{\haut} \quad \electron{2p}{\haut \ \haut \ \haut}\\
 $O \quad $ \electron{2s}{\updwn} \quad \electron{2p}{\updwn \ \updwn \ \haut}
 
-\vspace{3cm}
+\vspace{4cm}
 
-\begin{wrapfigure}[9]{l}{0.4\textwidth}
+\begin{wrapfigure}[9]{l}{0.45\textwidth}
     \centering
     \vspace{-1.5cm}
-    \includegraphics[width=0.4\textwidth]{Fig/acetone.png}
+    \includegraphics[width=0.45\textwidth]{Fig/acetone.png}
     \caption{Géométrie Acétone (METIVIER Hélène)}
     \label{fig:geometrie acetone}
 \end{wrapfigure}
@@ -1227,10 +1231,31 @@ Pour équilibrer les demi-équation électronique \textit{sans les nombres d'oxy
 On calcule le nombre d'électrons après une \textbf{ionisation fictive} :
 \begin{itemize}[label=$\ast$]
     \item Liaisons polarisées : L'atome le plus électronégatif prend tous les électrons de la liaison.
-    \item Liaison non polarisée : Chaque atome garde ses électrons (moitié-moitié).
+     
+    \vspace{3mm}
+    \begin{center}
+        \chemfig{
+            H-[:30]\charge{45=\|,135=\|}{O}-[:-30]H
+            \chemmove{\draw[->] (-0.65,0.65) -- (-0.35,0.45) ;}
+            \chemmove{\draw[->] (-1.7,0.45) -- (-1.4,0.65) ;}
+        }    
+    \end{center}
+
+
+    \item Liaison non polarisée : Chaque atome garde ses électrons (moitié-moitié). 
+    
+    \vspace{3mm}
+    \begin{center}
+        \chemfig{
+            \charge{225=\|,135=\|}{O}=[:0]
+            \charge{45=\|,-45=\|}{O}
+        }
+    \end{center}
 \end{itemize}
 
-$$\text{Nombre d'oxydation} = \text{Électrons de valence} - \text{Électrons après ionisation fictive}$$
+$$\text{Nombre d'oxydation} = \text{(nb e$^-$ de valence)} - \text{(nb e$^-$ ionisation fictive)}$$
+
+
 
 \vspace{5mm}
 \noindent\textbf{Quelques infos importantes:}
