@@ -58,14 +58,15 @@
     \section{Exemples de filtres passe haut}
 
     \twoCol{      
+        \centering
 
         \subsection{High Pass RC Filter}
 
-        \centering
+        \vspace{2mm}
         \begin{circuitikz}        
             % Circuit code
             \draw (0,0) to[short,o-o] ++ (4,0);
-            \draw (0,2) to[C, l=C, o-] ++ (3,0) coordinate(a);
+            \draw (0,2) to[C, l_=C, o-] ++ (3,0) coordinate(a);
             \draw (a) to[short, -o] ++ (1,0);
             \draw (a) to[R, name=R, *-*] ++(0,-2);
             \node at (R.center) {R};  % draw label "R" at the center of the resistance
@@ -76,11 +77,14 @@
         \end{circuitikz}
 
         Sur ce montage, lorsque la fréquence est basse, l'impédance du condensateur est très
-        grande donc la tension de sortie est plus faible que celle d'entrée.
+        grande donc la tension de sortie est plus faible que celle d'entrée. \\
+        Lien de la \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcBOaAOAbAdgCwCYsBmHMBMHZNQkBSGmuhAUwFowwAoANxAzxxB4EGXvxCE0AuhAyMo8mAg4B3UQIkCsCPOMlQOAJxBadQkSd1SGHAB7HkWcXhFosaJ8hACxANQA6AM4BAPYGAC4Alky2XlpOIsJIhHie3gL+AUwAdmEGAJfRqhZmIGhwgsL6RdqWpeUaVWoVCVgiJZAqTQ0IrbUddghoSGCEnmXU5DppIABiEQA2uUyBAA4AhkHLAQAWawCuYYEASgDCMTho7mDIdGjIw8jUAmAiAIKBsgASAF6BwVmrJgHQJcYIRAyBACOey28zWgTC2QCEX+gQAJlsQuEooEmAFDgE1mEwnksnsCtAOABjJolYqVKSweCQZCstnsjmpdAYNB4Xk4Igs5yXKBMiAdYLyZLyHAsq50GDirxSwTyHSEDhAA}{simulation}.
     }{
-        \subsection{High Pass RL Filter}
-
         \centering
+
+        \subsection{High Pass RL Filter}
+        
+        \vspace{2mm}
         \begin{circuitikz}        
             % Circuit code
             \draw (0,0) to[short,o-o] ++ (4,0);  % draw the bottom wire
@@ -93,17 +97,22 @@
             \draw (0,2) to[open,v_=V$_{\text{in}}$\;] ++(0,-2);
             \draw (4,2) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-2);
         \end{circuitikz}
-    }
 
+        Sur ce montage, lorsque la fréquence est basse, l'impédance de la bobine est faible
+        donc la tension de sortie est faible également.
+        $$\underline{V}_{out}(t) = \underline{Z}_L \, \underline{i}(t) = \underline{Z}_L=j\omega L \, \underline{i}(t)$$
+        Lien de la \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcAmWDLMgZgBxmcgCxg4CcS6IFkVApgLRhgBQAbiIVsiMggGwcuHMAJoQ+NJDWnQEzAE6DuvAQgDsAlVB6RmAdyobhAzt2Kj9SnvxC5C1iwdPHbOe+aiX1mm3yIPPA28XP3cRTwAPW0gkMFIBNXxwUlIOcAEAQQAdAGcJAAkAL1yAewA7XIAHWgBXABdc1hKAS3lcgEca2lyAGwBDXLraMpzm8tyAE26cnJL5Oubp2hyGnL66uoBLsprN2mhmKOIccAR7BHJTtTT-ADFmnrr5acq+memACz76w54cGiwnFsagBhBMPHsADVcsMnntfnxCEhAfY1MgBIDrvZ-NCZnMFrRmD1DD5VEYPDJIBB6DBkFg1IRkGpEmpSAREoQYp4StoTjROaQTlJYLxtFhwBAxBAsMwgA}{simulation}.    
+    }
 
 
     \section{Exemples de filtres passe bas}
 
     \twoCol{      
+        \centering
 
         \subsection{Low Pass RC Filter}
 
-        \centering
+        \vspace{2mm}
         \begin{circuitikz}        
             % Circuit code
             \draw (0,0) to[short,o-o] ++ (4,0);  % draw the bottom wire
@@ -117,17 +126,20 @@
             \draw (4,2) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-2);
         \end{circuitikz}
 
-        On étudie le montage ci-contre. \\
-        lien: \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWK0AckDMYwE4As3sA2SQgdgCYFsQFIaa6EBTAWiwCgA3EXdckSoR58eYIXQhh49OrOgJ2AJ2H9BNUkLV1ykdgHd1Q3GJWjx7AMaGBCIQg1meyeJAjloU9IQT40hNNhYpM6uUPqmaugouDbmBrz8xkJRMUlhBvaatiCE5DFa4ZmOuakmugAeIOiQSDhCpFjgBE4mAIIAOgDOYADWABIAXl0A9gB2XQAOTACuAC5dnMMAlopdAI7TTF0ANgCGXbNMo51LY10AJludncOKs0tXTJ3znbuzswCXo9MfTNDslWMKHAPhoKGCYHsTjyIAAYkttrNFFcJrtrlcAEZogECNBVXhVUh0dC4IwCGIANS6RyRvxxhFwSBJMQoyVwwXylK6NzuD3Ywyg4EFuEg2GBSBgkEogv46DCQA}{lien}.
-    
+        Sur ce montage, lorsque la fréquence est haute, l'impédance du condensateur est basse
+        donc la tension de sortie est basse également.
+        $$\underline{V}_{out}(t) = \underline{Z}_C \, \underline{i}(t) = \dfrac{1}{j\omega C} \, \underline{i}(t)$$
+        Lien de la \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWK0AckDMYwE4As3sA2SQgdgCYFsQFIaa6EBTAWiwCgA3EXdckSoR58eYIXQhh49OrOgJ2AJ2H9BNUkLV1ykdgHd1Q3GJWjx7AMaGBCIQg1meyeJAjloU9IQT40hNNhYpM6uUPqmaugouDbmBrz8xkJRMUlhBvaatiCE5DFa4ZmOuakmugAeIOiQSDhCpFjgBE4mAIIAOgDOYADWABIAXl0A9gB2XQAOTACuAC5dnMMAlopdAI7TTF0ANgCGXbNMo51LY10AJludncOKs0tXTJ3znbuzswCXo9MfTNDslWMKHAPhoKGCYHsTjyIAAYkttrNFFcJrtrlcAEZogECNBVXhVUh0dC4IwCGIANS6RyRvxxhFwSBJMQoyVwwXylK6NzuD3Ywyg4EFuEg2GBSBgkEogv46DCQA}{simulation}.    
     }{
+        \centering
+
         \subsection{Low Pass RL Filter}
 
-        \centering
+        \vspace{2mm}
         \begin{circuitikz}        
             % Circuit code
             \draw (0,0) to[short,o-o] ++ (4,0);
-            \draw (0,2) to[L, l=L, o-] ++ (3,0) coordinate(a);
+            \draw (0,2) to[L, l_=L, o-] ++ (3,0) coordinate(a);
             \draw (a) to[short, -o] ++ (1,0);
             \draw (a) to[R, name=R, *-*] ++(0,-2);
             \node at (R.center) {R};  % draw label "R" at the center of the resistance
@@ -137,7 +149,9 @@
             \draw (4,2) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-2);
         \end{circuitikz}
 
-        Lien pour tester ce filtre: \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWc0BsBmSAOMB2HAWBATk0xXIgUhCSpoFMBaMMAKADcQUAmfEbhCi68QaTH2oQw8GlDkwErAO7C+YvjgTdR4qKwA2q-oJCbtAoZKixEkMGnyYsaFNkiuJrAE6mtxoWY6EuDwrAAepkQ4otxCmDiYMUQgfCIAagA6AM5ZAPZeAC4AlvThKZoxQoJIaNzJqXyZWfQAdgVeAJelKoEWIE7UfZDKvtrq-XBBeio8qSYIOEJDI7NTC0LjwxHEyfbJi4lg+NoNIABiRfrt9NkADgCGOTdZAEaPZY6HRNSYRHxgRDQKXAQgAgtkwABrAASAC9srkWnd6ABXArZdi5IpebIARxRz3092yBVaWSKiOyABNnnlCiVsvQsuisvcCgUOi0UV1oKxcnIINR8JASLIYILgdQgUCpaJWEA}{simulation}.
+        Sur ce montage, lorsque la fréquence est haute, l'impédance de la bobine est
+        grande donc la tension de sortie est plus faible que celle d'entrée. \\
+        Lien de la \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWc0BsBmSAOMB2HAWBATk0xXIgUhCSpoFMBaMMAKADcQUAmfEbhCi68QaTH2oQw8GlDkwErAO7C+YvjgTdR4qKwA2q-oJCbtAoZKixEkMGnyYsaFNkiuJrAE6mtxoWY6EuDwrAAepkQ4otxCmDiYMUQgfCIAagA6AM5ZAPZeAC4AlvThKZoxQoJIaNzJqXyZWfQAdgVeAJelKoEWIE7UfZDKvtrq-XBBeio8qSYIOEJDI7NTC0LjwxHEyfbJi4lg+NoNIABiRfrt9NkADgCGOTdZAEaPZY6HRNSYRHxgRDQKXAQgAgtkwABrAASAC9srkWnd6ABXArZdi5IpebIARxRz3092yBVaWSKiOyABNnnlCiVsvQsuisvcCgUOi0UV1oKxcnIINR8JASLIYILgdQgUCpaJWEA}{simulation}.
 
     }
 
