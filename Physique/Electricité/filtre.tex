@@ -1,0 +1,144 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=0.5cm,bottom=0.5cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{wrapfig}
+
+\usepackage{tikz}
+\usepackage[european, straightvoltages, RPvoltages, cute inductor]{circuitikz}  % RPvoltages definie la convention des dipoles (sens tension faux sinon)
+\usetikzlibrary{babel}
+
+% Colonnes
+\newenvironment{col}[1]
+{\begin{minipage}[t]{\dimexpr \textwidth * #1/100 - 0.03\textwidth}}{\end{minipage}\hspace{0.03\textwidth}}
+\newenvironment{colf}[1]
+{\begin{minipage}[t]{\dimexpr \textwidth * #1/100}}{\end{minipage}}
+\newcommand{\twoCol}[3][50]{
+    \begin{col}{#1}
+        #2
+    \end{col}
+    \begin{colf}{\numexpr 100 - #1\relax}
+        #3
+    \end{colf}
+}
+
+\title{Filtres Passifs}
+\author{Raphaël Jamann}
+\date{} % remove the date
+
+\begin{document}
+    \maketitle
+
+    Lien playliste Youtube pour comprendre les filtres: \href{https://youtube.com/playlist?list=PLBRwdavN8jtvGuPq0_vqaGfYz1iMiCGmt&si=m3tA0icXFmadQLan}{Playliste}.
+    Aide Latex circuit: \href{https://nboulaire.developpez.com/tutoriels/latex/circuitikz_base/}{lien}.
+
+    \section{Qu'est ce qu'un filtre}
+    
+    Un filtre est un quadripôle linéaire (constitué de dipôles linéaires R,L et C) qui \textbf{permet
+    d'atténuer certaines fréquences} en régime sinusoïdal. 
+
+    \bigskip
+    Les filtres fonctionnent grâce à l'impédance complexe des dipôles R et C qui dépendent
+    de la pulsation $\omega$ et donc de la fréquence $f=\frac{\omega}{2\pi}$. \\
+    En effet, l'impédance d'un condensateur est $\underline{Z}_C=\dfrac{1}{j\omega C}$ . \\
+    L'impédance d'une bobine L est $\underline{Z}_L=j\omega L$
+
+
+    \section{Exemples de filtres passe haut}
+
+    \twoCol{      
+
+        \subsection{High Pass RC Filter}
+
+        \centering
+        \begin{circuitikz}        
+            % Circuit code
+            \draw (0,0) to[short,o-o] ++ (4,0);
+            \draw (0,2) to[C, l=C, o-] ++ (3,0) coordinate(a);
+            \draw (a) to[short, -o] ++ (1,0);
+            \draw (a) to[R, name=R, *-*] ++(0,-2);
+            \node at (R.center) {R};  % draw label "R" at the center of the resistance
+
+            % Voltage labels
+            \draw (0,2) to[open,v=V$_{\text{in}}$\;] ++(0,-2);
+            \draw (4,2) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-2);
+        \end{circuitikz}
+
+        Sur ce montage, lorsque la fréquence est basse, l'impédance du condensateur est très
+        grande donc la tension de sortie est plus faible que celle d'entrée.
+    }{
+        \subsection{High Pass RL Filter}
+
+        \centering
+        \begin{circuitikz}        
+            % Circuit code
+            \draw (0,0) to[short,o-o] ++ (4,0);  % draw the bottom wire
+            \draw (0,2) to[R, name=R, o-] ++ (3,0) coordinate(a);  % draw the resistance
+            \node at (R.center) {R};  % draw label "R" at the center of the resistance
+            \draw (a) to[short,-o] ++ (1,0);  % draw wire to the right of R
+            \draw (a) to[L, l_=L, *-*] ++(0,-2);  % draw the Capacitor
+
+            % Voltage labels
+            \draw (0,2) to[open,v_=V$_{\text{in}}$\;] ++(0,-2);
+            \draw (4,2) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-2);
+        \end{circuitikz}
+    }
+
+
+
+    \section{Exemples de filtres passe bas}
+
+    \twoCol{      
+
+        \subsection{Low Pass RC Filter}
+
+        \centering
+        \begin{circuitikz}        
+            % Circuit code
+            \draw (0,0) to[short,o-o] ++ (4,0);  % draw the bottom wire
+            \draw (0,2) to[R, name=R, o-] ++ (3,0) coordinate(a);  % draw the resistance
+            \node at (R.center) {R};  % draw label "R" at the center of the resistance
+            \draw (a) to[short,-o] ++ (1,0);  % draw wire to the right of R
+            \draw (a) to[C, l_=C, *-*] ++(0,-2);  % draw the Capacitor
+
+            % Voltage labels
+            \draw (0,2) to[open,v_=V$_{\text{in}}$\;] ++(0,-2);
+            \draw (4,2) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-2);
+        \end{circuitikz}
+
+        On étudie le montage ci-contre. \\
+        lien: \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWK0AckDMYwE4As3sA2SQgdgCYFsQFIaa6EBTAWiwCgA3EXdckSoR58eYIXQhh49OrOgJ2AJ2H9BNUkLV1ykdgHd1Q3GJWjx7AMaGBCIQg1meyeJAjloU9IQT40hNNhYpM6uUPqmaugouDbmBrz8xkJRMUlhBvaatiCE5DFa4ZmOuakmugAeIOiQSDhCpFjgBE4mAIIAOgDOYADWABIAXl0A9gB2XQAOTACuAC5dnMMAlopdAI7TTF0ANgCGXbNMo51LY10AJludncOKs0tXTJ3znbuzswCXo9MfTNDslWMKHAPhoKGCYHsTjyIAAYkttrNFFcJrtrlcAEZogECNBVXhVUh0dC4IwCGIANS6RyRvxxhFwSBJMQoyVwwXylK6NzuD3Ywyg4EFuEg2GBSBgkEogv46DCQA}{lien}.
+    
+    }{
+        \subsection{Low Pass RL Filter}
+
+        \centering
+        \begin{circuitikz}        
+            % Circuit code
+            \draw (0,0) to[short,o-o] ++ (4,0);
+            \draw (0,2) to[L, l=L, o-] ++ (3,0) coordinate(a);
+            \draw (a) to[short, -o] ++ (1,0);
+            \draw (a) to[R, name=R, *-*] ++(0,-2);
+            \node at (R.center) {R};  % draw label "R" at the center of the resistance
+    
+            % Voltage labels
+            \draw (0,2) to[open,v=V$_{\text{in}}$\;] ++(0,-2);
+            \draw (4,2) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-2);
+        \end{circuitikz}
+
+        Lien pour tester ce filtre: \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWc0BsBmSAOMB2HAWBATk0xXIgUhCSpoFMBaMMAKADcQUAmfEbhCi68QaTH2oQw8GlDkwErAO7C+YvjgTdR4qKwA2q-oJCbtAoZKixEkMGnyYsaFNkiuJrAE6mtxoWY6EuDwrAAepkQ4otxCmDiYMUQgfCIAagA6AM5ZAPZeAC4AlvThKZoxQoJIaNzJqXyZWfQAdgVeAJelKoEWIE7UfZDKvtrq-XBBeio8qSYIOEJDI7NTC0LjwxHEyfbJi4lg+NoNIABiRfrt9NkADgCGOTdZAEaPZY6HRNSYRHxgRDQKXAQgAgtkwABrAASAC9srkWnd6ABXArZdi5IpebIARxRz3092yBVaWSKiOyABNnnlCiVsvQsuisvcCgUOi0UV1oKxcnIINR8JASLIYILgdQgUCpaJWEA}{simulation}.
+
+    }
+
+\end{document}
