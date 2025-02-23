@@ -14,6 +14,9 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{wrapfig}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18} 
 
 \usepackage{tikz}
 \usepackage[european, straightvoltages, RPvoltages, cute inductor]{circuitikz}  % RPvoltages definie la convention des dipoles (sens tension faux sinon)
@@ -33,7 +36,7 @@
     \end{colf}
 }
 
-\title{Filtres Passifs}
+\title{Filtres Eléctroniques Passifs}
 \author{Raphaël Jamann}
 \date{} % remove the date
 
@@ -154,5 +157,82 @@
         Lien de la \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWc0BsBmSAOMB2HAWBATk0xXIgUhCSpoFMBaMMAKADcQUAmfEbhCi68QaTH2oQw8GlDkwErAO7C+YvjgTdR4qKwA2q-oJCbtAoZKixEkMGnyYsaFNkiuJrAE6mtxoWY6EuDwrAAepkQ4otxCmDiYMUQgfCIAagA6AM5ZAPZeAC4AlvThKZoxQoJIaNzJqXyZWfQAdgVeAJelKoEWIE7UfZDKvtrq-XBBeio8qSYIOEJDI7NTC0LjwxHEyfbJi4lg+NoNIABiRfrt9NkADgCGOTdZAEaPZY6HRNSYRHxgRDQKXAQgAgtkwABrAASAC9srkWnd6ABXArZdi5IpebIARxRz3092yBVaWSKiOyABNnnlCiVsvQsuisvcCgUOi0UV1oKxcnIINR8JASLIYILgdQgUCpaJWEA}{simulation}.
 
     }
+
+
+    \section{Exemple de filtre passe bande}
+    
+    {\centering
+    \begin{circuitikz}        
+        % Circuit code
+        \draw (0,0) to[short,o-o] ++ (4.5,0);
+        \draw (0,2) to[short,o-] (0.5,2) to[L, l_=L] (2,2) to[C, l_=C] (3,2) -- (3.5,2) coordinate(a);
+        \draw (a) to[short, -o] ++ (1,0);
+        \draw (a) to[R, name=R, *-*] ++(0,-2);
+        \node at (R.center) {R};  % draw label "R" at the center of the resistance
+
+        % Voltage labels
+        \draw (0,2) to[open,v=V$_{\text{in}}$\;] ++(0,-2);
+        \draw (4.5,2) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-2);
+    \end{circuitikz}
+
+    Lien de la \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcA2aAOMB2ALGXyEw1sESQFJzzKEBTAWjDACgA3EZAJmxE4WQ7cQAZmJRw4eFUozoCZgHdBPUT0wJOIsZGYAnEOs18BhrT0pgdADwMBOTCM4C0mNI9sgeQgGoAdAM7+APa6AC4AlrTMNtjqjgL8SMKcHl48fv60AHahugCXUUqmxiBocLz8UIoGGmal5apVSlxelQiYAiU6zUKN7QKN1uRoSGDCHmjCDniaaSAAYuEANrm0AQAOAIaBa-4ARptZACa7AEoAMgDC0Z5obmC2lLbI07bCniggAIIByJAAEgAvAK0UIBTYBMAAayBASCWQ2tAArmD-KwguFdAEAI5I3ZLCH+ULZfzheEBE4BYJhSIgong0KhPJZJEFaDMADGygqAmQdx5Hxg8EgtlFYvFEo89CFkEwwmE2GQtmwkGw3A6bwcMogOiWHH5JWKlVkkAg0tgZWw4wIhCVz04kyqQXEYAElBVtnush1gpEvHEmmEzCAA}{simulation}.
+    }
+
+
+
+    \section{Exemple de filtre coupe bande}
+    
+    \twoCol{
+        \centering
+        \begin{circuitikz}        
+            % Circuit code
+            \draw (0,0) to[short,o-o] ++ (4.5,0);
+            \draw (0,2) to[short, o-] ++ (1,0) to[short] ++ (0,0.75) to[C, l_=C] ++ (1.5,0) to[short] ++ (0,-0.75) -- (3.5,2) coordinate(a);
+            \draw (1,2) to[short] ++ (0,-0.75) to[L, l_=L] ++ (1.5,0) to[short] ++ (0,0.75);
+            \draw (a) to[short, -o] ++ (1,0);
+            \draw (a) to[R, name=R, *-*] ++(0,-2);
+            \node at (R.center) {R};  % draw label "R" at the center of the resistance
+
+            % Voltage labels
+            \draw (0,2) to[open,v=V$_{\text{in}}$\;] ++(0,-2);
+            \draw (4.5,2) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-2);
+        \end{circuitikz}
+
+        Lien de la \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWEAmM0EE4DMGAcB2ZLMSANjABYxkQFJbb6EBTAWjDACgA3EU5CigSk+AkFlyD6EMHQb0F6TgHdRgiYPwIaGqJwBOILTWTCj28ZKjhInAB5GM+cchEFcLjCEFiAagB0AZ0CAe30AFwBLZntvLRcRYSQsZC8fQQDA5gA7cP0AS5jVYyE3OFK9YotdXHLdW1V+HzMEfBFTEQa1S0FWkXrYhFwkMBwQXAlwChp0kAAxSIAbPOYggGMQgFcAB1XAgCMAQ2yAEz2AJQAZAGFB5GkrXFJnMAJvcBFLw6CAMwKAR02OTWe0OmyCh0WOXCW30QTOQVkkAAEgAvILMQLhCHhcL5bKbQrQFTdDp8Cj0MldEpk-BYdpman0ip09piJkMkSslC4DxdUgUioCynsknCoWC5C8vRrckizTM5BiKSweAYdUazVarysZDQSiYCj4OmYfC81pQVUQWyLOU8jzcqV8y2Qa3QI10XCUDCyChYCgIV6dTghaxgTreSB4GyW63vehYFDWHScIA}{simulation}.
+    }{
+        \centering
+        \begin{circuitikz}        
+            % Circuit code
+            \draw (0,0) to[short,o-o] ++ (4,0);  % draw the bottom wire
+            \draw (0,3) to[R, name=R, o-] ++ (3,0) coordinate(a);  % draw the resistance
+            \node at (R.center) {R};  % draw label "R" at the center of the resistance
+            \draw (a) to[short,-o] ++ (1,0);  % draw wire to the right of R
+            \draw (a) to[short, *-] ++ (0,-0.5) to[C, l_=C] ++ (0,-1) to[L, l_=L] ++ (0, -1) to[short, -*] ++ (0, -0.5);  % draw the Capacitor and inductor
+
+            % Voltage labels
+            \draw (0,3) to[open,v_=V$_{\text{in}}$\;] ++(0,-3);
+            \draw (4,3) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-3);
+        \end{circuitikz}
+
+        On peut aussi faire un circuit comme celui-ci.\\
+        Lien de la \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcBOaAOAbAdgCwCYsBmHMBMHZNQkBSGmuhAUwFowwAoANxB0LxB4EGXv15gRdCLUZQ5MBBwBOogUJEIsI9XLyQOAdxpbxIvgJKTDqwcJCE0OW1aPnT9x+-0APQWjQoSFgI1GCUvOAiAIIAOgDOMgASAF7xAPYAdvEADkwArgAu8VxpAJZK8QCOeUzxADYAhvEFTBlxpZnxACa1cXFpSgWlvUxxRXENBQUAlxl5070AFHN1dUwAlNAcviQBpE4YEuCaEXhOAGKldQVKvQDGaXm58QBGDRk92350xNSEWD8cGZBE4AGrxVo3BZfbBOYhBBBIYgBJxnEDgvoDIZMDh3YzaOyaESEQjAmDwSAQFgIWC7QjIM7IMAkkhQWCUqAcOr4+yknmWeSwCAwMIksBYTA4HBEAFoSABfRGInOEAYNE6RX8o5qpwC-QqHUqw168BwayGnTYNR2TXG7VYCxHfRpOQK3iQcJgOjkoRyULUKR-DhAA}{simulation}.
+
+    }    
+    
+    \section{Fonction de transfert : définitions}
+
+    Fonction complexe qui indique le rapport entre la tension de sortie et celle d'entrée, notée: 
+    $$\underline{H}(j\omega) = \dfrac{\underline{u}_s}{\underline{u}_e} = \dfrac{U_{s_m}}{U_{e_m}} e^{\varphi_{u_s} - \varphi_{u_e}}$$
+
+    \begin{itemize}[label=$\ast$]
+        \item Module de $H$ : gain $G(\omega) = \dfrac{U_{s_m}}{U_{e_m}}$
+        \item Argument de $H$ : déphasage $\varphi(\omega) = \varphi_{u_s} - \varphi_{u_e}$
+    \end{itemize}
+
+
+
+    \section{Diagrammes de Bode}
+
+    \includegraphics[width=0.9\textwidth]{fig/bode.pdf}
 
 \end{document}
