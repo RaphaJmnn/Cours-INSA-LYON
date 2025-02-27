@@ -1,6 +1,9 @@
 ## ignore folders
 fig*
 
+## ignore test files
+test*
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
