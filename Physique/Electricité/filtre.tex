@@ -15,8 +15,6 @@
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{wrapfig}
 \usepackage{enumitem}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18} 
 
 \usepackage{tikz}
 \usepackage[european, straightvoltages, RPvoltages, cute inductor]{circuitikz}  % RPvoltages definie la convention des dipoles (sens tension faux sinon)
@@ -223,9 +221,12 @@
 
     Fonction complexe qui indique le rapport entre la tension de sortie et celle d'entrée, notée: 
     $$\underline{H}(j\omega) = \dfrac{\underline{u}_s}{\underline{u}_e} = \dfrac{U_{s_m}}{U_{e_m}} e^{\varphi_{u_s} - \varphi_{u_e}}$$
+    
+    Pour trouver $\underline{u}_s$, on applique le pont diviseur de tension.
 
     \begin{itemize}[label=$\ast$]
-        \item Module de $H$ : gain $G(\omega) = \dfrac{U_{s_m}}{U_{e_m}}$
+        \item Module de $H$ : gain $G(\omega) = \left|\underline{H}\right| = \dfrac{U_{s_m}}{U_{e_m}}$
+        \item Gain en décibels : $G_{dB} = 20\log{\left|\underline{H}\right|}$
         \item Argument de $H$ : déphasage $\varphi(\omega) = \varphi_{u_s} - \varphi_{u_e}$
     \end{itemize}
 
@@ -233,6 +234,86 @@
 
     \section{Diagrammes de Bode}
 
+
+
+    \section{Diviseur de Tension} \label{sec:Diviseur de Tension}
+    \begin{wrapfigure}[4]{r}{0.5\textwidth}
+        \centering
+        \vspace{-1cm}
+        \begin{circuitikz}        
+            % Circuit code
+            \draw (0,0) to[short,o-o] ++ (4,0);  % draw the bottom wire
+            \draw (0,4) to[short,o-] ++ (2,0) coordinate(a);  
+            \draw (a) to[R, name=Z1] ++ (0,-2) to[R, name=Z, *-*] ++ (0, -2);  % draw the two resistance
+            \node at (Z1.center) {$\underline{Z}_1$};  % draw label "R" at the center of the resistance
+            \node at (Z.center) {$\underline{Z}$};  % draw label "R" at the center of the resistance
+            \draw (2,2) to[short, *-o] ++ (2,0);
+            % Voltage labels
+            \draw (0,4) to[open, v_=$V_{\text{in}}$\;] ++(0,-4);
+            \draw (4,2) to[open, v^=\hspace{1.5mm} $V_{\text{out}}$] ++(0,-2);
+        \end{circuitikz}
+    \end{wrapfigure}
+
+    \noindent La formule du pont diviseur de tension dans ce circuit est:
+    $$V_{\text{out}} = V_{\text{in}} \times \dfrac{Z}{Z+Z_1}$$
+
+    %La formule généralisée à $i$ résistances (notées $Z_i$) est:\\
+    %$V_{\text{Z_r}} = V_{\text{in}} \times \dfrac{Z_r}{\sum_{i=1}^{n}Z_i}$
+      
+\clearpage
+
+\section{Etude complète d'un filtre simple}
+
+\begin{wrapfigure}[2]{r}{0.5\textwidth}
+    \centering
+    \begin{circuitikz}        
+        % Circuit code
+        \draw (0,0) to[short,o-o] ++ (4,0);  % draw the bottom wire
+        \draw (0,2) to[R, name=R, o-] ++ (3,0) coordinate(a);  % draw the resistance
+        \node at (R.center) {R};  % draw label "R" at the center of the resistance
+        \draw (a) to[short,-o] ++ (1,0);  % draw wire to the right of R
+        \draw (a) to[C, l_=C, *-*] ++(0,-2);  % draw the Capacitor
+
+        % Voltage labels
+        \draw (0,2) to[open,v_=V$_{\text{in}}$\;] ++(0,-2);
+        \draw (4,2) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-2);
+    \end{circuitikz}
+\end{wrapfigure}
+
+\subsection{Schéma électrique du filtre}
+On reconnait un filtre passe-bas $RC$ du premier ordre.
+
+
+\vspace{2cm}
+\subsection{Comportement du filtre à basse et haute fréquence (ou pulsation)}
+
+\begin{itemize}[label=$\ast$]
+    \item $\omega \rightarrow 0$ : Le condensateur se comporte comme un interrupteur ouvert ($\underline{Z}_C \rightarrow +\infty$).\\
+        $V_{\text{out}}=V_{\text{in}}$ \quad Le signal basse fréquence passe.
+    \item $\omega \rightarrow +\infty$ : Le condensateur se comporte comme un fil ($\underline{Z}_C \rightarrow 0$).\\
+        $V_{\text{out}} = 0$ \quad Le signal haute fréquence est coupé (car la tension au borne d'un fil est nulle).
+\end{itemize}
+
+\subsection{Calcul fonction de transfert}
+
+$\underline{H}(j\omega) = \dfrac{\underline{u}_s}{\underline{u}_e} =  \dfrac{1}{\underline{u}_e}\times\underline{u}_e \times \dfrac{\dfrac{1}{jC\omega}}{\dfrac{1}{jC\omega} + R} = \dfrac{\dfrac{1}{jC\omega}}{\dfrac{1}{jC\omega} + R} = \dfrac{1}{1+jRC\omega} = \dfrac{1}{1+j\frac{\omega}{\omega_0}}$
+\quad avec $\omega_0=\frac{1}{RC}$
+
+$G = \left|\underline{H}(j\omega)\right| = \dfrac{1}{\sqrt{1+\left(\frac{\omega}{\omega_0}\right)^2}}$
+
+$G_{dB} = 20\log{\left|\underline{H}(j\omega)\right|} $
+
+\subsection{Etude Asymptotique, diagramme de Bode}
+\begin{itemize}[label=$\ast$]
+    \item $\omega \rightarrow 0$ : $G_{dB} \rightarrow 1$
+    \item $\omega \rightarrow +\infty$ : $G_{dB} \rightarrow 20\log{\left(\dfrac{\omega_0}{\omega}\right)} = 20\log{(\omega_0)} - 20\log{(\omega)}$ \quad
+    car $\frac{1}{\sqrt{1+\left(\frac{\omega}{\omega_0}\right)^2}} \underset{w \to \infty}{\sim} \frac{1}{\sqrt{\left(\frac{\omega}{\omega_0}\right)^2}} = \frac{\omega_0}{\omega} $\\
+    La pente est alors de $20\,dB$ par décade (multiplication/division par 10 de la pulsation) pour les hautes fréquences.
+    \item $\omega \rightarrow \omega_0$ : $G_{dB} \rightarrow 20\log{\left(\dfrac{1}{\sqrt{2}}\right)} \approx -3\,dB$
+\end{itemize}
+
+    \includegraphics[width=1\textwidth]{bode diagrams/filtre_passe_bas_gain.png}
     
+    \includegraphics[width=1\textwidth]{bode diagrams/filtre_passe_bas_phase.png}
 
 \end{document}
