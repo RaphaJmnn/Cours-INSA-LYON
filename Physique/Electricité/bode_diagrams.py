@@ -11,6 +11,15 @@ def filtre_passe_bas(R, C):
     den = [R * C, 1]
     return num, den
 
+def filtre_passe_haut(R, C):
+    """
+    Fonction de transfert d'un filtre passe-haut du premier ordre.
+    H(s) = jRCω / (1 + jRCω)
+    """
+    num = [R*C, 0]
+    den = [R*C, 1]
+    return num, den
+
 def tracer_reponse_frequence(num, den, R, C):
     """
     Trace la réponse en fréquence d'un filtre passe-bas :
@@ -30,8 +39,8 @@ def tracer_reponse_frequence(num, den, R, C):
     gain_at_wc = gain_db[idx_c]  # Devrait être proche de -3 dB
 
     # Génération de l'asymptote du gain
-    w_asymptote = np.array([min(w), omega_c, max(w)])
-    gain_asymptote = np.array([0, 0, -20 * np.log10(w_asymptote[2] / omega_c)])
+    w_asymptote = np.array([max(w), omega_c, min(w)])
+    gain_asymptote = np.array([0, 0, 20 * np.log10(w_asymptote[2] / omega_c)])
 
     # Tracé du gain en fonction de la pulsation
     plt.figure(figsize=(7, 4))
@@ -47,14 +56,18 @@ def tracer_reponse_frequence(num, den, R, C):
     # Annotation de ω_c sous l'axe des abscisses
     #plt.text(omega_c, plt.ylim()[0], r'$\omega_c$', fontsize=12, color='g', ha='right', va='bottom')
 
+    # Annotation pente a 20 dB/dec
+    plt.text(10**2, -23, r'$20\,dB.s^{-1}$', fontsize=10, color='r', ha='left', va='top')
+
+
     plt.xlabel('Pulsation ω (rad/s)')
     plt.ylabel('Gain (dB)')
-    plt.title('Réponse en fréquence - Gain')
+    plt.title('Diagramme de Bode - Gain')
     plt.grid(which='both')
-    plt.legend()
+    plt.legend(loc="lower right")
     
     # Sauvegarde du graphique du gain
-    plt.savefig(rf'Physique/Electricité/bode diagrams/filtre_passe_bas_gain.png', dpi=300)
+    plt.savefig(rf'Physique/Electricité/bode diagrams/filtre_passe_haut_gain.png', dpi=300)
     plt.show()
 
     # Tracé de la phase en fonction de la pulsation
@@ -66,15 +79,41 @@ def tracer_reponse_frequence(num, den, R, C):
 
     plt.xlabel('Pulsation ω (rad/s)')
     plt.ylabel('Phase (degrés)')
-    plt.title('Réponse en fréquence - Phase')
+    plt.title('Diagramme de Bode - Phase')
     plt.grid(which='both')
     plt.legend()
     
     # Sauvegarde du graphique de la phase
-    plt.savefig(rf'Physique/Electricité/bode diagrams/filtre_passe_bas_phase.png', dpi=300)
+    plt.savefig(rf'Physique/Electricité/bode diagrams/filtre_passe_haut_phase.png', dpi=300)
     plt.show()
 
-# Exemple d'utilisation
+
+
+# filtre passe haut
+
+R, C = 1000, 1e-6  # Résistance en ohms, Capacité en farads
+num, den = filtre_passe_haut(R, C)
+tracer_reponse_frequence(num, den, R, C)
+
+
+# filtre passe bas
+""""
 R, C = 1000, 1e-6  # Résistance en ohms, Capacité en farads
 num, den = filtre_passe_bas(R, C)
-tracer_reponse_frequence(num, den, R, C)
+tracer_reponse_frequence(num, den, R, C)"""
+
+"""""
+# diagramme vide 
+plt.figure(figsize=(7, 4))
+plt.xscale('log')
+plt.xlim(6, 1.5e5)
+plt.ylim(-3, 93)
+plt.xlabel(r'Pulsation $\omega$ (rad/s)')
+plt.ylabel('Phase (degrés)')
+plt.title('Diagramme de Bode - Phase')
+plt.grid(which='both')
+
+# Sauvegarde du graphique du gain
+plt.savefig(rf'Physique/Electricité/bode diagrams/bode_phase.png', dpi=300)
+plt.show()
+"""

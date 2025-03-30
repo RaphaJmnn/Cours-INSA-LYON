@@ -15,10 +15,13 @@
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{wrapfig}
 \usepackage{enumitem}
+\usepackage{subcaption}
 
 \usepackage{tikz}
 \usepackage[european, straightvoltages, RPvoltages, cute inductor]{circuitikz}  % RPvoltages definie la convention des dipoles (sens tension faux sinon)
 \usetikzlibrary{babel}
+
+\newcommand{\comment}[1]{}
 
 % Colonnes
 \newenvironment{col}[1]
@@ -157,7 +160,7 @@
     }
 
 
-    \section{Exemple de filtre passe bande}
+    \comment{\section{Exemple de filtre passe bande}
     
     {\centering
     \begin{circuitikz}        
@@ -216,6 +219,7 @@
         Lien de la \href{https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWcBOaAOAbAdgCwCYsBmHMBMHZNQkBSGmuhAUwFowwAoANxB0LxB4EGXv15gRdCLUZQ5MBBwBOogUJEIsI9XLyQOAdxpbxIvgJKTDqwcJCE0OW1aPnT9x+-0APQWjQoSFgI1GCUvOAiAIIAOgDOMgASAF7xAPYAdvEADkwArgAu8VxpAJZK8QCOeUzxADYAhvEFTBlxpZnxACa1cXFpSgWlvUxxRXENBQUAlxl5070AFHN1dUwAlNAcviQBpE4YEuCaEXhOAGKldQVKvQDGaXm58QBGDRk92350xNSEWD8cGZBE4AGrxVo3BZfbBOYhBBBIYgBJxnEDgvoDIZMDh3YzaOyaESEQjAmDwSAQFgIWC7QjIM7IMAkkhQWCUqAcOr4+yknmWeSwCAwMIksBYTA4HBEAFoSABfRGInOEAYNE6RX8o5qpwC-QqHUqw168BwayGnTYNR2TXG7VYCxHfRpOQK3iQcJgOjkoRyULUKR-DhAA}{simulation}.
 
     }    
+    }
     
     \section{Fonction de transfert : définitions}
 
@@ -234,12 +238,26 @@
 
     \section{Diagrammes de Bode}
 
+    Les diagrammes de bodes sont une façon de représenter le comportement d'un filtre.\\
+    On représente d'une part le gain en fonction et la fréquence (ou pulsation) et d'autre part le déphasage de la tension de sortie par rapport à la tension d'entrée en fonction de la fréquence.
+
+    \begin{figure}[ht]
+        \centering
+        \begin{subfigure}{0.48\textwidth}
+            \centering
+            \includegraphics[width=1\linewidth]{bode diagrams/bode_gain.png}
+        \end{subfigure}
+        \hfill\begin{subfigure}{0.48\textwidth}
+            \centering
+            \includegraphics[width=1\linewidth]{bode diagrams/bode_phase.png}
+        \end{subfigure}
+    \end{figure}
 
 
     \section{Diviseur de Tension} \label{sec:Diviseur de Tension}
     \begin{wrapfigure}[4]{r}{0.5\textwidth}
         \centering
-        \vspace{-1cm}
+        \vspace{-1.5cm}
         \begin{circuitikz}        
             % Circuit code
             \draw (0,0) to[short,o-o] ++ (4,0);  % draw the bottom wire
@@ -262,10 +280,12 @@
       
 \clearpage
 
+\vspace{2cm}
 \section{Etude complète d'un filtre simple}
 
 \begin{wrapfigure}[2]{r}{0.5\textwidth}
     \centering
+    \vspace{-1.7cm}
     \begin{circuitikz}        
         % Circuit code
         \draw (0,0) to[short,o-o] ++ (4,0);  % draw the bottom wire
@@ -280,12 +300,12 @@
     \end{circuitikz}
 \end{wrapfigure}
 
+
 \subsection{Schéma électrique du filtre}
 On reconnait un filtre passe-bas $RC$ du premier ordre.
 
 
-\vspace{2cm}
-\subsection{Comportement du filtre à basse et haute fréquence (ou pulsation)}
+\subsection{Comportement du filtre à basse et haute fréquence}
 
 \begin{itemize}[label=$\ast$]
     \item $\omega \rightarrow 0$ : Le condensateur se comporte comme un interrupteur ouvert ($\underline{Z}_C \rightarrow +\infty$).\\
@@ -303,17 +323,118 @@ $G = \left|\underline{H}(j\omega)\right| = \dfrac{1}{\sqrt{1+\left(\frac{\omega}
 
 $G_{dB} = 20\log{\left|\underline{H}(j\omega)\right|} $
 
-\subsection{Etude Asymptotique, diagramme de Bode}
+\subsection{Etude asymptotique du gain}
+
 \begin{itemize}[label=$\ast$]
-    \item $\omega \rightarrow 0$ : $G_{dB} \rightarrow 1$
     \item $\omega \rightarrow +\infty$ : $G_{dB} \rightarrow 20\log{\left(\dfrac{\omega_0}{\omega}\right)} = 20\log{(\omega_0)} - 20\log{(\omega)}$ \quad
     car $\frac{1}{\sqrt{1+\left(\frac{\omega}{\omega_0}\right)^2}} \underset{w \to \infty}{\sim} \frac{1}{\sqrt{\left(\frac{\omega}{\omega_0}\right)^2}} = \frac{\omega_0}{\omega} $\\
-    La pente est alors de $20\,dB$ par décade (multiplication/division par 10 de la pulsation) pour les hautes fréquences.
-    \item $\omega \rightarrow \omega_0$ : $G_{dB} \rightarrow 20\log{\left(\dfrac{1}{\sqrt{2}}\right)} \approx -3\,dB$
+    La pente est alors de $-20\,dB$ par décade (multiplication/division par 10 de la pulsation) pour les hautes fréquences.
 \end{itemize}
 
-    \includegraphics[width=1\textwidth]{bode diagrams/filtre_passe_bas_gain.png}
-    
-    \includegraphics[width=1\textwidth]{bode diagrams/filtre_passe_bas_phase.png}
+
+\begin{wrapfigure}[5]{r}{0.5\textwidth}
+    \centering
+    \vspace{-1cm}
+    \includegraphics[width=0.6\textwidth]{bode diagrams/filtre_passe_bas_gain.png}
+\end{wrapfigure}
+
+    $\ast$ $\omega \rightarrow 0$ : $G_{dB} \rightarrow 1$\\
+    \indent $\ast$ $\omega \rightarrow \omega_0$ : $G_{dB} \rightarrow 20\log{\left(\dfrac{1}{\sqrt{2}}\right)} \approx -3\,dB$
+
+\vspace{3cm}
+
+\subsection{Etude de la Phase}
+
+\noindent On étudie la différence de phase entre le signal de sortie et le signal d'entré: $\varphi_{\underline{u}_s/\underline{u}_e}$\\
+$\arg{(H)} = \arg{(1)}-\arctan{\left( \dfrac{\omega}{\omega_0} \right)} = -\arctan{\left( \dfrac{\omega}{\omega_0} \right)}$
+
+
+\begin{wrapfigure}[5]{r}{0.5\textwidth}
+    \centering
+    \vspace{-1.5cm}
+    \includegraphics[width=0.5\textwidth]{bode diagrams/filtre_passe_bas_phase.png}
+\end{wrapfigure}
+
+    $\ast$ $\omega \rightarrow 0$ : $\arg{(H)} = -\arctan{(0)} \rightarrow 0$
+\begin{itemize}[label=$\ast$]
+    \item $\omega \rightarrow +\infty$ : $\arg{(H)} = -\arctan{\left( \dfrac{\infty}{\omega_0} \right)} \rightarrow -\dfrac{\pi}{2}$ 
+    \item $\omega \rightarrow \omega_0$ : $\arg{(H)} = -\arctan{(1)} \rightarrow -\dfrac{\pi}{4}$
+\end{itemize}
+
+\clearpage
+
+\section{Etude complète d'un filtre passe haut}
+
+\subsection{Comportement du filtre à basse et haute fréquence}
+
+\begin{wrapfigure}[5]{r}{0.5\textwidth}
+    \centering
+    \vspace{-0.5cm}
+    \begin{circuitikz}        
+        % Circuit code
+        \draw (0,0) to[short,o-o] ++ (4,0);  % draw the bottom wire
+        \draw (0,2) to[R, name=R, o-] ++ (3,0) coordinate(a);  % draw the resistance
+        \node at (R.center) {R};  % draw label "R" at the center of the resistance
+        \draw (a) to[short,-o] ++ (1,0);  % draw wire to the right of R
+        \draw (a) to[L, l_=L, *-*] ++(0,-2);  % draw the Capacitor
+
+        % Voltage labels
+        \draw (0,2) to[open,v_=V$_{\text{in}}$\;] ++(0,-2);
+        \draw (4,2) to[open,v^=\hspace{1.5mm} V$_{\text{out}}$] ++(0,-2);
+    \end{circuitikz}
+\end{wrapfigure}
+
+
+
+    $\ast$  $\omega \rightarrow 0$ : La bobine se comporte comme un fil ($\underline{Z}_L \rightarrow 0$).\\
+        $V_{\text{out}}=0$ \quad Le signal basse fréquence est coupé.
+
+    $\ast$  $\omega \rightarrow +\infty$ : La bobine se comporte comme un interrupteur ouvert ($\underline{Z}_L \rightarrow +\infty$).\\
+        $V_{\text{out}} = V_{\text{in}}$ \quad Le signal haute fréquence passe.
+
+\subsection{Calcul fonction de transfert}
+
+$\underline{H}(j\omega) = \dfrac{\underline{u}_s}{\underline{u}_e} = \dfrac{jL\omega}{jL\omega + R} = \dfrac{\dfrac{jL\omega}{R}}{1 + \dfrac{jL\omega}{R}} = \dfrac{\dfrac{j\omega}{\omega_0}}{1 + \dfrac{j\omega}{\omega_0}}$
+\quad avec $\omega_0=\frac{R}{L}$
+
+On pourrait décomposer la fonction de transfert afin de retrouver la fonction de transfert d'un filtre passe bas. \quad
+$\underline{H}(j\omega) = \underline{H}_1(j\omega) * \underline{H}_2(j\omega) = \dfrac{j\omega}{\omega_0} * \dfrac{1}{1 + \dfrac{j\omega}{\omega_0}} $
+
+$G_{dB} = 20\log{\left|\underline{H}(j\omega)\right|} =  20\log{\left( \dfrac{\frac{\omega}{\omega_0}}{\sqrt{1+(\frac{\omega}{\omega_0})^2}} \right)}$
+
+\subsection{Etude asymptotique du gain}
+
+\begin{wrapfigure}[5]{r}{0.5\textwidth}
+    \centering
+    \vspace{-2.5cm}
+    \includegraphics[width=0.6\textwidth]{bode diagrams/filtre_passe_haut_gain.png}
+\end{wrapfigure}
+
+    $\ast$ $\omega \rightarrow 0$ : $G_{dB} \rightarrow 20\log{\left( \dfrac{\omega}{\omega_0} \right)}$\\
+    \indent $ = 20\log{(\omega)} - 20\log{(\omega_0)} \rightarrow -\infty$\\
+    \indent La pente est alors de $+20\,dB$ par décade.
+\begin{itemize}[label=$\ast$]
+        \item $\omega \rightarrow +\infty$ : $G_{dB} \rightarrow 20\log{(1)} = 0$
+    \item $\omega \rightarrow \omega_0$ : $G_{dB} \rightarrow 20\log{\left(\dfrac{1}{\sqrt{2}}\right)} \approx -3\,dB$
+\end{itemize}   
+
+
+\subsection{Etude de la Phase}
+
+\noindent On étudie la différence de phase entre le signal de sortie et le signal d'entré: $\varphi_{\underline{u}_s/\underline{u}_e}$\\
+$\arg{(H)} = \arg{(1)}-\arctan{\left( \dfrac{\omega}{\omega_0} \right)} = -\arctan{\left( \dfrac{\omega}{\omega_0} \right)}$
+
+\begin{wrapfigure}[5]{r}{0.5\textwidth}
+    \centering
+    \vspace{-1cm}
+    \includegraphics[width=0.6\textwidth]{bode diagrams/filtre_passe_haut_phase.png}
+\end{wrapfigure}
+
+    $\ast$ $\omega \rightarrow 0$ : $\arg{(H)} = -\arctan{(0)} \rightarrow 0$
+\begin{itemize}[label=$\ast$]
+    \item $\omega \rightarrow +\infty$ : $\arg{(H)} = -\arctan{\left( \dfrac{\infty}{\omega_0} \right)} \rightarrow \dfrac{\pi}{2}$ 
+    \item $\omega \rightarrow \omega_0$ : $\arg{(H)} = -\arctan{(1)} \rightarrow \dfrac{\pi}{4}$
+\end{itemize}
+
 
 \end{document}
