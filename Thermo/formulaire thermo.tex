@@ -1,0 +1,187 @@
+\documentclass[a4paper,12pt]{article}
+
+% Encodage et langue
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% Mathématiques
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{siunitx} % Pour les unités
+\sisetup{locale=FR} % Configuration pour le français
+\usepackage{bm} % bold maths
+
+% Graphiques et figures
+\usepackage{graphicx}
+\usepackage{enumitem} % pour les puces de listes
+
+% Mise en page
+\usepackage{geometry}
+\geometry{a4paper, margin=1.5cm}
+\usepackage{multicol}
+
+% Couleurs et hyperliens
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+% Commandes personnalisées
+\newcommand{\diff}{\mathrm{d}} % Pour les différentielles droites
+\newcommand{\kB}{k_\mathrm{B}} % Constante de Boltzmann
+\newcommand{\pV}{pV} % Produit pression-volume
+\newcommand{\re}{\textrm}
+\newcommand{\Cp}{\overline{C}_p} % definition de Cp molaire
+\newcommand{\Cv}{\overline{C}_v} % definition de Cv molaire
+
+
+\title{Formulaire de Thermodynamique}
+\author{Raphaël Jamann}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\section{Definitions des grandeurs en Thermodynamique}
+
+\begin{multicols}{2}
+
+\subsection*{Système}
+
+\textit{Un système est une portion de l'Univers que l'on isole du reste,
+ce dernier constituant alors le milieu extérieur.}\\
+Il y a trois types de système :
+\begin{itemize}[label=\textbullet]
+    \item \textbf{ouvert} s'il échange énergie et matière avec l'extérieur.
+    \item \textbf{fermé} s'il n'échange que de l'énergie' avec l'extérieur.
+    \item \textbf{isolé} s'il n'échange ni énergie, ni matière avec l'extérieur.
+\end{itemize}
+
+\subsection*{Variables d'état}
+Un système est défini par des \textbf{variables d'état} qui peuvent être :
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Intensives} : ne dépendent pas de la quantité de matière (ex: pression, température, etc\dots)
+    \item \textbf{Extensives} : dépendent de la quantité de matière (ex: volume, énergie interne, entropie, etc\dots)
+\end{itemize}
+
+\noindent Voici quelques exemples de variables d'état :
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Pression} : $P$ (en Pascal)
+    \item \textbf{Volume} : $V$ (en m$^3$)
+    \item \textbf{Température} : $T$ (en Kelvin)
+    \item \textbf{Masse} : $m$ (en kg)
+    \item \textbf{Nombre de moles} : $n$ (en mol)
+    \item \textbf{Chaleur} : $Q$ (en J)
+\end{itemize}
+
+\subsection*{Énergie interne $\bm{U}$}
+En joule, cette énergie est une fonction d'état (ne dépend pas du chemin suivie lors d'une transformation).
+$$ \boxed{\diff U = \delta Q + \delta W} $$
+
+\subsection*{Enthalpie : $\bm{H}$}
+L'enthalpie est une fonction d'état extensive mesurée en joule.
+$$ \boxed{H = U + pV} $$
+
+Pour les processus effectués à pression constante, la variation d'enthalpie correspond à la chaleur absorbée (ou dégagée) pour rester à température constante : 
+$$ \Delta H = Q_P $$
+
+
+\subsection*{Entropie : $\bm{S}$}
+L'entropie est une fonction d'état extensive mesurée en joule par Kelvin.\\
+C'est est une grandeur physique qui caractérise le \textbf{degré de désorganisation d'un système}.
+$$ \boxed{\Delta S = \int_{A}^{B} \dfrac{\delta Q_{\text{rév}}}{T}} $$
+
+
+\end{multicols}
+
+
+\section{Capacité Calorifique d'un système}
+
+La capacité thermique est une grandeur extensive en $J.K^{-1}$.\\
+\textit{C'est l'énergie à apporter pour élever la température d'un degré.}
+\vspace{3mm}
+
+\textbf{Pour les gaz}, comme ils sont compressibles, on distingue deux modes de chauffage :
+\vspace{3pt}
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Chauffage isobare :} on définis $\bm{C_p}$ (capacité calorifique du gaz à pression constante).
+    \item \textbf{Chauffage isochore :} on définis $\bm{C_v}$ (capacité calorifique du gaz à volume constant).
+\end{itemize}
+
+\subsection*{Coefficient de Laplace d'un gaz : $\bm{\gamma}$}
+
+\textit{Le coeficient de Laplace (ou l'indice adiabatique) d'un gaz est défini comme le rapport de
+ses capacités thermiques à pression constante et à volume constant :} $\boxed{\gamma = \dfrac{C_p}{C_v}}$
+
+Avec la \textbf{relation de Mayer} $C_P - C_V = R$ \ on peut en déduire que pour les gaz monoatomiques, $\gamma \approx 1,67$ et pour les gaz diatomiques, $\gamma \approx 1,4$.
+
+
+
+\begin{multicols}{2}
+[
+    \section{Les Principes de la Thermodynamique}
+    \textit{Un principe est une loi générale qui s'applique à tous les systèmes thermodynamiques. Il n'a pas été démontré, mais aucun résultats experimentaux ne l'a contredit.}
+]
+
+\subsection*{Le Premier Principe}
+Conservation de l'énergie : $\boxed{\diff U = \delta Q + \delta W}$
+
+\subsection*{Le Second Principe}
+L'entropie d'un système isolé ne peut qu'augmenter : $\boxed{\diff S \geq 0}$
+
+\subsection*{Le Troisième Principe}
+L'entropie d'un cristal parfait à 0 K est nulle : $\boxed{S(0) = 0}$\\
+L'entropie d'un système ne peut pas être inférieure à 0 : $\boxed{S \geq 0}$
+
+\end{multicols}
+
+
+
+\section{Gaz parfaits}
+
+\subsection{Loi des Gazs Parfaits}
+$$ \boxed{pV = nRT} $$
+
+\section{Transformation d'un système entre deux états A et B}
+
+Lors d'une transformation, le système peut échanger de l'énergie avec le mileu extérieur
+sous forme de travail (noté $W$) ou de chaleur (noté $Q$).\\
+On distingue deux types de transformations:
+\begin{itemize}
+    \item \textbf{réversible :} cas hypothétique d'une transformation infiniement lente. Donc le système est constament à l'équilibre avec l'extérieur.
+    \item \textbf{irréverible :} Transformation "réelle" hors équilibre avec l'extérieur.
+\end{itemize}
+
+
+Dans le cas général: $ \boxed{\delta W = - P_{ext}\ \re d V} $
+
+\subsection{Transformation Adiabatique}
+
+\textbf{Pas d'échange de chaleur avec l'extérieur:} $\boxed{Q = 0}$\\ 
+$\Longrightarrow \quad U = W$ \quad le travail se comporte comme une fonctiond d'état ($W_{\text{rév}} = W_{\text{irrév}}$)
+
+\subsubsection{Réversible}
+
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Relation de Poisson :} $PV^\gamma = \re{Cste}$
+    \item \textbf{Relation de Laplace :} $T V^{\gamma - 1} = \re{Cste}$
+    \item \textbf{Relation de Clapeyron :} $T P^{1 - \gamma} = \re{Cste}$
+\end{itemize}
+
+\subsection{Transformation Isotherme}
+
+
+\subsection{Transformation Isobare}
+
+\begin{itemize}[label=\textbullet]
+    \item \textbf{Chaleur échangée :} $\delta Q = n \Cp \diff T$
+    \item \textbf{Travail échangé :} $W = \int_{V_A}^{V_B}- P_{\text{ext}} \diff V = - P_{\text{ext}}(V_B-V_A)$
+\end{itemize}
+
+
+\end{document}
