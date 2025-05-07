@@ -1,0 +1,139 @@
+\documentclass[a4paper,12pt]{article}
+
+% Encodage et langue
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% Mathématiques
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{siunitx} % Pour les unités
+\sisetup{locale=FR} % Configuration pour le français
+\usepackage{bm} % bold maths
+
+% Graphiques et figures
+\usepackage{graphicx}
+\usepackage{enumitem} % pour les puces de listes
+
+% Mise en page
+\usepackage{geometry}
+\geometry{a4paper, margin=1.5cm}
+\usepackage{multicol}
+
+% Couleurs et hyperliens
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\newcommand{\re}{\textrm}
+\newcommand{\diff}{\mathrm{d}} % Pour les différentielles droites
+
+% Small arrows
+\newcommand{\veryshortarrow}[1][4pt]{\mathrel{%
+    \hbox{\rule[\dimexpr\fontdimen22\textfont2-.2pt\relax]{#1}{.5pt}}%
+    \mkern-4mu\hbox{\usefont{U}{lasy}{m}{n}\symbol{41}}}}
+\makeatletter
+\setbox0\hbox{$\xdef\scriptratio{\strip@pt\dimexpr
+\numexpr(\sf@size*65536)/\f@size sp}$}
+\newcommand{\scriptveryshortarrow}[1][4pt]{{%
+    \hbox{\rule[\scriptratio\dimexpr\fontdimen22\textfont2-.2pt\relax]
+    {\scriptratio\dimexpr#1\relax}{\scriptratio\dimexpr.5pt\relax}}%
+    \mkern-4mu\hbox{\let\f@size\sf@size\usefont{U}{lasy}{m}{n}\symbol{41}}}}
+\makeatother
+
+\title{Formulaire de Thermodynamique}
+\author{Raphaël Jamann}
+\date{}
+
+\begin{document}
+    \maketitle
+
+    \section{Les Lois de Newton}
+
+        \begin{itemize}
+            \item \underline{\textbf{2ème loi de Newton : principe fondamental de la dynamique (PFD)}}\\
+            Les forces sont à l'origine du mouvement : $\sum \vec F_\re{ext} = \dfrac{\re d \vec p}{\re d t} = m \vec a$ dans un référentiel galiléen.\\
+
+            \item \underline{\textbf{3ème loi de Newton : principe des actions réciproques}}\\
+            Si deux points sont en interaction, on a deux forces : $\vec{f_\re{1/2}} = - \vec{f_\re{2/1}}$\\
+            Une force unique existant seule n'existe pas, d'où la résultante nulle des forces intérieures à un système.
+        \end{itemize}
+
+
+    \section{Définitions}
+
+        \subsection{Moment cinétique}
+
+            \begin{flalign*}
+                \vec \sigma &= \vec{OM} \wedge \vec p&\\
+                &= \vec{OM} \wedge m \vec v&\\
+                &= r \vec{e_r} \wedge m r \dot\theta \vec{e_\theta}&\\
+                &= m r^2 \dot\theta \vec{e_z}&\\
+                &= J \vec \Omega&
+            \end{flalign*}
+
+            \begin{itemize}
+                \item Moment d'inertie :\\ $J = m r^2$ \quad (grandeur d'inertie)\vspace{4pt}
+                \item Vecteur rotation instantané :\\ $\vec \Omega = \dot\theta \vec{e_z}$ \quad (grandeur cinématique)
+            \end{itemize}
+
+            \[\dfrac{\re d \vec \sigma}{\re d t} = \sum \vec{\mathcal{M}_{ext}}\]
+
+
+        \subsection{Énergie cinétique}
+
+            \[\varepsilon_c = \dfrac{1}{2} m v^2 \hspace*{4em} \dfrac{\re d \varepsilon_c}{\re d t} = \sum P_{ext}\]
+
+        
+        \subsection{Énergie mécanique}
+
+            Définition de l'énergie mécanique :
+            \[E_M = E_C + \sum E_P\]
+
+        \subsection{Quantité de mouvement}
+
+            \begin{align*}
+                \vec p = m \vec v \hspace*{4em} \dfrac{\re d \vec p}{\re d t} &= \sum \vec{F_{ext}}\\
+                m \vec a &= \sum \vec{F_{ext}}
+            \end{align*}
+        
+
+        \subsection{Travail d'une force}
+
+            Le travail mécanique représente la quantité d'énergie échangée entre le système et le milieu extérieur et pouvant être transformée d'une forme en une autre.\\
+
+            Pour une force constante, $W_{A\scriptveryshortarrow B}(\vec F) = \vec F \cdot \vec{AB}$\\
+
+            On note aussi, $\delta W = \vec F \cdot \vec{\re d l}$, ce qui donne pour une force quelconque :\\
+            \[ W_{A\scriptveryshortarrow B}(\vec F) = \int_A^B \vec F \cdot \vec{\re dl} \]
+
+
+    \section{Les théorèmes importants}
+        
+        \subsection{Théorème de l'énergie mécanique}
+
+        Dans un référentiel galiléen, la variation d'énergie mécanique d'un point matériel est égale à la somme des travaux des forces non-conservatives :
+
+        \[\Delta E_M = E_M(B) - E_M(A) = \sum_i W_{A \scriptveryshortarrow B}(\vec{F}_{i,\textbf{nc}}) = W_{A \scriptveryshortarrow B}(\vec{F}_{ext,\textbf{nc}})\]
+
+
+        \subsection{Théorème de l'énergie cinétique (TEC)}
+
+            Dans un référentiel galiléen, la variation de l'énergie cinétique d'un point matériel est égale à la somme des travaux de toutes les forces :
+
+            \[\Delta E_C = E_C(B) - E_C(A) = \sum_i W_{A \scriptveryshortarrow B}(\vec{F_i}) = W_{A \scriptveryshortarrow B}(\vec{F}_{ext})\]
+
+            \[ \diff E_c = \delta W_{(\vec F)} \]
+
+
+        \subsection{Théorème du moment cinétique (TMC)}
+
+            Pour un point matériel en rotation autour d'un axe fixe $\Delta$ ($J_\Delta \ddot \theta$ la dérivée du moment cinétique sur $\Delta$) :
+            \[\sum \mathcal{M}_{\vec F} (\Delta) = J_\Delta \ddot \theta = J_\Delta \dot \omega \]
+
+\end{document}
