@@ -11,14 +11,16 @@ def filtre_passe_bas(R, C):
     den = [R * C, 1]
     return num, den
 
+
 def filtre_passe_haut(R, C):
     """
-    Fonction de transfert d'un filtre passe-haut du premier ordre.
+    Fonction de transfert d'un filtre passe haut du premier ordre.
     H(s) = jRCω / (1 + jRCω)
     """
     num = [R*C, 0]
     den = [R*C, 1]
     return num, den
+
 
 def tracer_reponse_frequence(num, den, R, C):
     """
@@ -90,14 +92,12 @@ def tracer_reponse_frequence(num, den, R, C):
 
 
 # filtre passe haut
-
 R, C = 1000, 1e-6  # Résistance en ohms, Capacité en farads
 num, den = filtre_passe_haut(R, C)
 tracer_reponse_frequence(num, den, R, C)
 
-
-# filtre passe bas
 """"
+# filtre passe bas
 R, C = 1000, 1e-6  # Résistance en ohms, Capacité en farads
 num, den = filtre_passe_bas(R, C)
 tracer_reponse_frequence(num, den, R, C)"""
