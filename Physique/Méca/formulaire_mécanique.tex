@@ -56,16 +56,20 @@
 
     \section{Les différentes forces}
 
+    \begin{multicols}{2}
+        
         \subsection{Force de frottement solide}
-
-            $F_f = \mu N$ \quad avec $\mu$ le coefficient de frottement qui dépend des matériaux du support et du système et $N$ la norme de la réaction normale du support.
-
+            $$ F_f = \mu N $$ 
+            \begin{itemize}[label=$\bullet$]
+                \item $\mu$ : coefficient de frottement qui dépend des matériaux du support et du système.
+                \item $N$ : la norme de la réaction normale du support.
+            \end{itemize}
         \subsection{Force de Pesanteur (Poids)}
             $$ F_p = m g $$
             \begin{itemize}[label=$\bullet$]
                 \item $F_p$ : force de pesanteur.
                 \item $m$ : masse de l'objet (en kilogrammes).
-                \item $g$ : accélération due à la gravité ($9,81 \ m \ s^{-2}$).
+                \item $g$ : accélération due à la gravité ($9.81 \, m \, s^{-2}$).
             \end{itemize}
             
         \subsection{Force de Réaction Normale}
@@ -105,48 +109,51 @@
             \end{itemize}
 
         \subsection{Force de Lorentz}
-            \hspace{10cm} \textit{magnétique}
+            \hspace{5.3cm} \textit{magnétique}
             $$ \vec{F} = q(\vec{E} + \vec{v} \wedge \vec{B}) = \underbrace{q\vec{E}} + \overbrace{q \vec{v} \wedge \vec{B}} $$
-            \hspace{9.3cm} \textit{électrique}
+            \hspace{4.5cm} \textit{électrique}
 
             Une charge $q$ qui se déplace dans une région de l'espace où coexistent 
             un champ électrique $\vec{E}$ et un champ magnétique $\vec{B}$, subit une force 
             totale dite de Lorentz.
 
         \subsection{Force de Laplace}
-        Soit un fil rectiligne de longueur $l$ parcouru par un 
-        courant $I$. Si ce fil est situé dans une région de 
-        l'espace où il y a un champ magnétique $\vec{B}$, alors il 
-        est soumis à une force de Laplace donnée par :
-        $$ \vec{F} = I \cdot \vec{l} \wedge \vec{B} $$
+            Soit un fil rectiligne de longueur $l$ parcouru par un 
+            courant $I$. Si ce fil est situé dans une région de 
+            l'espace où il y a un champ magnétique $\vec{B}$, alors il 
+            est soumis à une force de Laplace donnée par :
+            $$ \vec{F} = I \cdot \vec{l} \wedge \vec{B} $$
+    
+    \end{multicols}
 
     \section{Les Lois de Newton}
 
         \begin{itemize}[label=$\bullet$]
             \item \textbf{1ère loi de Newton : principe d'inertie}\\
-            Il existe des référentiels privilégiés dits galiléens dans lesquels le
-            mouvement d'un point isolé ou pseudo-isolé est rectiligne uniforme.
-            Ainsi, si $R_g$ est galiléen, alors tout référentiel en translation
+            Si $R_g$ est galiléen, alors tout référentiel en translation
             rectiligne uniforme par rapport à $R_g$ est aussi galiléen.
-                $$ \frac{\diff \varepsilon_c}{\diff t} = 0 \quad\quad \frac{\diff \vec{p}}{d t} = \vec{0} \quad\quad \dfrac{d \vec{\sigma}}{d t} = \vec{0} $$
+                $$ \frac{\diff \varepsilon_c}{\diff t} = 0 \quad\quad \frac{\diff \vec{p}}{\diff t} = \vec{0} \quad\quad \frac{\diff \vec{\sigma}}{\diff t} = \vec{0} $$
 
             \item \textbf{2ème loi de Newton : principe fondamental de la dynamique (PFD)} \\
-            Les forces sont à l'origine du mouvement : $\sum \vec F_\re{ext} = \dfrac{\re d \vec p}{\re d t} = m \vec a$ dans un référentiel galiléen.
+            Les forces sont à l'origine du mouvement : $\sum \vec{F_{ext}} = \dfrac{\diff \vec p}{\diff t} = m \vec{a}$ dans un référentiel galiléen.
 
             \item \textbf{3ème loi de Newton : principe des actions réciproques} \\
-            Si deux points sont en interaction, on a deux forces : $\vec{f_\re{1/2}} = - \vec{f_\re{2/1}}$\\
+            Si deux points sont en interaction, on a deux forces : $\vec{f_{1/2}} = - \vec{f_{2/1}}$\\
             Une force unique existant seule n'existe pas, d'où la résultante nulle des forces intérieures à un système.
         \end{itemize}
 
 
     \section{Définitions}
 
+    \begin{multicols}{2}
+        
         \subsection{Quantité de mouvement}
-            La quantité de mouvement (ou résultante cinétique) est définie comme $\vec{p} = m \vec{v}$.
+            La quantité de mouvement (ou résultante cinétique) est définie comme :
+                $$\vec{p} = m \vec{v}$$
 
         \subsection{Moment cinétique}
             Le moment cinétique est le moment de la quantité de mouvement $\vec{p}$.
-            $$ \vec \sigma = \vec{OM} \wedge \vec p = \vec{OM} \wedge m \vec v $$
+                $$ \vec \sigma = \vec{OM} \wedge \vec p = \vec{OM} \wedge m \vec v $$
         
         \subsection{Moment d'inertie}
             Le moment d'inertie d'un solide (domaine $\mathcal{D}$) par rapport à un axe fixe $\Delta$ est:
@@ -177,13 +184,9 @@
         
 
         \subsection{Travail d'une force}
-
-            Le travail mécanique représente la quantité d'énergie échangée entre le système et le milieu extérieur et pouvant être transformée d'une forme en une autre.\\
-
-            Pour une force constante, $W_{A\scriptveryshortarrow B}(\vec F) = \vec F \cdot \vec{AB}$\\
-
-            On note aussi, $\delta W = \vec F \cdot \vec{\re d l}$, ce qui donne pour une force quelconque :\\
-            $$ W_{A\scriptveryshortarrow B}(\vec F) = \int_A^B \vec F \cdot \vec{\re dl} $$
+            Le travail mécanique représente la quantité d'énergie échangée entre le
+            système et le milieu extérieur.
+            $$ \delta W = \vec F \cdot \vec{\re d l} \quad \quad W_{A\scriptveryshortarrow B}(\vec F) = \int_A^B \vec{F} \cdot \vec{dl}$$
 
             Dans le cas d'une rotation élémentaire du point $M$ autour de $(Oz)$:
             $$ \delta W = \mathcal{M}_{Oz}(\vec{F}) \diff \theta $$
@@ -196,10 +199,12 @@
 
             $$ P = \vec{F}\cdot \vec{v} $$
 
-            Lorsque la puissance d'une force est nulle ($P=0$), la force peut dévier
-            la trajectoire du système mais pas modifier la norme de sa vitesse.
+            \textbf{Lorsque la puissance d'une force est nulle ($P=0$), la force peut dévier
+            la trajectoire du système mais pas modifier la norme de sa vitesse.}
 
-        
+
+    \end{multicols}
+
     \section{Les théorèmes importants}
         
         \subsection{Théorème de l'énergie mécanique}
