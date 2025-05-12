@@ -32,6 +32,7 @@
 
 \newcommand{\re}{\textrm}
 \newcommand{\diff}{\mathrm{d}} % Pour les différentielles droites
+\renewcommand{\vec}{\overrightarrow}  % change vector arrows
 
 % Small arrows
 \newcommand{\veryshortarrow}[1][4pt]{\mathrel{%
@@ -53,13 +54,86 @@
 \begin{document}
     \maketitle
 
+    \section{Les différentes forces}
+
+        \subsection{Force de frottement solide}
+
+            $F_f = \mu N$ \quad avec $\mu$ le coefficient de frottement qui dépend des matériaux du support et du système et $N$ la norme de la réaction normale du support.
+
+        \subsection{Force de Pesanteur (Poids)}
+            $$ F_p = m g $$
+            \begin{itemize}[label=$\bullet$]
+                \item $F_p$ : force de pesanteur.
+                \item $m$ : masse de l'objet (en kilogrammes).
+                \item $g$ : accélération due à la gravité ($9,81 \ m \ s^{-2}$).
+            \end{itemize}
+            
+        \subsection{Force de Réaction Normale}
+                $$ N = F_p \cos(\theta) $$
+            \begin{itemize}[label=$\bullet$]
+                \item $N$ : force normale.
+                \item $F_p$ : force de pesanteur.
+                \item $\theta$ : angle entre la surface et l'horizontale.
+            \end{itemize}
+            
+        \subsection{Force de Frottement Solide}
+                $$ F_f = \mu N $$
+            \begin{itemize}[label=$\bullet$]
+                \item $F_f$ : force de frottement.
+                \item $\mu$ : coefficient de frottement (statique ou cinétique).\\
+                $\mu_c=\frac{R_T}{R_N}$ quand le système glisse et $\mu_s=\frac{R_{T_{max}}}{R_N}$ quand il est statique.
+                \item $N$ : force normale.
+            \end{itemize}
+            
+        \subsection{Force Élastique (Loi de Hooke)}
+                $$ \vec{F} = -k (L- l) \vec{u} $$
+            \begin{itemize}[label=$\bullet$]
+                \item $F$ : force de rappel d'un ressort.
+                \item $k$ : constante de raideur (en $N , m^{-1}$).
+                \item $l$ : longueur "à vide" du ressort.
+                \item $L$ : longueur du ressort étiré ou compressé.
+                \item $\vec{u}$ : vecteur dirigé de l'extrémité fixe du ressort vers le système (l'autre extrémité).
+            \end{itemize}
+            
+        \subsection{Force Gravitationnelle}
+                $$ F_g = G \frac{m_1 m_2}{r^2} $$
+            \begin{itemize}[label=$\bullet$]
+                \item $F_g$ : force gravitationnelle.
+                \item $G$ : constante de gravitation universelle ($6,67 \times 10^{-11} \ N \ (m^2 \, kg^{-2})$).
+                \item $m_1$ et $m_2$ : masses des objets.
+                \item $r$ : distance entre les centres de masse.
+            \end{itemize}
+
+        \subsection{Force de Lorentz}
+            \hspace{10cm} \textit{magnétique}
+            $$ \vec{F} = q(\vec{E} + \vec{v} \wedge \vec{B}) = \underbrace{q\vec{E}} + \overbrace{q \vec{v} \wedge \vec{B}} $$
+            \hspace{9.3cm} \textit{électrique}
+
+            Une charge $q$ qui se déplace dans une région de l'espace où coexistent 
+            un champ électrique $\vec{E}$ et un champ magnétique $\vec{B}$, subit une force 
+            totale dite de Lorentz.
+
+        \subsection{Force de Laplace}
+        Soit un fil rectiligne de longueur $l$ parcouru par un 
+        courant $I$. Si ce fil est situé dans une région de 
+        l'espace où il y a un champ magnétique $\vec{B}$, alors il 
+        est soumis à une force de Laplace donnée par :
+        $$ \vec{F} = I \cdot \vec{l} \wedge \vec{B} $$
+
     \section{Les Lois de Newton}
 
-        \begin{itemize}
-            \item \underline{\textbf{2ème loi de Newton : principe fondamental de la dynamique (PFD)}}\\
-            Les forces sont à l'origine du mouvement : $\sum \vec F_\re{ext} = \dfrac{\re d \vec p}{\re d t} = m \vec a$ dans un référentiel galiléen.\\
+        \begin{itemize}[label=$\bullet$]
+            \item \textbf{1ère loi de Newton : principe d'inertie}\\
+            Il existe des référentiels privilégiés dits galiléens dans lesquels le
+            mouvement d'un point isolé ou pseudo-isolé est rectiligne uniforme.
+            Ainsi, si $R_g$ est galiléen, alors tout référentiel en translation
+            rectiligne uniforme par rapport à $R_g$ est aussi galiléen.
+                $$ \frac{\diff \varepsilon_c}{\diff t} = 0 \quad\quad \frac{\diff \vec{p}}{d t} = \vec{0} \quad\quad \dfrac{d \vec{\sigma}}{d t} = \vec{0} $$
 
-            \item \underline{\textbf{3ème loi de Newton : principe des actions réciproques}}\\
+            \item \textbf{2ème loi de Newton : principe fondamental de la dynamique (PFD)} \\
+            Les forces sont à l'origine du mouvement : $\sum \vec F_\re{ext} = \dfrac{\re d \vec p}{\re d t} = m \vec a$ dans un référentiel galiléen.
+
+            \item \textbf{3ème loi de Newton : principe des actions réciproques} \\
             Si deux points sont en interaction, on a deux forces : $\vec{f_\re{1/2}} = - \vec{f_\re{2/1}}$\\
             Une force unique existant seule n'existe pas, d'où la résultante nulle des forces intérieures à un système.
         \end{itemize}
@@ -67,40 +141,39 @@
 
     \section{Définitions}
 
+        \subsection{Quantité de mouvement}
+            La quantité de mouvement (ou résultante cinétique) est définie comme $\vec{p} = m \vec{v}$.
+
         \subsection{Moment cinétique}
+            Le moment cinétique est le moment de la quantité de mouvement $\vec{p}$.
+            $$ \vec \sigma = \vec{OM} \wedge \vec p = \vec{OM} \wedge m \vec v $$
+        
+        \subsection{Moment d'inertie}
+            Le moment d'inertie d'un solide (domaine $\mathcal{D}$) par rapport à un axe fixe $\Delta$ est:
+                $$ J_\Delta = \iiint_{\mathcal{D}} r^2 dm $$
 
-            \begin{flalign*}
-                \vec \sigma &= \vec{OM} \wedge \vec p&\\
-                &= \vec{OM} \wedge m \vec v&\\
-                &= r \vec{e_r} \wedge m r \dot\theta \vec{e_\theta}&\\
-                &= m r^2 \dot\theta \vec{e_z}&\\
-                &= J \vec \Omega&
-            \end{flalign*}
-
-            \begin{itemize}
-                \item Moment d'inertie :\\ $J = m r^2$ \quad (grandeur d'inertie)\vspace{4pt}
-                \item Vecteur rotation instantané :\\ $\vec \Omega = \dot\theta \vec{e_z}$ \quad (grandeur cinématique)
-            \end{itemize}
-
-            \[\dfrac{\re d \vec \sigma}{\re d t} = \sum \vec{\mathcal{M}_{ext}}\]
 
 
         \subsection{Énergie cinétique}
+            L'énergie cinétique d'un point matériel de masse $m$ et de vitesse $v$ est : 
+                $$ E_c = \frac{1}{2} m v^2 $$
 
-            \[\varepsilon_c = \dfrac{1}{2} m v^2 \hspace*{4em} \dfrac{\re d \varepsilon_c}{\re d t} = \sum P_{ext}\]
+            Cas du mouvement de rotation autour d'un axe fixe $\Delta$ :
+                $$ E_c = \frac{1}{2} J_\Delta \omega^2 $$
 
-        
+        \subsection{Énergie Potentiel}
+
+            Si le travail élémentaire de la force $F$ peut s'écrire sous la
+            forme d'une différentielle exacte alors, on peut définir
+            une énergie potentielle $E_p$ telle que :
+            $$ \diff E_p = -\diff W $$
+            On dit que la force dérive d'une énergie potentielle et 
+            aussi que cette force est conservative.
+
         \subsection{Énergie mécanique}
 
             Définition de l'énergie mécanique :
-            \[E_M = E_C + \sum E_P\]
-
-        \subsection{Quantité de mouvement}
-
-            \begin{align*}
-                \vec p = m \vec v \hspace*{4em} \dfrac{\re d \vec p}{\re d t} &= \sum \vec{F_{ext}}\\
-                m \vec a &= \sum \vec{F_{ext}}
-            \end{align*}
+            $$E_M = E_C + \sum E_P$$
         
 
         \subsection{Travail d'une force}
@@ -110,30 +183,60 @@
             Pour une force constante, $W_{A\scriptveryshortarrow B}(\vec F) = \vec F \cdot \vec{AB}$\\
 
             On note aussi, $\delta W = \vec F \cdot \vec{\re d l}$, ce qui donne pour une force quelconque :\\
-            \[ W_{A\scriptveryshortarrow B}(\vec F) = \int_A^B \vec F \cdot \vec{\re dl} \]
+            $$ W_{A\scriptveryshortarrow B}(\vec F) = \int_A^B \vec F \cdot \vec{\re dl} $$
 
+            Dans le cas d'une rotation élémentaire du point $M$ autour de $(Oz)$:
+            $$ \delta W = \mathcal{M}_{Oz}(\vec{F}) \diff \theta $$
 
+        
+        \subsection{Puissance d'une force}
+
+            La puissance d'une force F, qui s'exerce sur un
+            point $M$ de vitesse $\vec{v}$ est définie par :
+
+            $$ P = \vec{F}\cdot \vec{v} $$
+
+            Lorsque la puissance d'une force est nulle ($P=0$), la force peut dévier
+            la trajectoire du système mais pas modifier la norme de sa vitesse.
+
+        
     \section{Les théorèmes importants}
         
         \subsection{Théorème de l'énergie mécanique}
 
         Dans un référentiel galiléen, la variation d'énergie mécanique d'un point matériel est égale à la somme des travaux des forces non-conservatives :
 
-        \[\Delta E_M = E_M(B) - E_M(A) = \sum_i W_{A \scriptveryshortarrow B}(\vec{F}_{i,\textbf{nc}}) = W_{A \scriptveryshortarrow B}(\vec{F}_{ext,\textbf{nc}})\]
+        $$ \Delta E_M = E_M(B) - E_M(A) = \sum_i W_{A \scriptveryshortarrow B}(\vec{F}_{i,\textbf{nc}}) = W_{A \scriptveryshortarrow B}(\vec{F}_{ext,\textbf{nc}}) $$
 
 
         \subsection{Théorème de l'énergie cinétique (TEC)}
 
             Dans un référentiel galiléen, la variation de l'énergie cinétique d'un point matériel est égale à la somme des travaux de toutes les forces :
 
-            \[\Delta E_C = E_C(B) - E_C(A) = \sum_i W_{A \scriptveryshortarrow B}(\vec{F_i}) = W_{A \scriptveryshortarrow B}(\vec{F}_{ext})\]
+                $$ \Delta E_C = E_C(B) - E_C(A) = \sum_i W_{A \scriptveryshortarrow B}(\vec{F_i}) = W_{A \scriptveryshortarrow B}(\vec{F_{ext}}) $$
 
-            \[ \diff E_c = \delta W_{(\vec F)} \]
+                $$ \diff E_c = \delta W_{(\vec F)} $$
 
 
         \subsection{Théorème du moment cinétique (TMC)}
 
             Pour un point matériel en rotation autour d'un axe fixe $\Delta$ ($J_\Delta \ddot \theta$ la dérivée du moment cinétique sur $\Delta$) :
-            \[\sum \mathcal{M}_{\vec F} (\Delta) = J_\Delta \ddot \theta = J_\Delta \dot \omega \]
+                $$\sum \mathcal{M}_{\vec F} (\Delta) = J_\Delta \ddot \theta = J_\Delta \dot \omega $$
 
+            Ou alors dans un référentiel galiléen, la dérivée par rapport au temps du 
+            moment cinétique $\frac{\diff \vec{\sigma_O}}{\diff t}$ du point matériel calculé en $O$ (point fixe) est égal 
+            au moment $\vec{\Gamma_O}$ par rapport à $O$ de la résultantedes forces $\vec{R}$.
+
+                $$ \frac{\diff \vec{\sigma_O}}{dt} = \sum \overrightarrow{\mathcal{M}_{0 (\vec{F}_{ext})}} = \vec{OM} \wedge \vec{R} = \vec{\Gamma_O} $$
+
+            Attention cependant à être en méanique du point. Sinon $\vec{\Gamma_O} \neq \vec{OM} \wedge \vec{R}$ !
+
+        
+
+        \subsection{Théorème de la puissance cinétique}
+
+            Dans un référentiel galiléen, la dérivée par rapport au
+            temps de l'énergie cinétique d'un point matériel est égale
+            à la puissance de toutes les forces appliquées.
+             $$ P_{tot} = \frac{\diff E_c}{\diff t} $$
 \end{document}
