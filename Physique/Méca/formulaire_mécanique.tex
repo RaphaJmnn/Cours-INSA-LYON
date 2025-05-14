@@ -154,6 +154,8 @@
         \subsection{Moment cinétique}
             Le moment cinétique est le moment de la quantité de mouvement $\vec{p}$.
                 $$ \vec \sigma = \vec{OM} \wedge \vec p = \vec{OM} \wedge m \vec v $$
+            Ou alors on la définie comme ceci par rapport à un axe $\Delta$ :
+                $$ \sigma_\Delta = J_\Delta \omega = J_\Delta \dot \theta $$ 
         
         \subsection{Moment d'inertie}
             Le moment d'inertie d'un solide (domaine $\mathcal{D}$) par rapport à un axe fixe $\Delta$ est:
@@ -186,7 +188,7 @@
         \subsection{Travail d'une force}
             Le travail mécanique représente la quantité d'énergie échangée entre le
             système et le milieu extérieur.
-            $$ \delta W = \vec F \cdot \vec{\re d l} \quad \quad W_{A\scriptveryshortarrow B}(\vec F) = \int_A^B \vec{F} \cdot \vec{dl}$$
+            $$ \delta W = \vec F \cdot \vec{\diff l} \quad \quad W_{A\scriptveryshortarrow B}(\vec F) = \int_A^B \vec{F} \cdot \vec{\diff l}$$
 
             Dans le cas d'une rotation élémentaire du point $M$ autour de $(Oz)$:
             $$ \delta W = \mathcal{M}_{Oz}(\vec{F}) \diff \theta $$
@@ -220,7 +222,7 @@
 
                 $$ \Delta E_C = E_C(B) - E_C(A) = \sum_i W_{A \scriptveryshortarrow B}(\vec{F_i}) = W_{A \scriptveryshortarrow B}(\vec{F_{ext}}) $$
 
-                $$ \diff E_c = \delta W_{(\vec F)} $$
+                $$ \diff E_c = \delta W_{(\vec{F_{tot}})} $$
 
 
         \subsection{Théorème du moment cinétique (TMC)}
@@ -232,7 +234,7 @@
             moment cinétique $\frac{\diff \vec{\sigma_O}}{\diff t}$ du point matériel calculé en $O$ (point fixe) est égal 
             au moment $\vec{\Gamma_O}$ par rapport à $O$ de la résultantedes forces $\vec{R}$.
 
-                $$ \frac{\diff \vec{\sigma_O}}{dt} = \sum \overrightarrow{\mathcal{M}_{0 (\vec{F}_{ext})}} = \vec{OM} \wedge \vec{R} = \vec{\Gamma_O} $$
+                $$ \frac{\diff \vec{\sigma_O}}{dt} = \sum \vec{\mathcal{M}_{0 (\vec{F}_{ext})}} \qquad  \text{ou} \qquad \frac{\diff \sigma_\Delta}{dt} = \sum \mathcal{M}_{\Delta (\vec{F}_{ext})}$$
 
             Attention cependant à être en méanique du point. Sinon $\vec{\Gamma_O} \neq \vec{OM} \wedge \vec{R}$ !
 
