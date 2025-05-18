@@ -49,145 +49,176 @@
 
 \section{Definitions des grandeurs en Thermodynamique}
 
-\begin{multicols}{2}
+    \begin{multicols}{2}
 
-\subsection*{Système}
+    \subsection*{Système}
 
-\textit{Un système est une portion de l'Univers que l'on isole du reste,
-ce dernier constituant alors le milieu extérieur.}\\
-Il y a trois types de système :
-\begin{itemize}[label=\textbullet]
-    \item \textbf{ouvert} s'il échange énergie et matière avec l'extérieur.
-    \item \textbf{fermé} s'il n'échange que de l'énergie' avec l'extérieur.
-    \item \textbf{isolé} s'il n'échange ni énergie, ni matière avec l'extérieur.
-\end{itemize}
+    \textit{Un système est une portion de l'Univers que l'on isole du reste,
+    ce dernier constituant alors le milieu extérieur.}\\
+    Il y a trois types de système :
+    \begin{itemize}[label=\textbullet]
+        \item \textbf{ouvert} s'il échange énergie et matière avec l'extérieur.
+        \item \textbf{fermé} s'il n'échange que de l'énergie' avec l'extérieur.
+        \item \textbf{isolé} s'il n'échange ni énergie, ni matière avec l'extérieur.
+    \end{itemize}
 
-\subsection*{Variables d'état}
-Un système est défini par des \textbf{variables d'état} qui peuvent être :
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Intensives} : ne dépendent pas de la quantité de matière (ex: pression, température, etc\dots)
-    \item \textbf{Extensives} : dépendent de la quantité de matière (ex: volume, énergie interne, entropie, etc\dots)
-\end{itemize}
+    \subsection*{Variables d'état}
+    Un système est défini par des \textbf{variables d'état} qui peuvent être :
+    \begin{itemize}[label=\textbullet]
+        \item \textbf{Intensives} : ne dépendent pas de la quantité de matière (ex: pression, température, etc\dots)
+        \item \textbf{Extensives} : dépendent de la quantité de matière (ex: volume, énergie interne, entropie, etc\dots)
+    \end{itemize}
 
-\noindent Voici quelques exemples de variables d'état :
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Pression} : $P$ (en Pascal)
-    \item \textbf{Volume} : $V$ (en m$^3$)
-    \item \textbf{Température} : $T$ (en Kelvin)
-    \item \textbf{Masse} : $m$ (en kg)
-    \item \textbf{Nombre de moles} : $n$ (en mol)
-    \item \textbf{Chaleur} : $Q$ (en J)
-\end{itemize}
+    \noindent Voici quelques exemples de variables d'état :
+    \begin{itemize}[label=\textbullet]
+        \item \textbf{Pression} : $P$ (en Pascal)
+        \item \textbf{Volume} : $V$ (en m$^3$)
+        \item \textbf{Température} : $T$ (en Kelvin)
+        \item \textbf{Masse} : $m$ (en kg)
+        \item \textbf{Nombre de moles} : $n$ (en mol)
+        \item \textbf{Chaleur} : $Q$ (en J)
+    \end{itemize}
 
-\subsection*{Énergie interne $\bm{U}$}
-En joule, cette énergie est une fonction d'état (ne dépend pas du chemin suivie lors d'une transformation).
-$$ \boxed{\diff U = \delta Q + \delta W} $$
+    \subsection*{Énergie interne $\bm{U}$}
+        En joule, cette énergie est une fonction d'état (ne dépend pas du chemin suivie lors d'une transformation).
+        $$ \boxed{ \diff U = C_v \, \diff T + (l - P) \, \diff V } $$
 
-\subsection*{Enthalpie : $\bm{H}$}
-L'enthalpie est une fonction d'état extensive mesurée en joule.
-$$ \boxed{H = U + pV} $$
-
-Pour les processus effectués à pression constante, la variation d'enthalpie correspond à la chaleur absorbée (ou dégagée) pour rester à température constante : 
-$$ \Delta H = Q_P $$
+    \subsection*{Chaleur $\bm{Q}$}
+        Energie calorifique échangé au cours d'une transformation.
+            $$ \boxed{ Q_{\text{rév}} = C_v \, \diff T + l \, \diff V } $$
+            $$ \boxed{ Q_{\text{rév}} = C_p \, \diff T + h \, \diff P } $$
 
 
-\subsection*{Entropie : $\bm{S}$}
-L'entropie est une fonction d'état extensive mesurée en joule par Kelvin.\\
-C'est est une grandeur physique qui caractérise le \textbf{degré de désorganisation d'un système}.
-$$ \boxed{\Delta S = \int_{A}^{B} \dfrac{\delta Q_{\text{rév}}}{T}} $$
+    \subsection*{Enthalpie $\bm{H}$}
+        L'enthalpie est une fonction d'état extensive mesurée en joule.
+            $$ \boxed{H = U + P V} $$
+            $$ \boxed{ \diff H = C_p \, \diff T + (h + V) \, \diff P } $$
 
 
-\end{multicols}
+    \subsection*{Entropie : $\bm{S}$}
+        L'entropie est une fonction d'état extensive mesurée en joule par Kelvin.\\
+        C'est est une grandeur physique qui caractérise le \textbf{degré de désorganisation d'un système}.
+        $$ \boxed{\Delta S = \int_{A}^{B} \dfrac{\delta Q_{\text{rév}}}{T}} $$
+
+
+    \end{multicols}
 
 
 \section{Capacité Calorifique d'un système}
 
-La capacité thermique est une grandeur extensive en $J.K^{-1}$.\\
-\textit{C'est l'énergie à apporter pour élever la température d'un degré.}
-\vspace{3mm}
+    La capacité thermique est une grandeur extensive en $J.K^{-1}$.\\
+    \textit{C'est l'énergie à apporter pour élever la température d'un degré.}
+    \vspace{3mm}
 
-\textbf{Pour les gaz}, comme ils sont compressibles, on distingue deux modes de chauffage :
-\vspace{3pt}
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Chauffage isobare :} on définis $\bm{C_p}$ (capacité calorifique du gaz à pression constante).
-    \item \textbf{Chauffage isochore :} on définis $\bm{C_v}$ (capacité calorifique du gaz à volume constant).
-\end{itemize}
+    \textbf{Pour les gaz}, comme ils sont compressibles, on distingue deux modes de chauffage :
+    \vspace{3pt}
+    \begin{itemize}[label=\textbullet]
+        \item \textbf{Chauffage isobare :} on définis $\bm{C_p}$ (capacité calorifique du gaz à pression constante).
+        \item \textbf{Chauffage isochore :} on définis $\bm{C_v}$ (capacité calorifique du gaz à volume constant).
+    \end{itemize}
 
-\subsection*{Coefficient de Laplace d'un gaz : $\bm{\gamma}$}
+    \subsection*{Coefficient de Laplace d'un gaz : $\bm{\gamma}$}
 
-\textit{Le coeficient de Laplace (ou l'indice adiabatique) d'un gaz est défini comme le rapport de
-ses capacités thermiques à pression constante et à volume constant :} $\boxed{\gamma = \dfrac{C_p}{C_v}}$
+    \textit{Le coeficient de Laplace (ou l'indice adiabatique) d'un gaz est défini comme le rapport de
+    ses capacités thermiques à pression constante et à volume constant :} $\boxed{\gamma = \dfrac{C_p}{C_v}}$
 
-Avec la \textbf{relation de Mayer} $C_P - C_V = R$ \ on peut en déduire que pour les gaz monoatomiques, $\gamma \approx 1,67$ et pour les gaz diatomiques, $\gamma \approx 1,4$.
+    Avec la \textbf{relation de Mayer} $C_P - C_V = R$ \ on peut en déduire que pour les gaz monoatomiques, $\gamma \approx 1,67$ et pour les gaz diatomiques, $\gamma \approx 1,4$.
 
 
 
-\begin{multicols}{2}
-[
-    \section{Les Principes de la Thermodynamique}
+
+\section{Les Principes de la Thermodynamique}
+
     \textit{Un principe est une loi générale qui s'applique à tous les systèmes thermodynamiques. Il n'a pas été démontré, mais aucun résultats experimentaux ne l'a contredit.}
-]
 
-\subsection*{Le Premier Principe}
-Conservation de l'énergie : $\boxed{\diff U = \delta Q + \delta W}$
+    \begin{multicols}{2}
 
-\subsection*{Le Second Principe}
-L'entropie d'un système isolé ne peut qu'augmenter : $\boxed{\diff S \geq 0}$
+        \subsection*{Le Premier Principe}
+        Conservation de l'énergie : $\boxed{\diff U = \delta Q + \delta W}$
 
-\subsection*{Le Troisième Principe}
-L'entropie d'un cristal parfait à 0 K est nulle : $\boxed{S(0) = 0}$\\
-L'entropie d'un système ne peut pas être inférieure à 0 : $\boxed{S \geq 0}$
+        \subsection*{Le Second Principe}
+        L'entropie d'un système isolé ne peut qu'augmenter : $\boxed{\diff S \geq 0}$
 
-\end{multicols}
+        \subsection*{Le Troisième Principe}
+        L'entropie d'un cristal parfait à 0 K est nulle : $\boxed{S(0) = 0}$\\
+        L'entropie d'un système ne peut pas être inférieure à 0 : $\boxed{S \geq 0}$
+
+    \end{multicols}
 
 
 
 \section{Gaz parfaits}
 
-\subsection{Loi des Gazs Parfaits}
-$$ \boxed{pV = nRT} $$
+    \subsection{Loi des Gazs Parfaits}
+    $$ \boxed{pV = nRT} $$
+
+    $$ \boxed{ \diff U_{GP} = C_v \, \diff T } $$
+
+    $$ \boxed{ \diff H_{GP} = C_p \, \diff P } $$
 
 
 
-\section{Transformation d'un système entre deux états A et B}
+\section{Transformation d'un gaz parfait entre deux états A et B}
 
-Lors d'une transformation, le système peut échanger de l'énergie avec le mileu extérieur
-sous forme de travail (noté $W$) ou de chaleur (noté $Q$).\\
-On distingue deux types de transformations:
-\begin{itemize}
-    \item \textbf{réversible :} cas hypothétique d'une transformation infiniement lente. Donc le système est constament à l'équilibre avec l'extérieur.
-    \item \textbf{irréverible :} Transformation "réelle" hors équilibre avec l'extérieur.
-\end{itemize}
-
-
-
-\subsection{Transformation Adiabatique}
-
-\textbf{Pas d'échange de chaleur avec l'extérieur:} $\boxed{Q = 0}$\\ 
-$\Longrightarrow \quad U = W$ \quad le travail se comporte comme une fonctiond d'état ($W_{\text{rév}} = W_{\text{irrév}}$)
-
-\subsubsection{Si Réversible}
-
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Relation de Poisson :} $PV^\gamma = \re{Cste}$
-    \item \textbf{Relation de Laplace :} $T V^{\gamma - 1} = \re{Cste}$
-    \item \textbf{Relation de Clapeyron :} $T P^{1 - \gamma} = \re{Cste}$
-\end{itemize}
-
-\subsection{Transformation Isotherme}
+    Lors d'une transformation, le système peut échanger de l'énergie avec le mileu extérieur
+    sous forme de travail (noté $W$) ou de chaleur (noté $Q$).\\
+    On distingue deux types de transformations:
+    \begin{itemize}
+        \item \textbf{réversible :} cas hypothétique d'une transformation infiniement lente. Donc le système est constament à l'équilibre avec l'extérieur.
+        \item \textbf{irréverible :} Transformation "réelle" hors équilibre avec l'extérieur.
+    \end{itemize}
 
 
-\subsection{Transformation Isobare}
+    \subsection{Calcul du Travail d'un Transformation}
 
-\begin{itemize}[label=\textbullet]
-    \item \textbf{Chaleur échangée :} $\delta Q = n \Cp \diff T$
-    \item \textbf{Travail échangé :} $W = \int_{V_A}^{V_B}- P_{\text{ext}} \diff V = - P_{\text{ext}}(V_B-V_A)$
-\end{itemize}
-
-\subsection{Calcul du Travail d'un Transformation}
-
-Dans le cas général: $ \boxed{\delta W = - P_{ext}\ \re d V} $
+        Dans le cas général: $ \boxed{\delta W = - P_{ext}\ \re d V} $
 
 
+    \subsection{Transformation Adiabatique}
+
+        \textbf{Pas d'échange de chaleur avec l'extérieur:} $\boxed{Q = 0}$\\ 
+        $\Longrightarrow \quad U = W$ \quad le travail se comporte comme une fonctiond d'état ($W_{\text{rév}} = W_{\text{irrév}}$)
+
+        \subsubsection{Réversible}
+
+            \begin{itemize}[label=\textbullet]
+                \item \textbf{Relation de Poisson :} $PV^\gamma = \re{Cste}$
+                \item \textbf{Relation de Laplace :} $T V^{\gamma - 1} = \re{Cste}$
+                \item \textbf{Relation de Clapeyron :} $T P^{1 - \gamma} = \re{Cste}$
+            \end{itemize}
+
+    \subsection{Transformation Isotherme}
+
+        Transformation à température constante ($T_A=T_B$).
+        
+        Comme $ \Delta U_{GP} = 0 \quad (\Delta T = 0) $ on a $W_{AB} = -Q_{AB}$.
+
+        \subsubsection{Réversible}
+            $$ W_{AB} = \int_{V_A}^{V_B} -P_{ext} \, \diff V = \int_{V_A}^{V_B} -P_\sigma \, \diff V = \int_{V_A}^{V_B} -\frac{nRT}{V} \, \diff V = -nRT \int_{V_A}^{V_B} \frac{\diff V}{V} = -nRT \ln{\left(\frac{V_B}{V_A}\right)} $$
+
+        \subsubsection{Irréversible}
+            $$ W_{AB'} = \int_{V_A}^{V_B} -P_{ext} \, \diff V = -P_{ext} \int_{V_A}^{V_B} \diff V = -P_{ext} (V_B - V_A) = P_{ext} (V_A- V_B) $$
+
+    \subsection{Transformation Isobare}
+        
+        Transformation à pression constante ($P_A=P_B$).
+
+        \subsubsection{Réversible}
+            $$ Q_{AB} = n \Cp \, \Delta T + h \, \Delta P = n \Cp \, \Delta T $$
+        
+        \subsubsection{Irréversible}
+            $$ W_{AB'} = \int_{V_A}^{V_B} -P_{\text{ext}} \diff V = -P_{\text{ext}}(V_B-V_A) = P_{\text{ext}}(V_A-V_B) $$
+
+    \subsection{Transformation Isochore}
+
+        Transformation à volume constant ($V_A=V_B$).
+
+        Dans tout les cas : $ W_{AB} = 0 $ car $ \diff V = 0 $. Donc on a $ \Delta U_{GP} = Q_{AB} $.
+        
+        Dans tout les cas : $Q_{AB} = \Delta H_{GP} = C_p \, \Delta T $
+                
+        \subsubsection{Réversible}
+
+             $$ Q_{AB} = n \Cp \, \Delta T + h \, \Delta P = n \Cp \, \Delta T $$
 
 \end{document}
