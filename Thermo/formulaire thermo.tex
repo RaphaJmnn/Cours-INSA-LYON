@@ -14,6 +14,7 @@
 % Graphiques et figures
 \usepackage{graphicx}
 \usepackage{enumitem} % pour les puces de listes
+\usepackage{siunitx}
 
 % Mise en page
 \usepackage{geometry}
@@ -88,21 +89,23 @@
             $$ \boxed{ Q_{\text{rév}} = C_v \, \diff T + l \, \diff V } $$
             $$ \boxed{ Q_{\text{rév}} = C_p \, \diff T + h \, \diff P } $$
 
+    \subsection*{Travail $\bm{W}$}
+        Energie non calorifique échangé au cours d'une transformation :
+            $$ \boxed{\delta W = - P_{ext}\ \re d V} $$
 
     \subsection*{Enthalpie $\bm{H}$}
         L'enthalpie est une fonction d'état extensive mesurée en joule.
             $$ \boxed{H = U + P V} $$
             $$ \boxed{ \diff H = C_p \, \diff T + (h + V) \, \diff P } $$
 
-
     \subsection*{Entropie : $\bm{S}$}
         L'entropie est une fonction d'état extensive mesurée en joule par Kelvin.\\
         C'est est une grandeur physique qui caractérise le \textbf{degré de désorganisation d'un système}.
-        $$ \boxed{\Delta S = \int_{A}^{B} \dfrac{\delta Q_{\text{rév}}}{T}} $$
-
+        $$ \boxed{\diff S_\sigma = \frac{\delta Q_{\sigma,\text{rév}}}{T_\sigma}} $$
 
     \end{multicols}
 
+\clearpage
 
 \section{Capacité Calorifique d'un système}
 
@@ -137,7 +140,7 @@
         Conservation de l'énergie : $\boxed{\diff U = \delta Q + \delta W}$
 
         \subsection*{Le Second Principe}
-        L'entropie d'un système isolé ne peut qu'augmenter : $\boxed{\diff S \geq 0}$
+        L'entropie d'un système isolé ne peut qu'augmenter : $\boxed{\diff S \geq 0}$ (créable et indestructible).
 
         \subsection*{Le Troisième Principe}
         L'entropie d'un cristal parfait à 0 K est nulle : $\boxed{S(0) = 0}$\\
@@ -149,14 +152,27 @@
 
 \section{Gaz parfaits}
 
-    \subsection{Loi des Gazs Parfaits}
-    $$ \boxed{pV = nRT} $$
+    \begin{multicols}{2}
+        
+        \subsection*{Loi des Gazs Parfaits}
+            $$ \boxed{PV = nRT} $$
+            Avec $P$ en Pascals, $V$ en $m^3$, $n$ en mol, $ R=\qty{8.314}{J mol^{-1} K^{-1}} $ et $T$ en Kelvin. 
+        
+        \subsection*{Energie interne}
+            $$ \boxed{ \diff U_{GP} = C_v \, \diff T } $$
+            Avec $\Delta U$ en Joules.
 
-    $$ \boxed{ \diff U_{GP} = C_v \, \diff T } $$
+        \subsection*{Chaleur $\bm{Q}$}
+            Pour un gaz parfait, comme la chaleur latente d'expension $l=P$ et que la chaleur latente de compression $h=-V$ on a :
+                $$ \boxed{ Q_{\text{rév}} = C_v \, \diff T + P \, \diff V } $$
+                $$ \boxed{ Q_{\text{rév}} = C_p \, \diff T - V \, \diff P } $$
 
-    $$ \boxed{ \diff H_{GP} = C_p \, \diff P } $$
+        \subsection*{Enthalpie}
+            $$ \boxed{ \diff H_{GP} = C_p \, \diff P } $$
 
+    \end{multicols}
 
+\clearpage
 
 \section{Transformation d'un gaz parfait entre deux états A et B}
 
@@ -169,15 +185,10 @@
     \end{itemize}
 
 
-    \subsection{Calcul du Travail d'un Transformation}
-
-        Dans le cas général: $ \boxed{\delta W = - P_{ext}\ \re d V} $
-
-
     \subsection{Transformation Adiabatique}
 
         \textbf{Pas d'échange de chaleur avec l'extérieur:} $\boxed{Q = 0}$\\ 
-        $\Longrightarrow \quad U = W$ \quad le travail se comporte comme une fonctiond d'état ($W_{\text{rév}} = W_{\text{irrév}}$)
+        $ \Longrightarrow \quad \Delta U = W = n\Cv\Delta T $ \quad le travail se comporte comme une fonctiond d'état ($W_{\text{rév}} = W_{\text{irrév}}$).
 
         \subsubsection{Réversible}
 
@@ -195,16 +206,30 @@
 
         \subsubsection{Réversible}
             $$ W_{AB} = \int_{V_A}^{V_B} -P_{ext} \, \diff V = \int_{V_A}^{V_B} -P_\sigma \, \diff V = \int_{V_A}^{V_B} -\frac{nRT}{V} \, \diff V = -nRT \int_{V_A}^{V_B} \frac{\diff V}{V} = -nRT \ln{\left(\frac{V_B}{V_A}\right)} $$
+            
+            $$ \Delta S_\sigma = \int_A^B \frac{\delta Q_{\sigma,\text{rév}}}{T_\sigma} = \int_{V_A}^{V_B} \frac{P_\sigma \, \diff V}{T_\sigma} = \int_A^B \frac{-\delta W_{\text{rév}}}{T_\sigma} = n R \ln{\left(\frac{V_B}{V_A}\right)} $$
+
+            $$ \Delta S_{\text{ext}} = \int_A^B \frac{\delta Q_{\text{ext,rév}}}{T_{\text{ext}}} = \int_A^B \frac{-\delta Q_{\sigma,\text{rév}}}{T_{\text{ext}}} = - n R \ln{\left(\frac{V_B}{V_A}\right)} $$
+
+            On retrouve bien que pour une transformation réversible: $\Delta U_u = 0$. (On aurait pu directement dire que $\Delta U_{\text{ext}} = -\Delta U_\sigma$)
 
         \subsubsection{Irréversible}
             $$ W_{AB'} = \int_{V_A}^{V_B} -P_{ext} \, \diff V = -P_{ext} \int_{V_A}^{V_B} \diff V = -P_{ext} (V_B - V_A) = P_{ext} (V_A- V_B) $$
+
+            $$ \Delta S_\sigma' = \int_A^B \frac{\delta Q_{\sigma,\text{rév}}}{T_\sigma} = \int_{V_A}^{V_B} \frac{P \, \diff V}{T_\sigma} = \int_A^B \frac{-\delta W_{AB}}{T_\sigma} = n R \ln{\left(\frac{V_B}{V_A}\right)} $$
+
+            On retrouve bien que $\Delta S_\sigma' = \Delta S_\sigma$ puisque l'entropie est une fonction d'état.
+            
+            $$ \Delta S_{\text{ext}}' = \int_A^B \frac{\delta Q_{\text{ext,rév}}}{T_{\text{ext}}} = \int_A^B \frac{-\delta Q_{\sigma,\text{irrév}}}{T_{\text{ext}}} = \int_A^B \frac{\delta W_{\sigma,\text{irrév}}}{T_{\text{ext}}} = -\frac{P_B (V_B - V_A)}{T_{\text{ext}}} $$
+
+            $$ \Delta U_u' = \frac{-W_{\text{rév}}}{T_{\text{ext}}} + \frac{W_{\text{irrév}}}{T_{\text{ext}}} = \frac{W_{\text{irrév}} - W_{\text{rév}}}{T_{\text{ext}}} > 0 $$
 
     \subsection{Transformation Isobare}
         
         Transformation à pression constante ($P_A=P_B$).
 
         \subsubsection{Réversible}
-            $$ Q_{AB} = n \Cp \, \Delta T + h \, \Delta P = n \Cp \, \Delta T $$
+            $$ Q_{AB} = n \Cp \, \Delta T - V \, \Delta P = n \Cp \, \Delta T $$
         
         \subsubsection{Irréversible}
             $$ W_{AB'} = \int_{V_A}^{V_B} -P_{\text{ext}} \diff V = -P_{\text{ext}}(V_B-V_A) = P_{\text{ext}}(V_A-V_B) $$
@@ -219,6 +244,6 @@
                 
         \subsubsection{Réversible}
 
-             $$ Q_{AB} = n \Cp \, \Delta T + h \, \Delta P = n \Cp \, \Delta T $$
+             $$ Q_{AB} = n \Cp \, \Delta T - V \, \Delta P = n \Cp \, \Delta T $$
 
 \end{document}
