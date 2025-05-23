@@ -58,12 +58,6 @@
 
     \begin{multicols}{2}
         
-        \subsection{Force de frottement solide}
-            $$ F_f = \mu N $$ 
-            \begin{itemize}[label=$\bullet$]
-                \item $\mu$ : coefficient de frottement qui dépend des matériaux du support et du système.
-                \item $N$ : la norme de la réaction normale du support.
-            \end{itemize}
         \subsection{Force de Pesanteur (Poids)}
             $$ F_p = m g $$
             \begin{itemize}[label=$\bullet$]
@@ -193,7 +187,16 @@
             Dans le cas d'une rotation élémentaire du point $M$ autour de $(Oz)$:
             $$ \delta W = \mathcal{M}_{Oz}(\vec{F}) \diff \theta $$
 
-        
+            \begin{itemize}[label=$\bullet$]
+
+                \item \textbf{Travail gravitationnel :} $ \delta W_{\vec P} = m g h $
+
+                \item \textbf{Travail élastique :}\\
+                    Ressort : $ \delta W_{\vec P_e} = \frac{1}{2} k x^2 $ avec $x$ l'allongement (ou raccourcicement) du ressort.\\
+                    Torsion : $ \delta W_{\vec P_e} = \frac{1}{2} C \theta^2 $
+            \end{itemize}
+
+
         \subsection{Puissance d'une force}
 
             La puissance d'une force F, qui s'exerce sur un
@@ -232,11 +235,11 @@
 
             Ou alors dans un référentiel galiléen, la dérivée par rapport au temps du 
             moment cinétique $\frac{\diff \vec{\sigma_O}}{\diff t}$ du point matériel calculé en $O$ (point fixe) est égal 
-            au moment $\vec{\Gamma_O}$ par rapport à $O$ de la résultantedes forces $\vec{R}$.
+            au moment résultant $\vec{\Gamma_O}$ par rapport à $O$.
 
-                $$ \frac{\diff \vec{\sigma_O}}{dt} = \sum \vec{\mathcal{M}_{0 (\vec{F}_{ext})}} \qquad  \text{ou} \qquad \frac{\diff \sigma_\Delta}{dt} = \sum \mathcal{M}_{\Delta (\vec{F}_{ext})}$$
+                $$ \frac{\diff \vec{\sigma_O}}{dt} = \sum \vec{\mathcal{M}_{0 (\vec{F}_{ext})}} $$
 
-            Attention cependant à être en méanique du point. Sinon $\vec{\Gamma_O} \neq \vec{OM} \wedge \vec{R}$ !
+            Attention cependant $\vec{\Gamma_O} \neq \vec{OM} \wedge \vec{R}$ !
 
         
 
