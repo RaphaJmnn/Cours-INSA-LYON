@@ -1,0 +1,162 @@
+\documentclass[a4paper,12pt]{article}
+
+% Encodage et langue
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% Mathématiques
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{esint} % double intégrale fermée
+\usepackage{physics}
+\usepackage{bm} % bold maths
+
+% Graphiques et figures
+\usepackage{graphicx}
+\usepackage{enumitem} % pour les puces de listes
+
+% Mise en page
+\usepackage{geometry}
+\geometry{a4paper, margin=3cm}
+\usepackage{multicol}
+
+% Couleurs et hyperliens
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\newcommand{\re}{\textrm}
+\newcommand{\Nabla}{\va{\nabla}}
+\renewcommand{\curl}{\Nabla \wedge}
+\renewcommand{\grad}{\va{\operatorname{grad}}}
+\newcommand{\rot}{\va{\operatorname{rot}}}
+\renewcommand{\div}{\operatorname{div}}
+
+% Small arrows
+\newcommand{\veryshortarrow}[1][4pt]{\mathrel{%
+    \hbox{\rule[\dimexpr\fontdimen22\textfont2-.2pt\relax]{#1}{.5pt}}%
+    \mkern-4mu\hbox{\usefont{U}{lasy}{m}{n}\symbol{41}}}}
+\makeatletter
+\setbox0\hbox{$\xdef\scriptratio{\strip@pt\dimexpr
+\numexpr(\sf@size*65536)/\f@size sp}$}
+\newcommand{\scriptveryshortarrow}[1][4pt]{{%
+    \hbox{\rule[\scriptratio\dimexpr\fontdimen22\textfont2-.2pt\relax]
+    {\scriptratio\dimexpr#1\relax}{\scriptratio\dimexpr.5pt\relax}}%
+    \mkern-4mu\hbox{\let\f@size\sf@size\usefont{U}{lasy}{m}{n}\symbol{41}}}}
+\makeatother
+
+\title{Formulaire d'Electromagnétisme}
+\author{Raphaël Jamann}
+\date{}
+
+\begin{document}
+    \maketitle
+
+
+    \section{Opérateurs de la Théorie des Champs}
+
+        \subsection{Opérateur Nabla $\nabla$}
+            L'opérateur nabla est défini en coordonnées cartésiennes par :
+
+            $$ \nabla = \begin{pmatrix}
+                    \pdv{}{x} \\[0.5em]  % ajoute de l'espace verticalement
+                    \pdv{}{y} \\[0.5em]
+                    \pdv{}{z}
+                \end{pmatrix} 
+            $$
+
+            Il sera utile pour l'écriture d'autres opérateurs tels que $\grad$, $\div$ ou encore $\rot$.
+
+        \subsection{Le gradiant}
+            L'opérateur gradient ne s'applique qu'aux champs scalaires $f(x, y, z)$ 
+            et donne un champ de vecteurs correspondant à la variation locale du champ scalaire $f$ dans l'espace. 
+
+             On peut le noter de deux manières différentes :
+
+                $$ \grad f = \nabla f(x, y, z) = 
+                \begin{pmatrix}
+                    \pdv{f}{x} \\[0.5em]  % ajoute de l'espace verticalement
+                    \pdv{f}{y} \\[0.5em]
+                    \pdv{f}{z}
+                \end{pmatrix} $$
+                
+
+            Ainsi, le gradient associe à chaque point de l'espace un vecteur orienté 
+            dans la direction de la plus forte croissance de $f$ et de norme proportionnelle 
+            à la rapidité de cette croissance.
+
+        \clearpage
+
+        \subsection{La divergence}
+
+            L'opérateur divergence s'applique aux champs de vecteurs 
+            $ \va{A}(x, y, z) $ et donne un champ scalaire correspondant au taux de « source » ou de « puits » du champ en un point.
+
+            On peut l'écrire de deux manières différentes :
+
+            \[
+            \div{\va{A}} = \Nabla \vdot \va{A} 
+            = \pdv{A_x}{x} + \pdv{A_y}{y} + \pdv{A_z}{z}
+            \]
+
+            Ainsi, la divergence mesure la tendance d'un champ vectoriel à « sortir » (divergence positive) 
+            ou à « entrer » (divergence négative) d'un volume infinitésimal autour du point considéré.
+            
+            La divergence en un point donné $M$ peut donc être interprétée comme le flux par unité
+            de volume passant à travers une boîte élementaire délimitant un volume infinitésimal $ \dd \tau $
+            tendant vers 0, construit autour de ce point $M$.
+
+
+        \subsection{Le rotationnel}
+
+            L'opérateur rotationnel (ou \emph{curl}) s'applique également aux champs de vecteurs 
+            $ \va{A}(x, y, z) $ et donne un champ de vecteurs représentant la tendance locale 
+            du champ à « tourner » autour d'un point.
+
+            On peut l'écrire de deux manières différentes :
+
+            $$ \rot \va{A} = \curl \va{A} =
+                \begin{pmatrix}
+                    \pdv{A_z}{y} - \pdv{A_y}{z} \\[0.5em]
+                    \pdv{A_x}{z} - \pdv{A_z}{x} \\[0.5em]
+                    \pdv{A_y}{x} - \pdv{A_x}{y}
+                \end{pmatrix} $$
+
+            Ainsi, le rotationnel mesure la « rotation locale » du champ autour d'un point donné.
+
+        \subsection{Flux d'un champ de vecteurs à travers une surface}
+            Flux d'un champ de vecteurs à travers une surface élémentaire $ \va{\dd S} $ : 
+                $$ \dd \varphi = \va{A} \vdot \va{\dd S} $$
+            
+            Flux total à travers n'importe quelle surface $S$, plane ou non :
+                $$ \varphi = \iint_S \va{A} \vdot \va{\dd S} $$ 
+
+            Un champ de vecteurs dont la divergence est nulle en tout point est appelé
+            champ de vecteurs à \textbf{flux conservatif} : $ \div{\va{A}} = 0 $
+        
+        \subsection{Théorème d'Ostrogradsky}
+            
+            $$ \varphi = \oiint_S \va{A} \vdot \va{\dd S} = \iiint_\tau \div{\va{A}} \, \dd \tau$$
+        
+        \subsection{Circulation d'un champ de vecteurs}
+            
+            La circulation d'un champ de vecteurs $ \va{A} $ le long d'un contour $ \Gamma $ (fermé ou non) se définit par :
+                $$ \mathcal{C} = \int_\Gamma \va{A} \vdot \va{\dd l} $$
+            Lorsque le contour est fermé, on note :
+                $$ \mathcal{C} = \oint_\Gamma \va{A} \vdot \va{\dd l} $$
+            La circulation est dite \textbf{consevative} si elle est nul sur un contour fermé $ \Gamma $ :
+                $$ \mathcal{C} = \oint_\Gamma \va{A} \vdot \va{\dd l} = 0 $$
+
+            
+                
+
+        \subsection{Théorème de Stokes}
+            
+            $$ \oint_{\Gamma^+} \va{A} \vdot \va{\dd l} = \iint_S \rot{\va{A}} \vdot \va{\dd S} $$
+
+\end{document}
