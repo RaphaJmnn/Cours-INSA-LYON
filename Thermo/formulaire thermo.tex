@@ -58,9 +58,9 @@
     ce dernier constituant alors le milieu extérieur.}\\
     Il y a trois types de système :
     \begin{itemize}[label=\textbullet]
-        \item \textbf{ouvert} s'il échange énergie et matière avec l'extérieur.
-        \item \textbf{fermé} s'il n'échange que de l'énergie' avec l'extérieur.
-        \item \textbf{isolé} s'il n'échange ni énergie, ni matière avec l'extérieur.
+        \item \textbf{ouvert} s'il échange énergie et matière.
+        \item \textbf{fermé} s'il n'échange que de l'énergie.
+        \item \textbf{isolé} s'il n'échange ni énergie, ni matière.
     \end{itemize}
 
     \subsection*{Variables d'état}
@@ -70,15 +70,6 @@
         \item \textbf{Extensives} : dépendent de la quantité de matière (ex: volume, énergie interne, entropie, etc\dots)
     \end{itemize}
 
-    \noindent Voici quelques exemples de variables d'état :
-    \begin{itemize}[label=\textbullet]
-        \item \textbf{Pression} : $P$ (en Pascal)
-        \item \textbf{Volume} : $V$ (en m$^3$)
-        \item \textbf{Température} : $T$ (en Kelvin)
-        \item \textbf{Masse} : $m$ (en kg)
-        \item \textbf{Nombre de moles} : $n$ (en mol)
-        \item \textbf{Chaleur} : $Q$ (en J)
-    \end{itemize}
 
     \subsection*{Énergie interne $\bm{U}$}
         En joule, cette énergie est une fonction d'état (ne dépend pas du chemin suivie lors d'une transformation).
@@ -93,15 +84,27 @@
         Energie non calorifique échangé au cours d'une transformation :
             $$ \boxed{\delta W = - P_{ext}\ \re d V} $$
 
+    \subsection*{Entropie : $\bm{S}$}
+        L'entropie est une fonction d'état extensive mesurée en joule par Kelvin.\\
+        C'est est une grandeur physique qui caractérise le \textbf{degré de désorganisation d'un système}.
+        $$ \boxed{\diff S_\sigma = \frac{\delta Q_{\sigma,\text{rév}}}{T_\sigma}} $$
+    
     \subsection*{Enthalpie $\bm{H}$}
         L'enthalpie est une fonction d'état extensive mesurée en joule.
             $$ \boxed{H = U + P V} $$
             $$ \boxed{ \diff H = C_p \, \diff T + (h + V) \, \diff P } $$
 
-    \subsection*{Entropie : $\bm{S}$}
-        L'entropie est une fonction d'état extensive mesurée en joule par Kelvin.\\
-        C'est est une grandeur physique qui caractérise le \textbf{degré de désorganisation d'un système}.
-        $$ \boxed{\diff S_\sigma = \frac{\delta Q_{\sigma,\text{rév}}}{T_\sigma}} $$
+    \subsection*{Enthalpie Libre $\bm{G}$ (Gibbs)}
+        L'enthalpie libre $G$ est une fonction d'état extensive. $\Delta G$ mesure le travail maximal pouvant être
+        extrait d'un système à température et pression constantes.
+            $$ \boxed{ G = H - TS } $$
+            $$ \boxed{ \diff G = - S \, \diff T + V \, \diff P } $$
+
+    \subsection*{Le potentiel chimique $\bm{\mu}$}
+        Le potentiel chimique est une grandeur intensive définie comme l'évolution de l'énergie
+        libre du système lors de l'ajout d'une mole de matière, à température et pression constantes.
+            $$ \boxed{ \mu_i = \left(\frac{\partial G}{\partial n_i}\right)_{T,P,n_{j(j \ne i)}} } $$
+            $$ \boxed{ \mu_i(T,P) = \mu_i^{\circ}(T) + RT\ln{(\alpha_i)} }$$
 
     \end{multicols}
 
