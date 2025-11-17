@@ -249,4 +249,43 @@
 
              $$ Q_{AB} = n \Cp \, \Delta T - V \, \Delta P = n \Cp \, \Delta T $$
 
+        \clearpage
+
+    \section{Réactions chimiques}
+
+        \subsection{Définitions}
+            On considère la réaction chimique suivante:
+                $$ \nu_{A_1} A_1 + \nu_{A_2} A_2 + \cdots + \nu_{A_i} A_i \, \rightleftarrows \, \nu_{B_1} B_1 + \nu_{B_2} B_2 + \cdots + \nu_{B_j} B_j $$
+
+
+            \subsubsection*{Rendement $r$ ou $\eta$}
+
+                $$ \boxed{ r = \frac{n_{j \text{ obtenues à l'équilibre}}}{n_{j \text{ obtenues si réaction totale}}} } $$
+
+            \subsubsection*{Taux d'avancement $\tau$}
+
+                $$ \boxed{ \tau = \frac{\xi_{\text{équilibre}}}{\xi_{\text{max si réaction totale}}} } $$
+
+            \subsubsection*{Quotient de réaction $Q$}
+
+                $$ \boxed{ Q = \dfrac{\prod_{j=1}^{n_{\text{produit}}} a_{B_j}^{\nu_{B_j}}}{\prod_{i=1}^{n_{\text{réactif}}} a_{A_i}^{\nu_{A_i}}} } $$ 
+
+            \subsubsection*{Constante d'équilibre $K_T^{\circ}$}
+
+                $$ \boxed{ K_T^{\circ} = \dfrac{\prod_{j=1}^{n_{\text{produit}}} (a_{B_j})_{\text{éq}}^{\nu_{B_j}} }{\prod_{i=1}^{n_{\text{réactif}}} (a_{A_i})_{\text{éq}}^{\nu_{A_i}}} = e^{\frac{-\Delta G_T^{\circ}}{RT}} }$$
+
+            \subsubsection*{Enthalpie Libre $\Delta G_{T,P}$}
+                L'enthalpie libre standard notée $\Delta_r G_T^{\circ}$ peut-être calculé comme ceci :
+                    $$ \boxed{ \Delta_r G_T^{\circ} = \Delta_r H_T^{\circ} - T \Delta_r S_T^{\circ} = -RT \ln{(K_T^{\circ})} } $$
+
+                L'expression générale pour $\Delta_r G_{T,P}$ est :
+                    $$ \boxed{ \Delta_r G_{T,P} = \Delta_r G_T^{\circ} + RT \ln{(Q)} = -RT \ln{(K_T^{\circ})} + RT \ln{(Q)} = RT \ln{\left(\frac{Q}{K_T^{\circ}}\right)} } $$
+
+                On peut retenir que le sens de la réaction est déterminé par :
+                
+                \begin{itemize}[label=\textbullet]
+                    \item $ \bm{ \Delta_r G_{T,P} < 0 \Longleftrightarrow Q < K_T^{\circ} } $: Le système évoluera dans le sens 1, jusqu'à ce que $ Q = K_T^{\circ} $.
+                    \item $ \bm{ \Delta_r G_{T,P} > 0 \Longleftrightarrow Q > K_T^{\circ} } $: Le système évoluera dans le sens 2, jusqu'à ce que $ Q = K_T^{\circ} $.
+                    \item $ \bm{ \Delta_r G_{T,P} = 0 \Longleftrightarrow Q = K_T^{\circ} } $: Le système est à l'équilibre.
+                \end{itemize}
 \end{document}
