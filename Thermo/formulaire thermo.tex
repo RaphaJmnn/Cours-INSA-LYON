@@ -15,6 +15,7 @@
 \usepackage{graphicx}
 \usepackage{enumitem} % pour les puces de listes
 \usepackage{siunitx}
+\usepackage{tikz}
 
 % Mise en page
 \usepackage{geometry}
@@ -251,6 +252,177 @@
 
         \clearpage
 
+    \section{Mélange binaires}
+            
+        \subsection{Loi de Raoult}
+            
+            \textbf{La loi de Raoult peut être appliqué à des solutions idéales} uniquement.
+                $$ P_A = x_A P_A^* $$
+
+            On l'utilise lors d'un mélange binaire dit "idéale" pour établir le diagramme binaire isotherme ou isobare du mélange idéal.
+            \textit{Il y a plus souvent un écart positif que négatif à cette loi.}
+        
+
+        \subsection{Loi de Henry}
+            \textbf{La loi de Henry est utilisé pour déterminer la fraction molaire d'un composé fortement diluée dans un solvant B.} Par exemple un gaz dans de l'eau (solubilité toujours faible).
+            Le solvant B obéira alors à la loi de Raoult.
+                $$ P_A = x_A K_{H_A} $$
+        
+        \subsection{Règles des moments chimiques}
+            
+            \begin{table}[!ht]
+                \centering
+                \renewcommand{\arraystretch}{2.5}
+                \begin{tabular}{|c|c|}
+                \hline
+                \textbf{Nombre de moles} & \textbf{Masse} \\
+                \hline
+
+                \textbf{Composition en fraction molaire} 
+                &
+                \textbf{Composition en fraction massique} 
+                \\
+                \hline
+                
+                % --- Axe gauche : molaire ---
+                \begin{tikzpicture}[x=6cm, y=1cm, >=latex]
+                    \draw[->] (0,0) -- (1.1,0);
+                    \foreach \x/\label in {0/x_B, 0.5/x_M, 1/y_B}
+                    {
+                    \draw (\x,0.05) -- (\x,-0.05) node[below] {$\label$};
+                    }
+                    \node[above] at (0,0) {$L$};
+                    \node[above] at (0.5,0) {$M$};
+                    \node[above] at (1,0) {$V$};
+                \end{tikzpicture}
+                &
+                % --- Axe droit : massique ---
+                \begin{tikzpicture}[x=6cm, y=1cm, >=latex]
+                    \draw[->] (0,0) -- (1.1,0);
+                    \foreach \x/\label in {0/w_{B,L}, 0.5/w_M, 1/w_{B,V}}
+                    {
+                    \draw (\x,0.05) -- (\x,-0.05) node[below] {$\label$};
+                    }
+                    \node[above] at (0,0) {$L$};
+                    \node[above] at (0.5,0) {$M$};
+                    \node[above] at (1,0) {$V$};
+                \end{tikzpicture}
+                \\
+                \hline
+
+                % -- FORMULES MOLAIRES --
+                \(
+                \displaystyle
+                \frac{n_L}{n_V}
+                = \frac{y_B - x_M}{x_M - x_B}
+                = \frac{\overline{MV}}{\overline{LM}}
+                \)
+                &
+                \(
+                \displaystyle
+                \frac{m_L}{m_V}
+                = \frac{w_{B,V} - w_M}{w_M - w_{B,L}}
+                = \frac{\overline{MV}}{\overline{LM}}
+                \)
+
+                \\[2mm]
+                \(
+                \displaystyle
+                \frac{n_L}{n_{\text{tot}}}
+                = \frac{y_B - x_M}{y_B - x_B}
+                = \frac{\overline{MV}}{\overline{LV}}
+                \)
+                &
+                \(
+                \displaystyle
+                \frac{m_L}{m_{\text{tot}}}
+                = \frac{w_{B,V} - w_M}{w_{B,V} - w_{B,L}}
+                = \frac{\overline{MV}}{\overline{LV}}
+                \)
+
+                \\[2mm]
+
+                \(
+                \displaystyle
+                \frac{n_V}{n_{\text{tot}}}
+                = \frac{x_M - x_B}{y_B - x_B}
+                = \frac{\overline{LM}}{\overline{LV}}
+                \)
+                &
+                \(
+                \displaystyle
+                \frac{m_V}{m_{\text{tot}}}
+                = \frac{w_M - w_{B,L}}{w_{B,V} - w_{B,L}}
+                = \frac{\overline{LM}}{\overline{LV}}
+                \)
+                \\[2mm]
+                \hline
+
+                \end{tabular}
+                \caption{Les différentes formulations de la règle des moments chimiques}
+
+            \end{table}
+
+            Pour établir ces relations, on est parti de la relation suivante:
+                $$ m_B = \bm{w_M \, m_{\text{tot}}} = m_{B,L} + m_{B,V} = w_{B,L} \, m_L + w_{B,V} \, m_V = \bm{ w_{B,L} \, m_L + w_{B,V} \, (m_{\text{tot}} - m_L) } $$
+                $$ \Longleftrightarrow \quad m_{\text{tot}} (w_M - w_{B,V}) = m_L \, (w_{B,L} - w_{B,V}) \quad \Longrightarrow \quad \bm{ m_L = m_{\text{tot}} \frac{w_M - w_{B,V}}{w_{B,L} - w_{B,V}} }$$
+
+            Ou encore en molaire :
+                $$ n_B = \bm{ x_M \, n_{\text{tot}} } = n_{B,L} + n_{B,V} = x_B \, n_L + y_B \, n_V = \bm{ x_B \, n_L + y_B \, (n_{\text{tot}} - n_L) } $$ 
+                $$ \Longleftrightarrow \quad n_{\text{tot}} (x_M - y_B) = n_L (x_B - y_B) \quad \Longrightarrow \quad \bm{ n_L = n_{\text{tot}} \frac{x_M - y_B}{x_B - y_B} }$$
+        \begin{tikzpicture}[x=10cm, y=1cm, >=latex]
+
+            % Axe des compositions
+            \draw[->] (0,0) -- (1.05,0) node[below] {$x$};
+
+            % Axe des températures
+            \draw[->] (0,0) -- (0,4.5) node[left] {$T$};
+            
+            % Positions des 3 points
+            \def\xV{0.25}
+            \def\xM{0.50}
+            \def\xL{0.72}
+
+            % Courbe de rosée (haute)
+            \draw[thick]
+            plot[smooth] coordinates {
+            (0,1) (\xV, 2) (1,4)
+            } node[left=20pt] {Courbe de rosée};
+
+            % Courbe de vaporisation (basse)
+            \draw[thick]
+            plot[smooth] coordinates {
+            (0,1) (\xL, 2) (1,4)
+            } node[below=50pt] {Courbe de vaporisation};
+
+            % Graduation 0 à 1
+            \foreach \x/\label in {0/0 , 0.2/0.2 , 0.4/0.4 , 0.6/0.6 , 0.8/0.8 , 1/1}
+            \draw (\x,0.05) -- (\x,-0.05) node[below=2pt] {\label};
+            
+            % Graduation 0 à 100°C
+            \foreach \y/\label in {0/0 , 1/60 , 2/80 , 3/100 , 4/120}
+            \draw (-0.005,\y) -- (0.005,\y) node[left=12pt] {\label};
+            
+            
+            % Points
+            \fill (\xL,2) circle (2pt) node[below] {$L$};
+            \fill (\xM,2) circle (2pt) node[above] {$M$};
+            \fill (\xV,2) circle (2pt) node[above] {$V$};
+
+            % Projections verticales
+            \draw[dashed, red] (\xL,2) -- (\xL,0) node[below=2pt, blue] {$x_B$};
+            \draw[dashed, red] (\xM,2) -- (\xM,0) node[below=2pt, green!60!black] {$x_M$};
+            \draw[dashed, red] (\xV,2) -- (\xV,0) node[below=2pt, purple] {$y_B$};
+
+            % Segment entre L et V
+            \draw[thick] (\xL,2) -- (\xV,2);
+
+        \end{tikzpicture}
+
+      
+
+        \clearpage
+
     \section{Réactions chimiques}
 
         \subsection{Définitions}
@@ -288,4 +460,6 @@
                     \item $ \bm{ \Delta_r G_{T,P} > 0 \Longleftrightarrow Q > K_T^{\circ} } $: Le système évoluera dans le sens 2, jusqu'à ce que $ Q = K_T^{\circ} $.
                     \item $ \bm{ \Delta_r G_{T,P} = 0 \Longleftrightarrow Q = K_T^{\circ} } $: Le système est à l'équilibre.
                 \end{itemize}
+
+      
 \end{document}
