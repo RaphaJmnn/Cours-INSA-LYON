@@ -177,4 +177,36 @@
         \subsection{Maxwell-Ampère}
                 
             $$ \rot{\va{B}} = \mu_0 \va{j} + \mu_0 \varepsilon_0 \pdv{\va{E}}{t} $$
+
+    \section{Symétries des champs $\va{E}$ et $\va{B}$}
+
+        \subsection{Champ $\va{E}$}
+                
+            $$ \va{E}(-z)_n = -\va{E}(z)_n $$
+            $$ \va{E}(-z)_t = \va{E}(z)_t $$
+
+            La composante tangencielle du champ électrique est continue.
+
+        \subsection{Champ $\va{B}$}
+
+            $$ \va{B}(-z)_n = \va{B}(z)_n $$
+            $$ \va{B}(-z)_t = -\va{B}(z)_t $$
+
+            La composante normale du champ magnétique est continue.
+
+    \section{Densité volumique de courant $\va{j}$}
+        
+        \subsection{Lien avec le courant $I$}
+
+            On peut calculer le courant $I$ traversant une surface $S$ à partir de la densité volumique de courant $\va{j}$ (en $A\vdot m^{-2}$):
+                $$ I = \iint_S \va{j} \vdot \va{\dd S} = \iint_S \va{j} \vdot \va{n}\dd S $$
+            C'est le flux de $\va{j}$ à travers une surface $S$ qui intercepte toutes les ligbes de courant.
+            De la même manière, avec la densité linéique de courant $\va{k}$ $\va{j}$ (en $A\vdot m^{-1}$) :
+                $$ I = \int_\Gamma \va{k} \vdot \va{\dd l} = \int_\Gamma \va{k} \vdot \va{n}\dd l $$
+            Attention, dans ce cas, ce n'est pas une circulation mais plutôt le flux à travers une surface 1D qui a été applatie.
+            
+        \subsection{Lois de Kirchhoff locales}
+            $$ \va{E} = \rho \va{j} \quad \longleftrightarrow \quad \va{j} = \gamma \va{E} $$
+            En effet, on a bien la résistivité volumique $\rho$ et la conductivité volumique $\gamma = \frac{1}{\rho}$.
+
 \end{document}
