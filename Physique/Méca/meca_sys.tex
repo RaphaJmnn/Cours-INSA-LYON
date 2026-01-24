@@ -109,36 +109,6 @@
         \sum \vec M_{ext \rightarrow S}(A) = \vec 0
         \]
 
-        \subsection*{Cas plan}
-        \[
-        \sum F_x = 0 \qquad
-        \sum F_y = 0 \qquad
-        \sum M_z = 0
-        \]
-
-        \subsection*{Cas classiques}
-        \begin{itemize}
-            \item Solide soumis à 2 forces :
-            supports colinéaires, normes égales, sens opposés
-            \item Solide soumis à 3 forces coplanaires :
-            forces concourantes et somme nulle
-        \end{itemize}
-
-
-    % ======================================================
-    \section{Cinématique}
-
-        \subsection*{Repérage d'un point}
-        \[
-        \vec{OP} = x\vec x + y\vec y + z\vec z
-        \]
-
-        \subsection*{Cinématique du point}
-        \[
-        \vec V_P = \frac{d\vec{OP}}{dt}
-        \qquad
-        \vec A_P = \frac{d\vec V_P}{dt}
-        \]
 
     % ======================================================
     \section{Cinématique du solide}
@@ -193,6 +163,101 @@
         \vec\omega(R_1/R_0) \wedge \vec u
         \]
 
+    % ======================================================
+    \section{Roulement sans glissement}
+
+        \subsection{Hypothèse de roulement sans glissement}
+        Au point de contact $I$ entre deux solides $S_1$ et $S_2$ :
+        \[
+        \vec V(I, S_1/S_2) = \vec 0
+        \]
+
+        Cette hypothèse impose :
+        \[
+        \vec V(I, S_1/R_0) = \vec V(I, S_2/R_0)
+        \]
+
     \end{multicols}
+
+ % ======================================================
+\section{Conditions géométriques des liaisons}
+
+    \subsection{Liaison ponctuelle (normale $\vec x_i$)}
+        Créer une liaison ponctuelle revient à contraindre le point $O_j$ à
+        appartenir à la surface du solide $S_i$.
+
+        Condition géométrique :
+        \[
+        \vec{M_iO_j} \cdot \vec x_i = 0
+        \]
+
+
+    \subsection{Liaison sphérique (rotule, centre $O$)}
+        Les points $O_i$ et $O_j$ sont confondus :
+        \[
+        \vec{O_iO_j} = \vec 0
+        \]
+
+
+    \subsection{Liaison plane (appui plan, normale $\vec x_i$)}
+
+        Conditions géométriques :
+        \[
+        \vec{O_iO_j} \cdot \vec x_i = 0
+        \]
+        Et les normales des deux solides sont colinéaires (1 seule liberté de rotation) :
+        \[
+        \vec x_j = \vec x_i
+        \quad \Rightarrow \quad
+        \begin{cases}
+        \vec x_j \cdot \vec y_i = 0 \\
+        \vec x_j \cdot \vec z_i = 0
+        \end{cases}
+        \]
+
+
+    \subsection{Liaison pivot-glissant / glissière (axe $(O,\vec x_i)$)}
+
+        Conditions géométriques :
+        \[
+        \vec{O_iO_j} = \lambda \vec x_i
+        \quad \Rightarrow \quad
+        \begin{cases}
+        \vec{O_iO_j} \cdot \vec y_i = 0 \\
+        \vec{O_iO_j} \cdot \vec z_i = 0
+        \end{cases}
+        \]
+
+        \[
+        \vec x_j = \vec x_i
+        \quad \Rightarrow \quad
+        \begin{cases}
+        \vec x_j \cdot \vec y_i = 0 \\
+        \vec x_j \cdot \vec z_i = 0
+        \end{cases}
+        \]
+
+        Si c'est une glissière alors absence de rotation autour de $\vec x_i$ :
+        \[
+        \vec y_j \cdot \vec y_i = 1
+        \]
+
+    \subsection{Liaison pivot (axe $(O,\vec x_i)$)}
+
+        Conditions géométriques :
+        \[
+        \vec{O_iO_j} = \vec 0
+        \]
+
+        (3 équations scalaires)
+
+        \[
+        \vec x_j = \vec x_i
+        \quad \Rightarrow \quad
+        \begin{cases}
+        \vec x_j \cdot \vec y_i = 0 \\
+        \vec x_j \cdot \vec z_i = 0
+        \end{cases}
+        \]
 
 \end{document}
