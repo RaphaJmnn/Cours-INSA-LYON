@@ -1,0 +1,198 @@
+\documentclass[10pt,a4paper]{article}
+
+% ---------- PACKAGES ----------
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+
+% ---------- MISE EN FORME ----------
+\setlist[itemize]{noitemsep, topsep=0pt}
+
+\author{Raphaël Jamann}
+\title{Formulaire de mécanique - FIMI 2}
+\date{}
+
+
+% ---------- DOCUMENT ----------
+\begin{document}
+    \maketitle
+
+
+    \begin{multicols}{2}
+
+    % ======================================================
+    \section{Actions mécaniques}
+
+        \subsection*{Moment d'une force}
+        \[
+        \vec M_F(O) = \vec{OB} \wedge \vec F
+        \]
+
+        \subsection*{Transport du moment (BABAR)}
+        \[
+        \vec M(B) = \vec M(A) + \vec{BA} \wedge \vec R
+        \]
+
+        \subsection*{Propriété}
+        \[
+        \vec M \perp \vec R \quad \text{(glisseur, automoment nul)}
+        \]
+
+    % ======================================================
+    \section{Torseur d'action mécanique}
+
+        \[
+        \{T\}_A =
+        \begin{Bmatrix}
+        \vec R \\
+        \vec M(A)
+        \end{Bmatrix}
+        \]
+
+        \subsection*{Invariants}
+        \begin{itemize}
+            \item Invariant vectoriel : $\vec R$
+            \item Automoment : $\vec R \cdot \vec M(A) = \text{cte}$
+        \end{itemize}
+
+        \subsection*{Torseurs particuliers}
+        \begin{itemize}
+            \item Glisseur :
+            \[
+            \begin{Bmatrix}
+            \vec R \\
+            \vec 0
+            \end{Bmatrix}
+            \]
+            \item Couple :
+            \[
+            \begin{Bmatrix}
+            \vec 0 \\
+            \vec C
+            \end{Bmatrix}
+            \]
+        \end{itemize}
+
+
+    % ======================================================
+    \section{Axe central}
+
+        \subsection*{Définition}
+        \[
+        \vec M(I) = \lambda \vec R
+        \]
+
+        \subsection*{Formule}
+        \[
+        \vec{AI} =
+        \frac{\vec R \wedge \vec M(A)}{\|\vec R\|^2}
+        + k \vec R
+        \]
+
+        \subsection*{Propriétés}
+        \begin{itemize}
+            \item Moment constant sur l'axe
+            \item Moment minimum sur l'axe
+        \end{itemize}
+
+    % ======================================================
+    \section{Statique}
+
+        \subsection*{Principe Fondamental de la Statique}
+        \[
+        \sum \vec F_{ext \rightarrow S} = \vec 0
+        \qquad
+        \sum \vec M_{ext \rightarrow S}(A) = \vec 0
+        \]
+
+        \subsection*{Cas plan}
+        \[
+        \sum F_x = 0 \qquad
+        \sum F_y = 0 \qquad
+        \sum M_z = 0
+        \]
+
+        \subsection*{Cas classiques}
+        \begin{itemize}
+            \item Solide soumis à 2 forces :
+            supports colinéaires, normes égales, sens opposés
+            \item Solide soumis à 3 forces coplanaires :
+            forces concourantes et somme nulle
+        \end{itemize}
+
+
+    % ======================================================
+    \section{Cinématique}
+
+        \subsection*{Repérage d'un point}
+        \[
+        \vec{OP} = x\vec x + y\vec y + z\vec z
+        \]
+
+        \subsection*{Cinématique du point}
+        \[
+        \vec V_P = \frac{d\vec{OP}}{dt}
+        \qquad
+        \vec A_P = \frac{d\vec V_P}{dt}
+        \]
+
+    % ======================================================
+    \section{Cinématique du solide}
+
+        \subsection*{Vitesse}
+        \[
+        \vec V_P = \vec V_O + \vec\omega \wedge \vec{OP}
+        \]
+
+        \subsection*{Accélération}
+        \[
+        \vec A_P =
+        \vec A_O
+        + \vec\alpha \wedge \vec{OP}
+        + \vec\omega \wedge (\vec\omega \wedge \vec{OP})
+        \]
+
+    % ======================================================
+    \section{Composition des vitesses}
+
+        \[
+        \vec V(P, S/R_0)
+        =
+        \vec V(P, S/R_1)
+        +
+        \vec V(P, R_1/R_0)
+        \]
+
+    % ======================================================
+    \section{Composition des accélérations}
+
+        \[
+        \vec A(P, S/R_0)
+        =
+        \vec A(P, S/R_1)
+        +
+        \vec A(P, R_1/R_0)
+        +
+        2 \vec\omega(R_1/R_0) \wedge \vec V(P, S/R_1)
+        \]
+
+        \textit{(Terme de Coriolis)}
+
+    % ======================================================
+    \section{Dérivée d'un vecteur tournant}
+
+        \[
+        \left( \frac{d\vec u}{dt} \right)_{R_0}
+        =
+        \left( \frac{d\vec u}{dt} \right)_{R_1}
+        +
+        \vec\omega(R_1/R_0) \wedge \vec u
+        \]
+
+    \end{multicols}
+
+\end{document}
