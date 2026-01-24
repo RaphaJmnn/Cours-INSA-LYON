@@ -123,21 +123,21 @@
         \subsection*{Transport des vitesses (BABAR)}
         Le champ des vitesses est un champ de moments :
         \[
-        \vec V_P = \vec V_O + \vec\omega \wedge \vec{OP}
+        \vec V_P = \vec V_O + \vec\Omega \wedge \vec{OP}
         \]
 
         Pour un solide $S$ en mouvement par rapport à un référentiel $R$ :
         \[
-        \vec V(B, S/R) = \vec V(A, S/R) + \vec{BA} \wedge \vec\omega(R/S)
+        \vec V(B, S/R) = \vec V(A, S/R) + \vec{BA} \wedge \vec\Omega(R/S)
         \]
 
 
-        \subsection*{Accélération}
+        \subsection*{Transport des accélérations}
         \[
         \vec A_P =
         \vec A_O
-        + \vec\alpha \wedge \vec{OP}
-        + \vec\omega \wedge (\vec\omega \wedge \vec{OP})
+        + \dv{\vec\Omega}{t} \wedge \vec{OP}
+        + \vec\Omega \wedge (\vec\Omega \wedge \vec{OP})
         \]
 
     % ======================================================
@@ -154,15 +154,10 @@
     % ======================================================
     \section{Composition des accélérations}
 
-        \[
-        \vec A(P, S/R_0)
-        =
-        \vec A(P, S/R_1)
-        +
-        \vec A(P, R_1/R_0)
-        +
-        2 \vec\omega(R_1/R_0) \wedge \vec V(P, S/R_1)
-        \]
+        \begin{align*}  
+            \vec A(P, S/R_0) = \vec A(P, S/R_1) + \vec A(P, R_1/R_0) \\
+                                + 2 \vec\Omega(R_1/R_0) \wedge \vec V(P, S/R_1)
+        \end{align*}
 
         \textit{(Terme de Coriolis)}
 
@@ -174,7 +169,7 @@
         =
         \left( \frac{d\vec u}{dt} \right)_{R_1}
         +
-        \vec\omega(R_1/R_0) \wedge \vec u
+        \vec\Omega(R_1/R_0) \wedge \vec u
         \]
 
     % ======================================================
