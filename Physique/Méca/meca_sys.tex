@@ -11,6 +11,7 @@
 
 % ---------- MISE EN FORME ----------
 \setlist[itemize]{noitemsep, topsep=0pt}
+\renewcommand{\vec}{\overrightarrow}
 
 \author{Raphaël Jamann}
 \title{Formulaire de mécanique - FIMI 2}
@@ -29,12 +30,18 @@
 
         \subsection*{Moment d'une force}
         \[
-        \vec M_F(O) = \vec{OB} \wedge \vec F
+        \vec M_O(F) = \vec{OA} \wedge \vec F
         \]
+        Avec A le point d'application de la force.
 
         \subsection*{Transport du moment (BABAR)}
         \[
         \vec M(B) = \vec M(A) + \vec{BA} \wedge \vec R
+        \]
+
+        Comme les vitesses de rotations sont un champ de moments :
+        \[
+        \vec M(B) = \vec M(A) + \vec{AB} \wedge \vec R
         \]
 
         \subsection*{Propriété}
@@ -113,10 +120,17 @@
     % ======================================================
     \section{Cinématique du solide}
 
-        \subsection*{Vitesse}
+        \subsection*{Transport des vitesses (BABAR)}
+        Le champ des vitesses est un champ de moments :
         \[
         \vec V_P = \vec V_O + \vec\omega \wedge \vec{OP}
         \]
+
+        Pour un solide $S$ en mouvement par rapport à un référentiel $R$ :
+        \[
+        \vec V(B, S/R) = \vec V(A, S/R) + \vec{BA} \wedge \vec\omega(R/S)
+        \]
+
 
         \subsection*{Accélération}
         \[
