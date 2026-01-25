@@ -8,6 +8,9 @@
 \usepackage{multicol}
 \usepackage{titlesec}
 \usepackage{mathrsfs}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
 
 % ---------- MISE EN FORME ----------
 \setlist[itemize]{noitemsep, topsep=0pt}
@@ -263,5 +266,97 @@
         \vec x_j \cdot \vec z_i = 0
         \end{cases}
         \]
+        
+    \clearpage
+
+    \section{Mécanique graphique}
+
+        \subsection*{CIR, Equiprojectivité et triangle des vitesses}
+            \centering
+            {\color{red}{$\vec V_A \cdot \vec{AB} = \vec V_B \cdot \vec{AB}$}}
+
+            \begin{tikzpicture}[scale=1.1, >=stealth] 
+
+                % ======================
+                % Styles
+                % ======================
+                \tikzset{
+                    point/.style={circle, fill=black, inner sep=1.5pt},
+                    velocity/.style={->, thick, blue},
+                    axe/.style={->, thick, black!70},
+                    construction/.style={dashed, thick, purple},
+                }
+
+                % ======================
+                % Points A et B
+                % ======================
+                \coordinate (A) at (0,0);
+                \coordinate (B) at (6,0);
+
+                \node[below]  at (A) {$A$};
+                \node[above] at (B) {$B$};
+
+                % ======================
+                % Axe de projection p
+                % ======================
+                \draw[axe] (-1,0) -- (9,0) node[below] {$(AB)$};
+
+                % ======================
+                % Vitesses
+                % ======================
+                \draw[velocity] (A) -- ++(50:2.2) node[above] {$\vec V_A$};
+                \draw[velocity] (B) -- ++(-20:1.5) node[right] {$\vec V_B$};
+
+                % ======================
+                % Projetés des vitesses sur (AB)
+                % ======================
+                \coordinate (VAend) at ($(A)+(50:2.2)$);
+                \coordinate (VBend) at ($(B)+(-20:1.5)$);
+
+                % Création des points projetés comme vrais nœuds TikZ
+                \node[draw=none, fill=none, inner sep=0pt] (Aproj) at ($(VAend |- A)$) {};
+                \node[draw=none, fill=none, inner sep=0pt] (Bproj) at ($(VBend |- B)$) {};
+
+                % Projections
+                \draw[densely dashed, green] (VAend) -- (Aproj);
+                \draw[densely dashed, green] (VBend) -- (Bproj);
+
+                % Flèches rouges
+                \draw[->, thick, red] (A) -- ++(1.4,0) node[below] {$\vec V_{A/(AB)}$};
+                \draw[->, thick, red] (B) -- ++(1.4,0) node[above] {$\vec V_{B/(AB)}$};
+
+                % Angles droits
+                \draw[green!70!black] ($(Aproj)+(0.1,0)$) -- ++(0,0.1) -- ++(-0.1,0);
+                \draw[green!70!black] ($(Bproj)+(0.1,0)$) -- ++(0,-0.1) -- ++(-0.1,0);
+
+                % ======================
+                % Normales aux vitesses
+                % ======================
+                \draw[construction] (A) -- ++(-40:6.5);
+                \draw[construction] (B) -- ++(70:-4.6);
+
+                % angles droits
+                \draw[purple!70!black] ($(A)+(-40:0.2)$) -- ++(50:0.2) -- ++(-40:-0.2);
+                \draw[purple!70!black] ($(B)+(70:-0.2)$) -- ++(-20:0.2) -- ++(70:0.2);
+
+                % ======================
+                % CIR
+                % ======================
+                \coordinate (CIR) at (4.6,-3.9);
+
+                \draw[point, color=purple] (CIR);
+                \node[left, purple] at (CIR) {CIR};
+
+                % ======================
+                % Triangle des vitesses
+                % ======================
+                \draw[densely dashed, blue]
+                    (VBend) -- (CIR);
+                \draw[->, blue]
+                    ($(CIR)!0.5!(B)$) -- ($(CIR)!0.5!(VBend)$)
+                    node[right] {$\vec V$};
+
+            \end{tikzpicture}
+
 
 \end{document}
