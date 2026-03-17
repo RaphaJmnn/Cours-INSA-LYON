@@ -126,7 +126,7 @@
 
         Pour un solide $S$ en mouvement par rapport à un référentiel $R$ :
         \[
-        \vec V(B, S/R) = \vec V(A, S/R) + \vec{BA} \wedge \vec\Omega(R/S)
+        \vec V(B, S/R) = \vec V(A, S/R) + \vec{BA} \wedge \vec\Omega(S/R)
         \]
 
 
@@ -272,91 +272,440 @@
     \section{Mécanique graphique}
 
         \subsection*{CIR, Equiprojectivité et triangle des vitesses}
-            \centering
-            {\color{red}{$\vec V_A \cdot \vec{AB} = \vec V_B \cdot \vec{AB}$}}
+            \begin{center}
+                {\color{red}{$\vec V_A \cdot \vec{AB} = \vec V_B \cdot \vec{AB}$}}
 
-            \begin{tikzpicture}[scale=1.1, >=stealth] 
+                \begin{tikzpicture}[scale=1.1, >=stealth] 
 
-                % ======================
-                % Styles
-                % ======================
-                \tikzset{
-                    point/.style={circle, fill=black, inner sep=1.5pt},
-                    velocity/.style={->, thick, blue},
-                    axe/.style={->, thick, black!70},
-                    construction/.style={dashed, thick, purple},
-                }
+                    % ======================
+                    % Styles
+                    % ======================
+                    \tikzset{
+                        point/.style={circle, fill=black, inner sep=1.5pt},
+                        velocity/.style={->, thick, blue},
+                        axe/.style={->, thick, black!70},
+                        construction/.style={dashed, thick, purple},
+                    }
 
-                % ======================
-                % Points A et B
-                % ======================
-                \coordinate (A) at (0,0);
-                \coordinate (B) at (6,0);
+                    % ======================
+                    % Points A et B
+                    % ======================
+                    \coordinate (A) at (0,0);
+                    \coordinate (B) at (6,0);
 
-                \node[below]  at (A) {$A$};
-                \node[above] at (B) {$B$};
+                    \node[below]  at (A) {$A$};
+                    \node[above] at (B) {$B$};
 
-                % ======================
-                % Axe de projection p
-                % ======================
-                \draw[axe] (-1,0) -- (9,0) node[below] {$(AB)$};
+                    % ======================
+                    % Axe de projection p
+                    % ======================
+                    \draw[axe] (-1,0) -- (9,0) node[below] {$(AB)$};
 
-                % ======================
-                % Vitesses
-                % ======================
-                \draw[velocity] (A) -- ++(50:2.2) node[above] {$\vec V_A$};
-                \draw[velocity] (B) -- ++(-20:1.5) node[right] {$\vec V_B$};
+                    % ======================
+                    % Vitesses
+                    % ======================
+                    \draw[velocity] (A) -- ++(50:2.2) node[above] {$\vec V_A$};
+                    \draw[velocity] (B) -- ++(-20:1.5) node[right] {$\vec V_B$};
 
-                % ======================
-                % Projetés des vitesses sur (AB)
-                % ======================
-                \coordinate (VAend) at ($(A)+(50:2.2)$);
-                \coordinate (VBend) at ($(B)+(-20:1.5)$);
+                    % ======================
+                    % Projetés des vitesses sur (AB)
+                    % ======================
+                    \coordinate (VAend) at ($(A)+(50:2.2)$);
+                    \coordinate (VBend) at ($(B)+(-20:1.5)$);
 
-                % Création des points projetés comme vrais nœuds TikZ
-                \node[draw=none, fill=none, inner sep=0pt] (Aproj) at ($(VAend |- A)$) {};
-                \node[draw=none, fill=none, inner sep=0pt] (Bproj) at ($(VBend |- B)$) {};
+                    % Création des points projetés comme vrais nœuds TikZ
+                    \node[draw=none, fill=none, inner sep=0pt] (Aproj) at ($(VAend |- A)$) {};
+                    \node[draw=none, fill=none, inner sep=0pt] (Bproj) at ($(VBend |- B)$) {};
 
-                % Projections
-                \draw[densely dashed, green] (VAend) -- (Aproj);
-                \draw[densely dashed, green] (VBend) -- (Bproj);
+                    % Projections
+                    \draw[densely dashed, green] (VAend) -- (Aproj);
+                    \draw[densely dashed, green] (VBend) -- (Bproj);
 
-                % Flèches rouges
-                \draw[->, thick, red] (A) -- ++(1.4,0) node[below] {$\vec V_{A/(AB)}$};
-                \draw[->, thick, red] (B) -- ++(1.4,0) node[above] {$\vec V_{B/(AB)}$};
+                    % Flèches rouges
+                    \draw[->, thick, red] (A) -- ++(1.4,0) node[below] {$\vec V_{A/(AB)}$};
+                    \draw[->, thick, red] (B) -- ++(1.4,0) node[above] {$\vec V_{B/(AB)}$};
 
-                % Angles droits
-                \draw[green!70!black] ($(Aproj)+(0.1,0)$) -- ++(0,0.1) -- ++(-0.1,0);
-                \draw[green!70!black] ($(Bproj)+(0.1,0)$) -- ++(0,-0.1) -- ++(-0.1,0);
+                    % Angles droits
+                    \draw[green!70!black] ($(Aproj)+(0.1,0)$) -- ++(0,0.1) -- ++(-0.1,0);
+                    \draw[green!70!black] ($(Bproj)+(0.1,0)$) -- ++(0,-0.1) -- ++(-0.1,0);
 
-                % ======================
-                % Normales aux vitesses
-                % ======================
-                \draw[construction] (A) -- ++(-40:6.5);
-                \draw[construction] (B) -- ++(70:-4.6);
+                    % ======================
+                    % Normales aux vitesses
+                    % ======================
+                    \draw[construction] (A) -- ++(-40:6.5);
+                    \draw[construction] (B) -- ++(70:-4.6);
 
-                % angles droits
-                \draw[purple!70!black] ($(A)+(-40:0.2)$) -- ++(50:0.2) -- ++(-40:-0.2);
-                \draw[purple!70!black] ($(B)+(70:-0.2)$) -- ++(-20:0.2) -- ++(70:0.2);
+                    % angles droits
+                    \draw[purple!70!black] ($(A)+(-40:0.2)$) -- ++(50:0.2) -- ++(-40:-0.2);
+                    \draw[purple!70!black] ($(B)+(70:-0.2)$) -- ++(-20:0.2) -- ++(70:0.2);
 
-                % ======================
-                % CIR
-                % ======================
-                \coordinate (CIR) at (4.6,-3.9);
+                    % ======================
+                    % CIR
+                    % ======================
+                    \coordinate (CIR) at (4.6,-3.9);
 
-                \draw[point, color=purple] (CIR);
-                \node[left, purple] at (CIR) {CIR};
+                    \draw[point, color=purple] (CIR);
+                    \node[left, purple] at (CIR) {CIR};
 
-                % ======================
-                % Triangle des vitesses
-                % ======================
-                \draw[densely dashed, blue]
-                    (VBend) -- (CIR);
-                \draw[->, blue]
-                    ($(CIR)!0.5!(B)$) -- ($(CIR)!0.5!(VBend)$)
-                    node[right] {$\vec V$};
+                    % ======================
+                    % Triangle des vitesses
+                    % ======================
+                    \draw[densely dashed, blue]
+                        (VBend) -- (CIR);
+                    \draw[->, blue]
+                        ($(CIR)!0.5!(B)$) -- ($(CIR)!0.5!(VBend)$)
+                        node[right] {$\vec V$};
 
-            \end{tikzpicture}
+                \end{tikzpicture}
+            \end{center}
 
+
+    \section{Géométrie des masses}
+
+        La géométrie des masses décrit :
+        \begin{itemize}
+            \item la masse du solide
+            \item la position du centre de masse
+            \item la répartition de masse (inertie)
+        \end{itemize}
+
+        % ------------------------------------------------------
+        \subsection{Masse d'un solide}
+
+            Un solide $S$ est constitué d'éléments de masse $dm$ :
+
+            \[
+            m = \int_S dm
+            \]
+
+            Si le solide est homogène (masse volumique $\rho$ constante) :
+
+            \[
+            m = \int_S \rho \, dV
+            \]
+
+            En coordonnées cartésiennes :
+
+            \[
+            m = \rho \iiint_S dx\,dy\,dz
+            \]
+
+
+        % ------------------------------------------------------
+        \subsection{Centre de masse (centre d'inertie)}
+
+            Le centre de masse $G$ est le barycentre des points $P$ pondérés par
+            leur masse :
+
+            \[
+            m \, \vec{OG} = \int_S \vec{OP} \, dm
+            \]
+
+            Coordonnées du centre de masse :
+
+            \[
+            x_G = \frac{1}{m} \int_S x\,dm
+            \qquad
+            y_G = \frac{1}{m} \int_S y\,dm
+            \qquad
+            z_G = \frac{1}{m} \int_S z\,dm
+            \]
+
+            Si le solide est homogène :
+
+            \[
+            x_G = \frac{1}{V}\int_S x\,dV
+            \]
+
+
+        % ------------------------------------------------------
+        \subsection{Propriétés de symétrie}
+
+            \begin{itemize}
+                \item Si le solide possède un plan de symétrie, $G$ appartient à ce plan.
+                \item Si le solide est de révolution, $G$ appartient à l'axe.
+                \item Un solide avec trois plans de symétrie a son centre au milieu.
+            \end{itemize}
+
+
+        % ------------------------------------------------------
+        \subsection{Centre de masse d'un ensemble de solides}
+
+            Pour un système de solides $S_i$ :
+
+            \[
+            \vec{OG} =
+            \frac{\sum_i m_i \vec{OG_i}}
+            {\sum_i m_i}
+            \]
+
+            avec $G_i$ le centre de masse de chaque solide.
+
+
+        % ------------------------------------------------------
+        \subsection{Centre de masse et centre de gravité}
+
+            Le torseur du poids est :
+
+            \[
+            \left\{T_{pes \rightarrow S}\right\}
+            =
+            \begin{Bmatrix}
+            m\vec g \\
+            \vec 0
+            \end{Bmatrix}_G
+            \]
+
+            Si le champ de pesanteur $\vec g$ est uniforme :
+
+            \[
+            \text{Centre de gravité} = \text{Centre de masse}
+            \]
+
+            % ======================================================
+        \section{Torseur cinématique}
+
+            Le mouvement d'un solide $S$ par rapport à $R$ est décrit par le torseur :
+
+            \[
+            \left\{V(S/R)\right\}_A =
+            \begin{Bmatrix}
+            \vec \Omega(S/R) \\
+            \vec V(A,S/R)
+            \end{Bmatrix}
+            \]
+
+            \begin{itemize}
+                \item $\vec \Omega$ : vecteur rotation
+                \item $\vec V(A)$ : vitesse d'un point du solide
+            \end{itemize}
+
+            \subsection*{Transport du torseur cinématique}
+
+            \[
+            \vec V(B) =
+            \vec V(A)
+            + \vec \Omega \wedge \vec{AB}
+            \]
+
+
+        % ======================================================
+        \section{Inertie du solide}
+
+            L'inertie décrit la répartition de masse du solide
+            par rapport à un point.
+
+            \subsection{Moment d'inertie}
+
+            Par rapport à un axe :
+
+            \[
+            I_\Delta = \int_S r^2 dm
+            \]
+
+            avec $r$ la distance à l'axe.
+
+
+        % ------------------------------------------------------
+        \subsection{Tenseur d'inertie}
+
+            Le tenseur d'inertie au point $O$ est :
+
+            \[
+            \mathbf{I}_O =
+            \begin{bmatrix}
+            I_{xx} & -I_{xy} & -I_{xz} \\
+            -I_{xy} & I_{yy} & -I_{yz} \\
+            -I_{xz} & -I_{yz} & I_{zz}
+            \end{bmatrix}
+            \]
+
+            avec :
+
+            \[
+            I_{xx} = \int (y^2+z^2)dm
+            \]
+
+            \[
+            I_{xy} = \int xy\,dm
+            \]
+
+            (produits d'inertie).
+
+
+        % ------------------------------------------------------
+        \subsection{Axes principaux}
+
+            Dans la base principale :
+
+            \[
+            \mathbf I =
+            \begin{bmatrix}
+            A & 0 & 0 \\
+            0 & B & 0 \\
+            0 & 0 & C
+            \end{bmatrix}
+            \]
+
+            Les produits d'inertie sont nuls.
+
+
+
+        % ------------------------------------------------------
+        \subsection{Théorème de Huygens}
+
+            Translation du tenseur d'inertie :
+
+            \[
+            \mathbf I_O =
+            \mathbf I_G +
+            m(\|\vec{OG}\|^2 \mathbf I -
+            \vec{OG}\vec{OG}^{\,T})
+            \]
+
+            Pour un axe parallèle :
+
+            \[
+            I_O = I_G + md^2
+            \]
+
+
+
+        % ======================================================
+    \section{Torseur dynamique}
+
+        Le torseur dynamique d'un solide $S$ par rapport à $R$ au point $A$ est :
+
+        \[
+        \left\{D(S/R)\right\}_A =
+        \begin{Bmatrix}
+        \vec R_d \\
+        \vec M_d(A)
+        \end{Bmatrix}
+        \]
+
+        \begin{itemize}
+            \item $\vec R_d$ : résultante dynamique
+            \item $\vec M_d(A)$ : moment dynamique
+        \end{itemize}
+
+        % ------------------------------------------------------
+        \subsection{Résultante dynamique}
+
+            La résultante dynamique est :
+
+            \[
+            \vec R_d = m \vec A_G
+            \]
+
+            où $G$ est le centre de masse du solide.
+
+
+        % ------------------------------------------------------
+        \subsection{Moment dynamique}
+
+            Moment dynamique au point $O$ :
+
+            \[
+            \vec M_d(O) =
+            \frac{d\vec L_O}{dt}
+            \]
+
+            avec $\vec L_O$ le moment cinétique.
+
+
+        % ------------------------------------------------------
+        \subsection{Moment dynamique au centre de masse}
+
+            Au point $G$ :
+
+            \[
+            \vec M_d(G) =
+            \mathbf I_G \dot{\vec\Omega}
+            +
+            \vec\Omega \wedge (\mathbf I_G \vec\Omega)
+            \]
+
+
+        % ------------------------------------------------------
+        \subsection{Transport du moment dynamique}
+
+            \[
+            \vec M_d(A) =
+            \vec M_d(G) +
+            \vec{AG} \wedge m\vec A_G
+            \]
+
+
+        % ------------------------------------------------------
+        \subsection{Principe Fondamental de la Dynamique}
+
+            Le torseur des actions extérieures est égal
+            au torseur dynamique :
+
+            \[
+            \left\{T_{ext \rightarrow S}\right\}_A
+            =
+            \left\{D(S/R)\right\}_A
+            \]
+
+            soit :
+
+            \[
+            \sum \vec F = m \vec A_G
+            \]
+
+            \[
+            \sum \vec M(A) =
+            \vec M_d(A)
+            \]
+
+
+        % ------------------------------------------------------
+        \subsection{Cas particuliers}
+
+            \textbf{Translation}
+
+            \[
+            \vec M_d(G)=\vec 0
+            \]
+
+            \[
+            \sum \vec F = m\vec A_G
+            \]
+
+            \textbf{Rotation autour d'un axe fixe}
+
+            \[
+            \sum M_\Delta =
+            I_\Delta \dot{\omega}
+            \]
+
+
+
+        % ======================================================
+        \section{Énergie cinétique}
+
+            \subsection{Expression générale}
+
+            \[
+            E_c =
+            \frac12 m V_G^2 +
+            \frac12 \vec \Omega \cdot
+            \mathbf I_G \vec \Omega
+            \]
+
+            \subsection{Translation}
+
+            \[
+            E_c = \frac12 m V^2
+            \]
+
+            \subsection{Rotation autour d'un axe}
+
+            \[
+            E_c =
+            \frac12 I_\Delta \omega^2
+            \]
 
 \end{document}
