@@ -488,6 +488,47 @@
             + \vec \Omega \wedge \vec{AB}
             \]
 
+    \section{Torseur cinétique}
+
+            \[
+            \left\{C(S/0)\right\} =
+            \begin{Bmatrix}
+            \vec p (S/0) \\
+            \vec \sigma (Q, S/0)
+            \end{Bmatrix}_Q
+            =
+            \begin{Bmatrix}
+            \int_{P\in S} \vec V(P, S/0) \, dm(P) \\
+            \int_{P\in S} \vec{QP} \wedge \vec{V}(P, S/0) \, dm(P)
+            \end{Bmatrix}_Q
+            \]
+
+            \begin{itemize}
+                \item $\vec p$ : résultante cinétique
+                \item $\vec \sigma$ : moment cinétique (si $Q \equiv G \quad \Rightarrow \quad \vec \sigma (G, \, S/0)= \overset{=}{I}(G, S) \vec \Omega_{S/0}$)
+            \end{itemize}
+
+        \section{Torseur Dynamique}
+
+            \[
+            \left\{D_{S/0}\right\} =
+            \begin{Bmatrix}
+            \vec D (S/0) \\
+            \vec \delta (Q, S/0)
+            \end{Bmatrix}
+            =
+            \begin{Bmatrix}
+            \int_{P\in S} \vec A(P, S/0) \, dm(P) \\
+            \int_{P\in S} \vec{QP} \wedge \vec A(P, S/0) \, dm(P)
+            \end{Bmatrix}_Q
+            \]
+
+            \begin{itemize}
+                \item $\vec D$ : résultante dynamique ($\vec D(S/0) = m(S) \, \vec A(G, \, S/0)$ et $\vec D(S/0) = \frac{d}{dt}\vec p(S/0))$)
+                \item $\vec \delta$ : moment dynamique (si $Q \equiv G \quad \Rightarrow \quad \vec \delta (G, \, S/0) = \frac{d}{dt} \vec \sigma (G, \, S/0)$)
+    
+                et en un point $Q$ quelconque: $\vec \delta (Q, \, S/0) = \frac{d}{dt} \vec \sigma (Q, \, S/0) + \vec V(Q, \, S/0) \wedge \vec p(S/0)$
+            \end{itemize}
 
         % ======================================================
         \section{Inertie du solide}
@@ -509,46 +550,41 @@
         % ------------------------------------------------------
         \subsection{Tenseur d'inertie}
 
-            Le tenseur d'inertie au point $O$ est :
+            Le tenseur d'inertie du solide $S$ au point $O$ est :
 
             \[
-            \mathbf{I}_O =
+            \mathbf{\overset{=}{I}(O, S)} =
             \begin{bmatrix}
             I_{xx} & -I_{xy} & -I_{xz} \\
             -I_{xy} & I_{yy} & -I_{yz} \\
             -I_{xz} & -I_{yz} & I_{zz}
             \end{bmatrix}
-            \]
+            = \begin{bmatrix}
+                A & -F & -E \\
+                -F & B & -D \\
+                -E & -D & C
+             \end{bmatrix}
+            \quad \text{Notation de Binet}\]
 
             avec :
 
-            \[
-            I_{xx} = \int (y^2+z^2)dm
-            \]
+            $$
+            I_{xx} = A = \int (y^2+z^2)\,dm, \quad I_{yy} = B = \int (x^2+z^2)\,dm, \quad I_{zz} = C = \int (x^2+y^2)\,dm
+            $$
 
-            \[
-            I_{xy} = \int xy\,dm
-            \]
+            $$
+            I_{xy} = -F = \int xy\,dm, \quad I_{yz} = -D = \int yz\,dm, \quad I_{xz} = -E = \int xz\,dm
+            $$
 
-            (produits d'inertie).
+        $A$, $B$ et $C$ sont les moments d'inertie et $D$, $E$ et $F$ les produits d'inertie.
 
+        Lorsque le solide $S$ admet des plans de symétrie, alors certains produits de symétrie s'annulent :
 
-        % ------------------------------------------------------
-        \subsection{Axes principaux}
-
-            Dans la base principale :
-
-            \[
-            \mathbf I =
-            \begin{bmatrix}
-            A & 0 & 0 \\
-            0 & B & 0 \\
-            0 & 0 & C
-            \end{bmatrix}
-            \]
-
-            Les produits d'inertie sont nuls.
-
+        \begin{itemize}
+            \item (O, x, y) est PS $\rightarrow$ $E$ et $D$ s'annulent.
+            \item (O, x, z) est PS $\rightarrow$ $F$ et $D$ s'annulent.
+            \item (O, y, z) est PS $\rightarrow$ $F$ et $E$ s'annulent.
+        \end{itemize}
 
 
         % ------------------------------------------------------
@@ -567,73 +603,6 @@
 
             \[
             I_O = I_G + md^2
-            \]
-
-
-
-        % ======================================================
-    \section{Torseur dynamique}
-
-        Le torseur dynamique d'un solide $S$ par rapport à $R$ au point $A$ est :
-
-        \[
-        \left\{D(S/R)\right\}_A =
-        \begin{Bmatrix}
-        \vec R_d \\
-        \vec M_d(A)
-        \end{Bmatrix}
-        \]
-
-        \begin{itemize}
-            \item $\vec R_d$ : résultante dynamique
-            \item $\vec M_d(A)$ : moment dynamique
-        \end{itemize}
-
-        % ------------------------------------------------------
-        \subsection{Résultante dynamique}
-
-            La résultante dynamique est :
-
-            \[
-            \vec R_d = m \vec A_G
-            \]
-
-            où $G$ est le centre de masse du solide.
-
-
-        % ------------------------------------------------------
-        \subsection{Moment dynamique}
-
-            Moment dynamique au point $O$ :
-
-            \[
-            \vec M_d(O) =
-            \frac{d\vec L_O}{dt}
-            \]
-
-            avec $\vec L_O$ le moment cinétique.
-
-
-        % ------------------------------------------------------
-        \subsection{Moment dynamique au centre de masse}
-
-            Au point $G$ :
-
-            \[
-            \vec M_d(G) =
-            \mathbf I_G \dot{\vec\Omega}
-            +
-            \vec\Omega \wedge (\mathbf I_G \vec\Omega)
-            \]
-
-
-        % ------------------------------------------------------
-        \subsection{Transport du moment dynamique}
-
-            \[
-            \vec M_d(A) =
-            \vec M_d(G) +
-            \vec{AG} \wedge m\vec A_G
             \]
 
 
