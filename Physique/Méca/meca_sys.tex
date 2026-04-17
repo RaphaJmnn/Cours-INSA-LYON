@@ -8,6 +8,7 @@
 \usepackage{multicol}
 \usepackage{titlesec}
 \usepackage{mathrsfs}
+\usepackage{bm}
 \usepackage{tikz}
 \usetikzlibrary{calc}
 
@@ -15,6 +16,10 @@
 % ---------- MISE EN FORME ----------
 \setlist[itemize]{noitemsep, topsep=0pt}
 \renewcommand{\vec}{\overrightarrow}
+
+% ---------- MACROS ----------
+% Tenseur d'inertie : I avec = au-dessus
+\newcommand{\Inertie}[2]{\overset{=}{I}(#1,\,#2)}
 
 \author{Raphaël Jamann}
 \title{Formulaire de mécanique - FIMI 2}
@@ -65,22 +70,18 @@
         \end{itemize}
 
         \subsection*{Torseurs particuliers}
-        \begin{itemize}
-            \item Glisseur :
-            \[
+            $$ \text{Glisseur}
             \begin{Bmatrix}
-            \vec R \\
-            \vec 0
+                \vec R \\
+                \vec 0
             \end{Bmatrix}
-            \]
-            \item Couple :
-            \[
+            \qquad
+            \text{Couple}
             \begin{Bmatrix}
-            \vec 0 \\
-            \vec C
+                \vec 0 \\
+                \vec C
             \end{Bmatrix}
-            \]
-        \end{itemize}
+            $$
 
 
     % ======================================================
@@ -162,12 +163,9 @@
     % ======================================================
     \section{Dérivée d'un vecteur tournant}
 
-        \[
-        \left( \frac{d\vec u}{dt} \right)_{R_0}
-        =
-        \left( \frac{d\vec u}{dt} \right)_{R_1}
-        +
-        \vec\Omega(R_1/R_0) \wedge \vec u
+         \[
+        \left( \frac{d\vec u_k}{dt} \right)_{i}
+        = \vec\Omega(k/i) \wedge \vec u_k \qquad \forall \vec u_k \in S_k
         \]
 
     % ======================================================
@@ -187,7 +185,9 @@
     \end{multicols}
 
  % ======================================================
+    
 \section{Conditions géométriques des liaisons}
+ \begin{multicols}{2}
 
     \subsection{Liaison ponctuelle (normale $\vec x_i$)}
         Créer une liaison ponctuelle revient à contraindre le point $O_j$ à
@@ -266,8 +266,8 @@
         \vec x_j \cdot \vec z_i = 0
         \end{cases}
         \]
-        
-    \clearpage
+
+    \end{multicols}
 
     \section{Mécanique graphique}
 
@@ -275,7 +275,7 @@
             \begin{center}
                 {\color{red}{$\vec V_A \cdot \vec{AB} = \vec V_B \cdot \vec{AB}$}}
 
-                \begin{tikzpicture}[scale=1.1, >=stealth] 
+                \begin{tikzpicture}[scale=1.6, >=stealth] 
 
                     % ======================
                     % Styles
@@ -360,15 +360,11 @@
             \end{center}
 
 
+    \clearpage
+    
     \section{Géométrie des masses}
-
-        La géométrie des masses décrit :
-        \begin{itemize}
-            \item la masse du solide
-            \item la position du centre de masse
-            \item la répartition de masse (inertie)
-        \end{itemize}
-
+        \begin{multicols}{2}
+            
         % ------------------------------------------------------
         \subsection{Masse d'un solide}
 
@@ -398,24 +394,19 @@
             leur masse :
 
             \[
-            m \, \vec{OG} = \int_S \vec{OP} \, dm
+            \, \vec{OG} = \frac{1}{m} \int_{P\in S} \vec{OP} \, dm
             \]
 
             Coordonnées du centre de masse :
 
             \[
             x_G = \frac{1}{m} \int_S x\,dm
-            \qquad
+            \quad
             y_G = \frac{1}{m} \int_S y\,dm
-            \qquad
+            \quad
             z_G = \frac{1}{m} \int_S z\,dm
             \]
 
-            Si le solide est homogène :
-
-            \[
-            x_G = \frac{1}{V}\int_S x\,dV
-            \]
 
 
         % ------------------------------------------------------
@@ -424,7 +415,6 @@
             \begin{itemize}
                 \item Si le solide possède un plan de symétrie, $G$ appartient à ce plan.
                 \item Si le solide est de révolution, $G$ appartient à l'axe.
-                \item Un solide avec trois plans de symétrie a son centre au milieu.
             \end{itemize}
 
 
@@ -461,6 +451,8 @@
             \[
             \text{Centre de gravité} = \text{Centre de masse}
             \]
+
+        % \end{multicols}
 
             % ======================================================
         \section{Torseur cinématique}
@@ -504,9 +496,16 @@
             \]
 
             \begin{itemize}
-                \item $\vec p$ : résultante cinétique
-                \item $\vec \sigma$ : moment cinétique (si $Q \equiv G \quad \Rightarrow \quad \vec \sigma (G, \, S/0)= \overset{=}{I}(G, S) \vec \Omega_{S/0}$)
+                \item $\vec p$ : résultante cinétique $\bm{\vec p (S/0) = m \vec V (G/0)}$
+                \item $\vec \sigma$ : moment cinétique
+                \[
+                  \vec \sigma (G, S/0) = \Inertie{G}{S}\,\vec \Omega_{S/0}
+                \]
             \end{itemize}
+
+            \subsection*{Formule de Transport}
+
+                $$ \vec \sigma (B, S/0) = \vec \sigma (A, S/0) + m \vec V(G, S/0) \wedge \vec{AB} $$
 
         \section{Torseur Dynamique}
 
@@ -524,15 +523,33 @@
             \]
 
             \begin{itemize}
-                \item $\vec D$ : résultante dynamique ($\vec D(S/0) = m(S) \, \vec A(G, \, S/0)$ et $\vec D(S/0) = \frac{d}{dt}\vec p(S/0))$)
-                \item $\vec \delta$ : moment dynamique (si $Q \equiv G \quad \Rightarrow \quad \vec \delta (G, \, S/0) = \frac{d}{dt} \vec \sigma (G, \, S/0)$)
-    
-                et en un point $Q$ quelconque: $\vec \delta (Q, \, S/0) = \frac{d}{dt} \vec \sigma (Q, \, S/0) + \vec V(Q, \, S/0) \wedge \vec p(S/0)$
+                \item $\vec D$ : résultante dynamique
+                \[
+                  \vec D(S/0) = m \,\vec A(G, S/0)
+                  \qquad
+                  \vec D(S/0) = \frac{d}{dt}\vec p(S/0)
+                \]
+                \item $\vec \delta$ : moment dynamique
+                \[
+                  \vec \delta (G, S/0) = \frac{d}{dt} \vec \sigma (G, S/0)
+                \]
+                En un point $Q$ quelconque :
+                \[
+                  \vec \delta (Q, S/0) = \frac{d}{dt} \vec \sigma (Q, S/0)
+                  + m \vec V(Q, S/0) \wedge \vec V(G/0)
+                \]
             \end{itemize}
 
-        % ======================================================
-        \section{Inertie du solide}
+            \subsection*{Formule de Transport}                
+                  $$ \vec \delta (B, S/0) = \vec \delta (A, S/0) + \vec{BA} \wedge \vec D(S/0) $$
+        \end{multicols}
+        \clearpage
 
+        % =====================================================
+        \begin{multicols}{2}
+        [
+        \section{Inertie du solide}
+        ]
             L'inertie décrit la répartition de masse du solide
             par rapport à un point.
 
@@ -541,7 +558,7 @@
             Par rapport à un axe :
 
             \[
-            I_\Delta = \int_S r^2 dm
+            I_\Delta = \int_S r^2\, dm
             \]
 
             avec $r$ la distance à l'axe.
@@ -553,102 +570,70 @@
             Le tenseur d'inertie du solide $S$ au point $O$ est :
 
             \[
-            \mathbf{\overset{=}{I}(O, S)} =
+            \Inertie{O}{S} =
             \begin{bmatrix}
-            I_{xx} & -I_{xy} & -I_{xz} \\
-            -I_{xy} & I_{yy} & -I_{yz} \\
-            -I_{xz} & -I_{yz} & I_{zz}
+            A  & -F & -E \\
+            -F &  B & -D \\
+            -E & -D &  C
             \end{bmatrix}
-            = \begin{bmatrix}
-                A & -F & -E \\
-                -F & B & -D \\
-                -E & -D & C
-             \end{bmatrix}
-            \quad \text{Notation de Binet}\]
+            \quad \text{(notation de Binet)}
+            \]
 
-            avec :
+            avec les moments d'inertie :
+            \[
+            A = \int (y^2+z^2)\,dm, \quad
+            B = \int (x^2+z^2)\,dm, \quad
+            C = \dots
+            \]
 
-            $$
-            I_{xx} = A = \int (y^2+z^2)\,dm, \quad I_{yy} = B = \int (x^2+z^2)\,dm, \quad I_{zz} = C = \int (x^2+y^2)\,dm
-            $$
+            et les produits d'inertie :
+            \[
+            D = \int yz\,dm, \quad
+            E = \int xz\,dm, \quad
+            F = \int xy\,dm
+            \]
 
-            $$
-            I_{xy} = -F = \int xy\,dm, \quad I_{yz} = -D = \int yz\,dm, \quad I_{xz} = -E = \int xz\,dm
-            $$
+        \noindent $A$, $B$, $C$ sont les moments d'inertie et \\
+        $D$, $E$, $F$ les produits d'inertie.\newline
 
-        $A$, $B$ et $C$ sont les moments d'inertie et $D$, $E$ et $F$ les produits d'inertie.
-
-        Lorsque le solide $S$ admet des plans de symétrie, alors certains produits de symétrie s'annulent :
+        Lorsque le solide $S$ admet des plans de symétrie, certains produits d'inertie s'annulent (s'ils sont exprimés en un point appartenant au plan de symétrie) :
 
         \begin{itemize}
-            \item (O, x, y) est PS $\rightarrow$ $E$ et $D$ s'annulent.
-            \item (O, x, z) est PS $\rightarrow$ $F$ et $D$ s'annulent.
-            \item (O, y, z) est PS $\rightarrow$ $F$ et $E$ s'annulent.
+            \item $(O, x, y)$ est PS $\rightarrow$ $E$ et $D$ s'annulent.
+            \item $(O, x, z)$ est PS $\rightarrow$ $F$ et $D$ s'annulent.
+            \item $(O, y, z)$ est PS $\rightarrow$ $F$ et $E$ s'annulent.
         \end{itemize}
+
+        \medskip
+
+        Lorque le solide est un solide de révolution, les produits d'inerties exprimés en un point appartenant à l'axe de révolution s'annulent.
 
 
         % ------------------------------------------------------
         \subsection{Théorème de Huygens}
 
-            Translation du tenseur d'inertie :
-
-            \[
-            \mathbf I_O =
-            \mathbf I_G +
-            m(\|\vec{OG}\|^2 \mathbf I -
-            \vec{OG}\vec{OG}^{\,T})
-            \]
-
-            Pour un axe parallèle :
-
-            \[
-            I_O = I_G + md^2
-            \]
+            Si on pose 
+            $$ \vec{QG} = \begin{pmatrix}
+                a \\ b \\ c \\
+                \end{pmatrix} $$
+            alors 
+            $$ \Inertie{Q}{S} = \Inertie{G}{S} + m \begin{pmatrix}
+                b^2+c^2 & -ab & -ac \\
+                -ab & a^2+c^2 & -bc \\
+                -ac & -bc & a^2+b^2
+            \end{pmatrix} $$
 
 
         % ------------------------------------------------------
         \subsection{Principe Fondamental de la Dynamique}
 
-            Le torseur des actions extérieures est égal
-            au torseur dynamique :
-
+            TRD:
             \[
-            \left\{T_{ext \rightarrow S}\right\}_A
-            =
-            \left\{D(S/R)\right\}_A
+            \sum \vec F_{\text{ext}} = m \vec A_G = \vec D
             \]
 
-            soit :
-
-            \[
-            \sum \vec F = m \vec A_G
-            \]
-
-            \[
-            \sum \vec M(A) =
-            \vec M_d(A)
-            \]
-
-
-        % ------------------------------------------------------
-        \subsection{Cas particuliers}
-
-            \textbf{Translation}
-
-            \[
-            \vec M_d(G)=\vec 0
-            \]
-
-            \[
-            \sum \vec F = m\vec A_G
-            \]
-
-            \textbf{Rotation autour d'un axe fixe}
-
-            \[
-            \sum M_\Delta =
-            I_\Delta \dot{\omega}
-            \]
+            TMD:
+            $$ \sum \vec{\mathcal{M}} = \vec \delta $$
 
 
 
@@ -659,22 +644,23 @@
 
             \[
             E_c =
-            \frac12 m V_G^2 +
-            \frac12 \vec \Omega \cdot
-            \mathbf I_G \vec \Omega
+            \frac{1}{2} m V_G^2 +
+            \frac{1}{2} \vec \Omega \cdot
+            \Inertie{G}{S}\,\vec \Omega
             \]
 
             \subsection{Translation}
 
             \[
-            E_c = \frac12 m V^2
+            E_c = \frac{1}{2} m V^2
             \]
 
             \subsection{Rotation autour d'un axe}
 
             \[
             E_c =
-            \frac12 I_\Delta \omega^2
+            \frac{1}{2} I_\Delta \omega^2
             \]
+    \end{multicols}
 
 \end{document}
