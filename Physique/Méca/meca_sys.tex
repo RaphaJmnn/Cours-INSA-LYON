@@ -163,9 +163,14 @@
     % ======================================================
     \section{Dérivée d'un vecteur tournant}
 
-         \[
+        \[
+        \left( \frac{d\vec u}{dt} \right)_{i}
+        =  \left( \frac{d\vec u}{dt} \right)_{k} + \vec\Omega(k/i) \wedge \vec u \, , \qquad \forall \, \vec u
+        \]
+
+        \[
         \left( \frac{d\vec u_k}{dt} \right)_{i}
-        = \vec\Omega(k/i) \wedge \vec u_k \qquad \forall \vec u_k \in S_k
+        = \vec\Omega(k/i) \wedge \vec u_k \, , \qquad \forall \, \vec u_k \in S_k
         \]
 
     % ======================================================
@@ -638,28 +643,20 @@
 
 
         % ======================================================
-        \section{Énergie cinétique}
+       \section{Lois de comportement des amortisseurs visqueux}
 
-            \subsection{Expression générale}
+            Un amortisseur visqueux développe une action mécanique \textbf{proportionnelle à la vitesse} et \textbf{dissipe de l'énergie}.
 
+            \textbf{Amortisseur de traction/compression}:
             \[
-            E_c =
-            \frac{1}{2} m V_G^2 +
-            \frac{1}{2} \vec \Omega \cdot
-            \Inertie{G}{S}\,\vec \Omega
+            \{T_{A_2/1}\} = \begin{Bmatrix} -b\,\dot{\lambda}\,\vec{u} \\ \vec{0} \end{Bmatrix}_A
+            \quad \text{avec } \lambda = \overrightarrow{A_1A_2}\cdot\vec{u} \text{ (longueur courante)}, \quad b \text{ en N·s/m}
             \]
 
-            \subsection{Translation}
-
+            \textbf{Amortisseur de torsion}:
             \[
-            E_c = \frac{1}{2} m V^2
-            \]
-
-            \subsection{Rotation autour d'un axe}
-
-            \[
-            E_c =
-            \frac{1}{2} I_\Delta \omega^2
+            \vec{M}_{A_{S2/S1}} = -b\,\dot{\theta}\,\vec{u}
+            \quad \text{avec } \dot{\theta} = \vec{\Omega}_{S2/S1}\cdot\vec{u}, \quad b \text{ en N·m·s/rad}
             \]
     \end{multicols}
 
