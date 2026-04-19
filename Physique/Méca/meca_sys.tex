@@ -122,12 +122,12 @@
         \subsection*{Transport des vitesses (BABAR)}
         Le champ des vitesses est un champ de moments :
         \[
-        \vec V_P = \vec V_O + \vec\Omega \wedge \vec{OP}
+        \vec V_B = \vec V_A + \vec{BA} \wedge \vec\Omega
         \]
 
         Pour un solide $S$ en mouvement par rapport à un référentiel $R$ :
         \[
-        \vec V(B, S/R) = \vec V(A, S/R) + \vec{BA} \wedge \vec\Omega(S/R)
+        \vec V(B, S/R) = \vec V(A, S/R) + \vec{BA} \wedge \vec\Omega_{S/R}
         \]
 
 
@@ -443,7 +443,7 @@
             Le torseur du poids est :
 
             \[
-            \left\{T_{pes \rightarrow S}\right\}
+            \left\{T_{pes \rightarrow S}\right\}_G
             =
             \begin{Bmatrix}
             m\vec g \\
@@ -488,7 +488,7 @@
     \section{Torseur cinétique}
 
             \[
-            \left\{C(S/0)\right\} =
+            \left\{C(S/0)\right\}_Q =
             \begin{Bmatrix}
             \vec p (S/0) \\
             \vec \sigma (Q, S/0)
@@ -501,48 +501,37 @@
             \]
 
             \begin{itemize}
-                \item $\vec p$ : résultante cinétique $\bm{\vec p (S/0) = m \vec V (G/0)}$
-                \item $\vec \sigma$ : moment cinétique
-                \[
-                  \vec \sigma (G, S/0) = \Inertie{G}{S}\,\vec \Omega_{S/0}
-                \]
+                \item $\vec p$ : résultante cinétique \quad $\bm{\vec p (S/0) = m \vec V (G/0)}$
+                \item $\vec \sigma$ : moment cinétique. En un point fixe dans $R_0$ ou en G: \\
+                $\bm{\vec\sigma (G, S/0) =} \Inertie{G}{S} \bm{\, \vec\Omega_{S/0}}$
             \end{itemize}
 
             \subsection*{Formule de Transport}
 
-                $$ \vec \sigma (B, S/0) = \vec \sigma (A, S/0) + m \vec V(G, S/0) \wedge \vec{AB} $$
+                $$ \vec \sigma (B, S/0) = \vec \sigma (A, S/0) + \vec{BA} \wedge \vec p(S/0) $$
 
         \section{Torseur Dynamique}
 
-            \[
-            \left\{D_{S/0}\right\} =
-            \begin{Bmatrix}
-            \vec D (S/0) \\
-            \vec \delta (Q, S/0)
-            \end{Bmatrix}
-            =
-            \begin{Bmatrix}
-            \int_{P\in S} \vec A(P, S/0) \, dm(P) \\
-            \int_{P\in S} \vec{QP} \wedge \vec A(P, S/0) \, dm(P)
-            \end{Bmatrix}_Q
-            \]
+            $$
+                \left\{D_{S/0}\right\}_Q =
+                \begin{Bmatrix}
+                    \vec D (S/0) \\
+                    \vec \delta (Q, S/0)
+                \end{Bmatrix}
+                =
+                \begin{Bmatrix}
+                    \int_{P\in S} \vec A(P, S/0) \, dm(P) \\
+                    \int_{P\in S} \vec{QP} \wedge \vec A(P, S/0) \, dm(P)
+                \end{Bmatrix}_Q
+            $$
 
             \begin{itemize}
                 \item $\vec D$ : résultante dynamique
-                \[
-                  \vec D(S/0) = m \,\vec A(G, S/0)
-                  \qquad
-                  \vec D(S/0) = \frac{d}{dt}\vec p(S/0)
-                \]
-                \item $\vec \delta$ : moment dynamique
-                \[
-                  \vec \delta (G, S/0) = \frac{d}{dt} \vec \sigma (G, S/0)
-                \]
+                $$ \bm{\vec D(S/0) = m \,\vec A(G, S/0) \qquad \vec D(S/0) = \frac{d}{dt}\vec p(S/0)} $$
+                \item $\vec \delta$ : moment dynamique  $ \bm{\vec \delta (G, S/0) = \frac{d}{dt} \vec \sigma (G, S/0)} $ \\
                 En un point $Q$ quelconque :
-                \[
-                  \vec \delta (Q, S/0) = \frac{d}{dt} \vec \sigma (Q, S/0)
-                  + m \vec V(Q, S/0) \wedge \vec V(G/0)
-                \]
+                $$ \bm{\vec \delta (Q, S/0) = \frac{d}{dt} \vec \sigma (Q, S/0)
+                  + m \vec V(Q, S/0) \wedge \vec V(G/0)} $$
             \end{itemize}
 
             \subsection*{Formule de Transport}                
@@ -649,15 +638,15 @@
 
             \textbf{Amortisseur de traction/compression}:
             \[
-            \{T_{A_2/1}\} = \begin{Bmatrix} -b\,\dot{\lambda}\,\vec{u} \\ \vec{0} \end{Bmatrix}_A
-            \quad \text{avec } \lambda = \overrightarrow{A_1A_2}\cdot\vec{u} \text{ (longueur courante)}, \quad b \text{ en N·s/m}
+            \{T_{A/2}\} = \begin{Bmatrix} -b\,\dot{\lambda}\,\vec{u} \\ \vec{0} \end{Bmatrix}_A
             \]
+            avec $\lambda = \overrightarrow{A_1A_2}\cdot\vec{u}$ (longueur courante), et $b$ le coefficient d'amortissement visqueux en $N·s/m$.
 
             \textbf{Amortisseur de torsion}:
             \[
-            \vec{M}_{A_{S2/S1}} = -b\,\dot{\theta}\,\vec{u}
-            \quad \text{avec } \dot{\theta} = \vec{\Omega}_{S2/S1}\cdot\vec{u}, \quad b \text{ en N·m·s/rad}
+            \vec{M}_{A_2} = -b\,\dot{\theta}\,\vec{u}\, , \quad \text{avec } \dot{\theta} = \vec{\Omega}_{S2/S1}\cdot\vec{u}
             \]
-    \end{multicols}
+            
+        \end{multicols}
 
 \end{document}
