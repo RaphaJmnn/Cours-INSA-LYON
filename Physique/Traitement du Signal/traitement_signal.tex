@@ -1,0 +1,357 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{multicol}
+\geometry{margin=1.5cm}
+\setlength{\parindent}{0pt}
+
+\title{\textbf{Fiche de Révision -- Traitement du Signal}}
+\date{}
+\author{Raphaël Jamann}
+
+\begin{document}
+    \maketitle
+
+    \begin{multicols}{2}[
+        \section{Signaux de base}
+    ]
+
+        \textbf{Signal :} fonction représentant une grandeur physique dépendant du temps.
+
+        \textbf{Types :}
+        \begin{itemize}
+            \item Continu $x(t)$
+            \item Discret $x[n]$
+        \end{itemize}
+
+        \textbf{Signaux élémentaires :}
+        \begin{itemize}
+            \item Impulsion de Dirac $\delta(t)$ :
+ 
+            \begin{itemize}
+                \item $\int_{-\infty}^\infty \delta(t)dt = 1$ \\
+                \item fonction nulle partout sauf en $t=0$
+                \item $\delta(t) = \frac{d}{dt}u(t)$
+                \item Propriété d'échantillonnage :
+                \[
+                \int x(t)\delta(t-t_0)dt = x(t_0)
+                \]
+            \end{itemize}
+
+            \item Échelon unité $u(t)$ :
+            \[
+                u(t)=
+                \begin{cases}
+                1 & t \ge 0 \\
+                0 & t < 0
+                \end{cases}
+            \]
+            \item fonction rectangle : 
+            \[
+                \text{rect}(t) =
+                \begin{cases}
+                1 & |t| \le \frac{1}{2} \\
+                0 & \text{sinon}
+                \end{cases}
+            \]
+            \item Sinusoïde : $A \cos(\omega t + \phi)$
+        \end{itemize}
+
+        \textbf{Propriétés :}
+        \begin{itemize}
+            \item Énergie : $E = \int |x(t)|^2 dt$
+            \item Puissance : $P = \lim_{T \to \infty} \frac{1}{T} \int |x(t)|^2 dt$
+        \end{itemize}
+
+        \subsection*{Opérations élémentaires sur les signaux}
+
+        \begin{itemize}
+            \item \textbf{Décalage temporel :} $x(t-t_0)$ (retard), $x(t+t_0)$ (avance)
+            \item \textbf{Changement d'échelle :} $x(at)$ 
+            \begin{itemize}
+                \item $|a|>1$ : compression
+                \item $|a|<1$ : dilatation
+            \end{itemize}
+            \item \textbf{Retournement :} $x(-t)$
+        \end{itemize}
+
+        \subsection*{Représentation complexe des sinusoïdes}
+
+        \[
+        e^{j2\pi f_0 t} = \cos(2\pi f_0 t) + j \sin(2\pi f_0 t)
+        \]
+
+        \[
+        \cos(2\pi f_0 t) = \frac{1}{2}(e^{j2\pi f_0 t} + e^{-j2\pi f_0 t})
+        \]
+
+        \[
+        \sin(2\pi f_0 t) = \frac{1}{2j}(e^{j2\pi f_0 t} - e^{-j2\pi f_0 t})
+        \]
+
+
+        \subsection*{Série de Fourier (signal périodique)}
+
+        \[
+        x(t) = a_0 + \sum_{k=1}^{+\infty} A_k \cos(2\pi k f_0 t + \Phi_k)
+        \]
+
+        \textbf{Coefficients :}
+        \[
+        a_k = \frac{2}{T_0} \int_0^{T_0} x(t)\cos(2\pi k f_0 t)\,dt
+        \quad
+        b_k = \frac{2}{T_0} \int_0^{T_0} x(t)\sin(2\pi k f_0 t)\,dt
+        \]
+
+        \[
+        A_k = \sqrt{a_k^2 + b_k^2}, \quad \Phi_k = \arctan\left(\frac{b_k}{a_k}\right)
+        \]
+
+        \textbf{Forme complexe :}
+        \[
+        x(t) = \sum_{k=-\infty}^{+\infty} c_k e^{j2\pi k f_0 t}
+        \]
+
+        \[
+        c_k = \frac{1}{T_0} \int_0^{T_0} x(t)e^{-j2\pi k f_0 t} dt
+        \]
+
+        \subsection*{Notions fréquentielles}
+
+        \begin{itemize}
+            \item $f_0$ : fréquence fondamentale
+            \item $k f_0$ : harmoniques
+            \item Spectre d'amplitude : $A_k$
+            \item Spectre de phase : $\Phi_k$
+        \end{itemize}
+
+
+        
+        \subsection*{Lien temps / fréquence}
+
+        \begin{itemize}
+            \item Signal périodique $\Rightarrow$ spectre discret
+            \item Signal non périodique $\Rightarrow$ spectre continu
+        \end{itemize}
+            
+    \end{multicols}
+
+    \clearpage
+
+    \begin{multicols}{2}[ 
+        \section{Systèmes linéaires invariants (SLI)}
+        ]
+
+        \textbf{Définition :}
+        \begin{itemize}
+            \item Linéarité : superposition
+            \item Invariance temporelle : décalage entrée $\Rightarrow$ décalage sortie
+        \end{itemize}
+
+        \textbf{Réponse impulsionnelle :} $h(t)$
+
+        \textbf{Sortie d'un SLI : convolution}
+        \[
+        y(t) = x(t) * h(t) = \int x(\tau) h(t-\tau) d\tau
+        \]
+
+        \textbf{Propriétés de la convolution :}
+        \begin{itemize}
+            \item Commutativité
+            \item Associativité
+            \item Distributivité
+        \end{itemize}
+
+    \end{multicols}
+
+    \begin{multicols}{2}[
+    \section{Transformée de Fourier}
+    ]
+        \textbf{Transformée de Fourier :}
+        \[
+        X(f) = \int_{-\infty}^{+\infty} x(t) e^{-j2\pi ft} dt
+        \]
+
+        \textbf{Transformée inverse :}
+        \[
+        x(t) = \int_{-\infty}^{+\infty} X(f) e^{j2\pi ft} df
+        \]
+
+        \textbf{Interprétation :} passage du domaine temporel au domaine fréquentiel.
+
+        \textbf{Propriétés importantes :}
+
+        \begin{itemize}
+            \item \textbf{Linéarité :}
+            \[
+            a x_1(t) + b x_2(t) \longleftrightarrow a X_1(f) + b X_2(f)
+            \]
+            \textit{Signification :} la transformée conserve les combinaisons linéaires.  
+            \textit{Exemple :} somme de deux sinusoïdes $\Rightarrow$ somme de deux pics dans le spectre.
+
+            \item \textbf{Translation temporelle :}
+            \[
+            x(t - t_0) \longleftrightarrow X(f)e^{-j2\pi f t_0}
+            \]
+            \textit{Signification :} un retard dans le temps ajoute une phase en fréquence.  
+            \textit{Exemple :} décaler un signal ne change pas son amplitude fréquentielle mais modifie sa phase.
+
+            \item \textbf{Modulation (translation fréquentielle) :}
+            \[
+            x(t)e^{j2\pi f_0 t} \longleftrightarrow X(f - f_0)
+            \]
+            \textit{Signification :} multiplication par une exponentielle $\Rightarrow$ décalage du spectre.  
+            \textit{Exemple :} en radio, on translate un signal audio vers une fréquence porteuse.
+
+            \item \textbf{Changement d'échelle temporelle :}
+            \[
+            x(at) \longleftrightarrow \frac{1}{|a|}X\left(\frac{f}{a}\right)
+            \]
+            \textit{Signification :} compression temporelle $\Rightarrow$ élargissement du spectre.  
+            \textit{Exemple :} un signal très court contient beaucoup de fréquences.
+
+            \item \textbf{Convolution :}
+            \[
+            x(t)*h(t) \longleftrightarrow X(f)H(f)
+            \]
+            \textit{Signification :} filtrer un signal revient à multiplier son spectre.  
+            \textit{Exemple :} un filtre passe-bas supprime les hautes fréquences.
+
+            \item \textbf{Produit temporel :}
+            \[
+            x(t)h(t) \longleftrightarrow X(f)*H(f)
+            \]
+            \textit{Signification :} multiplier deux signaux mélange leurs fréquences.  
+            \textit{Exemple :} modulation d’amplitude (AM).
+
+        \end{itemize}
+
+        \textbf{SLI en fréquence :}
+        \[
+        Y(f) = H(f) X(f)
+        \]
+    
+    \end{multicols}
+    
+    \begin{multicols}{2}[
+    \section{Échantillonnage}
+    ]
+
+    \textbf{Principe :} transformation d'un signal continu en signal discret.
+
+    \textbf{Fréquence d'échantillonnage :} $f_e$
+
+    \textbf{Théorème de Nyquist-Shannon :}
+    \[
+    f_e \ge 2 f_{\max}
+    \]
+
+    Sinon : \textbf{repliement de spectre (aliasing)}
+
+    \textbf{Signal échantillonné :}
+    \[
+    x_e(t) = x(t) \sum_{n=-\infty}^{\infty} \delta(t-nT_e)
+    \]
+
+    \section{Filtrage des signaux}
+
+    \textbf{But :} modifier le contenu fréquentiel d'un signal.
+
+    \textbf{Types de filtres :}
+    \begin{itemize}
+        \item Passe-bas
+        \item Passe-haut
+        \item Passe-bande
+        \item Coupe-bande
+    \end{itemize}
+
+    \textbf{Réponse fréquentielle :} $H(f)$
+
+    \textbf{Filtrage :}
+    \begin{itemize}
+        \item Temporel : convolution
+        \item Fréquentiel : multiplication
+    \end{itemize}
+
+    \textbf{Exemple : filtre passe-bas idéal}
+    \[
+    H(f)=
+    \begin{cases}
+    1 & |f| < f_c \\
+    0 & \text{sinon}
+    \end{cases}
+    \]
+    
+    \end{multicols}
+
+    \begin{multicols}{2}[
+    \section{Résumé}
+    ]
+
+    \begin{itemize}
+        \item Signal = information temporelle
+        \item SLI = convolution
+        \item Fourier = analyse fréquentielle
+        \item Échantillonnage = discretisation
+        \item Filtrage = sélection fréquentielle
+    \end{itemize}
+    
+    \end{multicols}
+
+    \section{Transformées de Fourier usuelles}
+
+    \textbf{Convention :} $X(f) = \int x(t)e^{-j2\pi ft}dt$
+
+    \begin{center}
+    \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Signal temporel} $x(t)$ & \textbf{Transformée} $X(f)$ \\
+    \hline
+
+    $\delta(t)$ & $1$ \\
+    \hline
+
+    $1$ & $\delta(f)$ \\
+    \hline
+
+    $e^{j2\pi f_0 t}$ & $\delta(f - f_0)$ \\
+    \hline
+
+    $\cos(2\pi f_0 t)$ & $\frac{1}{2}\left[\delta(f - f_0) + \delta(f + f_0)\right]$ \\
+    \hline
+
+    $\sin(2\pi f_0 t)$ & $\frac{1}{2j}\left[\delta(f - f_0) - \delta(f + f_0)\right]$ \\
+    \hline
+
+    $\text{rect}(t/T)$ & $T \cdot \text{sinc}(Tf)$ \\
+    \hline
+
+    $\text{sinc}(t)$ & $\text{rect}(f)$ \\
+    \hline
+
+    $e^{-at}u(t),\ a>0$ & $\frac{1}{a + j2\pi f}$ \\
+    \hline
+
+    \end{tabular}
+    \end{center}
+
+    \vspace{0.2cm}
+
+    \textbf{Définitions utiles :}
+    \[
+    \text{sinc}(t) = \frac{\sin(\pi t)}{\pi t}
+    \]
+
+    
+
+    \textbf{À retenir :}
+    \begin{itemize}
+        \item Impulsion $\leftrightarrow$ constante
+        \item Sinusoïde $\leftrightarrow$ pics de Dirac
+        \item Signal court $\leftrightarrow$ spectre large
+        \item Rect $\leftrightarrow$ sinc (dualité temps/fréquence)
+    \end{itemize}
+
+\end{document}
