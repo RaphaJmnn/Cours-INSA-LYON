@@ -1,0 +1,195 @@
+\documentclass[a4paper,12pt]{article}
+
+% Encodage et langue
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% Mathématiques
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{esint} % double intégrale fermée
+\usepackage{physics}
+\usepackage{bm} % bold maths
+
+% Graphiques et figures
+\usepackage{graphicx}
+\usepackage{enumitem} % pour les puces de listes
+
+% Mise en page
+\usepackage{geometry}
+\geometry{a4paper, margin=1.5cm}
+\usepackage{multicol}
+
+% Couleurs et hyperliens
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\newcommand{\re}{\textrm}
+\newcommand{\Nabla}{\va{\nabla}}
+\renewcommand{\curl}{\Nabla \wedge}
+\renewcommand{\grad}{\va{\operatorname{grad}}}
+\newcommand{\rot}{\va{\operatorname{rot}}}
+\renewcommand{\div}{\operatorname{div}}
+
+% Small arrows
+\newcommand{\veryshortarrow}[1][4pt]{\mathrel{%
+    \hbox{\rule[\dimexpr\fontdimen22\textfont2-.2pt\relax]{#1}{.5pt}}%
+    \mkern-4mu\hbox{\usefont{U}{lasy}{m}{n}\symbol{41}}}}
+\makeatletter
+\setbox0\hbox{$\xdef\scriptratio{\strip@pt\dimexpr
+\numexpr(\sf@size*65536)/\f@size sp}$}
+\newcommand{\scriptveryshortarrow}[1][4pt]{{%
+    \hbox{\rule[\scriptratio\dimexpr\fontdimen22\textfont2-.2pt\relax]
+    {\scriptratio\dimexpr#1\relax}{\scriptratio\dimexpr.5pt\relax}}%
+    \mkern-4mu\hbox{\let\f@size\sf@size\usefont{U}{lasy}{m}{n}\symbol{41}}}}
+\makeatother
+
+\usepackage{tikz}
+\usetikzlibrary{calc} % for pic
+\usetikzlibrary{angles,quotes} % for pic (angle labels)
+%\usetikzlibrary{arrows.meta} % for arrow size
+\tikzset{>=latex} % for LaTeX arrow head
+\usepackage[outline]{contour} % glow around text
+\contourlength{1.2pt}
+
+\colorlet{xcol}{blue!70!black}
+\colorlet{vcol}{green!60!black}
+\colorlet{myred}{red!65!black}
+\colorlet{metalcol}{blue!25!black!30!white}
+\tikzstyle{vvec}=[->,vcol,very thick,line cap=round]
+\tikzstyle{force}=[->,myred,thick,line cap=round]
+\tikzstyle{Fproj}=[->,myred!50,thick,line cap=round]
+\tikzstyle{rope}=[brown!30!black,double=brown!90!black,double distance=1.2,line width=0.4,line cap=round]
+\tikzstyle{dark rope}=[brown!10!black,double=brown!60!black,double distance=1.2,line width=0.4]
+\tikzstyle{metal}=[draw=metalcol!10!black,rounded corners=0.1,
+  top color=metalcol,bottom color=metalcol!80!black,shading angle=10]
+\tikzstyle{wood}=[draw=brown!80!black,rounded corners=0.1,
+  top color=brown!80,bottom color=brown!80!black!80,shading angle=10]
+\tikzstyle{width}=[<->] %{Latex[length=4,width=3]}-{Latex[length=4,width=3]}]
+\newcommand{\vbF}{\vb{F}}
+\def\wave#1#2{
+  ({(#1-0.36)*\xmax},0) to[out=0,in=180,looseness=1] (#1*\xmax,#2*\A)
+  to[out=0,in=180,looseness=1]++ (0.36*\xmax,#2*-\A)
+}
+
+\title{Formulaire d'Onde S4}
+\author{Raphaël Jamann}
+\date{}
+
+\begin{document}
+    \maketitle
+
+    \begin{multicols}{2}[
+    \section*{Démonstration de l'équation de D'Alembert}
+    ]
+        
+        \subsection*{Hypothèses}
+
+            On considère une corde vibrante de masse linéique $\mu$, soumise à une force de tension $\vec F(x, t)$ dont la norme est $T(x, t)$.
+
+            On suppose :
+            \begin{itemize}
+                \item \textbf{Hypothèse 1 (norme des tensions Cte) :} $\norm{\vec F_g(x,t)} = \norm{\vec F_d(x+dx,t)} = T_0$. \\
+                        On retrouve cette hypothèse en projetant le PFD sur $(Ox)$.
+                \item \textbf{Hypothèse 2 (petits angles) :} $\sin(\alpha) \approx \alpha$ et $\tan(\alpha) \approx \alpha \approx \frac{\partial y}{\partial x}$.
+                \item Le mouvement est transversal : $y(x,t)$ désigne le déplacement vertical et $\alpha(x,t)$ l'angle avec l'horizontale.
+            \end{itemize}
+
+        \subsection*{Étude d'un élément de corde}
+
+            PFD appliqué au système \{tronçon\} de masse négligeable dans un référentiel terrestre supposé galiléen :
+            $$ \vec F_g(x,t) + \vec F_d(x + dx,t) = \mu dx \vec a $$
+
+        \subsection*{Projection du PFD selon $Oy$}
+
+            En utilisant l'approximation des petits angles ($\sin\alpha \approx \alpha$) :
+            $$ T_0(\alpha(x+dx, t)-\alpha(x, t)) = \mu dx \frac{\partial^2 y(x, t)}{\partial t^2} $$
+
+        \subsection*{Développement de Taylor et simplification}
+
+            Par développement de Taylor à l'ordre 1 et simplification par $dx$ :
+            $$ T_0 \frac{\partial \alpha(x,t)}{\partial x} dx = \mu dx \frac{\partial^2 y(x,t)}{\partial t^2} $$
+
+            Or, comme $\tan(\alpha) \approx \alpha$, on a $\alpha(x,t) = \frac{\partial y(x,t)}{\partial x}$. D'où :
+            $$ T_0 \frac{\partial^2 y(x,t)}{\partial x^2} = \mu \frac{\partial^2 y(x,t)}{\partial t^2} $$
+
+        \subsection*{Équation de D'Alembert}
+
+            On obtient la forme classique de l'équation de propagation de l'onde (ou équation de d'Alembert) à condition de poser $c = \sqrt{\frac{T_0}{\mu}}$ :
+            $$
+            \boxed{
+            \frac{\partial^2 y(x,t)}{\partial x^2} = \frac{1}{c^2} \frac{\partial^2 y(x,t)}{\partial t^2}
+            }
+            $$
+    \end{multicols}
+
+    % TENSION - zoom
+    \bigskip
+    \begin{center}
+        \begin{tikzpicture}[scale=2]
+                \def\v{0.25*\xmax}
+                \def\om{360/\xmax} % omega (degrees)
+            \def\A{2.2}
+            \def\xmax{10}
+            \def\xa{0.87*\xmax}
+            \def\xb{0.95*\xmax}
+            \def\F{1.2} % tension
+            \coordinate (L) at (\xa,{\A*cos(\om*\xa)});
+            \coordinate (R) at (\xb,{\A*cos(\om*\xb)});
+            \draw[dark rope,double distance=3.2,line width=1.0,samples=50,smooth,variable=\x,domain=\xa:\xb]
+                plot(\x,{\A*cos(\om*\x)});
+            \node[above left] at ({(\xb+\xa)/2},{\A*cos(\om*(\xb+\xa)/2)}) {$\dd{m}$};
+            \draw[force,very thick] (\xa,{\A*cos(\om*\xa)}) --++ ({-atan(\A*2*pi/\xmax*sin(\om*\xa))-180}:\F)
+                coordinate (T1) node[above=0,left=-2] {$\vec F(x,t)$};
+            \draw[force,very thick] (\xb,{\A*cos(\om*\xb)}) --++ ({-atan(\A*2*pi/\xmax*sin(\om*\xb))}:\F)
+                coordinate (T2) node[above=0,right=-2] {$\vec F(x+dx,t)$};
+            \draw[dashed]
+                (L) --++ (-\F,0) coordinate (X1)
+                (R) --++ ( \F,0) coordinate (X2);
+            \draw[width] (L)++({-atan(\A*2*pi/\xmax*sin(\om*\xa))-101}:0.1) --++ (\xb-\xa,0)
+                node[midway,below] {$\dd{x}$};
+            \draw[width] (R)++({-atan(\A*2*pi/\xmax*sin(\om*\xb))-79}:0.1) --++ (0,{\A*cos(\om*\xa)-\A*cos(\om*\xb)})
+                node[midway,right] {$\dd{y}$};
+            \draw pic[-,"{$\alpha(x,t)$}"{scale=0.7, above=-5},draw=black,angle radius=15,angle eccentricity=2]
+                {angle=X1--L--T1};
+            \draw pic[-,"{\contour{white}{$\alpha(x+dx,t)$}}"{scale=0.7,below=-3},draw=black,angle radius=15,angle eccentricity=2.8]
+                {angle=X2--R--T2};
+        \end{tikzpicture}
+    \end{center}
+
+
+    \clearpage
+
+    \section{Solutions de l'équation de D'Alembert}
+
+        \subsection{Forme générale (Ondes progressives)}
+            La solution générale de l'équation de D'Alembert est la superposition de deux signaux se propageant sans déformation à la célérité $c$ :
+            $$ \boxed{y(x,t) = f(x - ct) + g(x + ct)} $$
+            \begin{itemize}
+                \item $f(x - ct)$ : onde progressive se déplaçant dans le sens des $x$ croissants.
+                \item $g(x + ct)$ : onde régressive se déplaçant dans le sens des $x$ décroissants.
+            \end{itemize}
+
+        \subsection{Ondes Planes Progressives Harmoniques (OPPH)}
+            Une solution particulière fondamentale est l'onde sinusoïdale (ou harmonique). Pour une onde se propageant vers les $x$ croissants :
+            $$ \boxed{y(x,t) = A \cos(\omega t - kx + \phi)} $$
+            Les grandeurs caractéristiques sont :
+            \begin{itemize}
+                \item \textbf{Amplitude} $A$ : valeur maximale du déplacement.
+                \item \textbf{Pulsation} $\omega = \frac{2\pi}{T} = 2\pi f$ (rad.s$^{-1}$), avec $T$ la période temporelle (s) et $f$ la fréquence (Hz).
+                \item \textbf{Nombre d'onde} $k = \frac{\omega}{c} = \frac{2\pi f}{c} = \frac{2\pi f}{\lambda f} = \frac{2\pi}{\lambda}$ (rad.m$^{-1}$), avec $\lambda$ la longueur d'onde (m).
+                \item \textbf{Phase} $(\omega t - kx + \phi)$ : la phase instantanée, avec $\phi$ la phase à l'origine.
+            \end{itemize}
+
+        \subsection{Relation de dispersion}
+            L'injection de la solution harmonique dans l'équation de D'Alembert impose une relation entre les caractéristiques temporelles et spatiales :
+            $$ \boxed{\omega = c \cdot k} $$
+           
+
+\end{document}
