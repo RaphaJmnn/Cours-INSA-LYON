@@ -182,14 +182,63 @@
             Les grandeurs caractéristiques sont :
             \begin{itemize}
                 \item \textbf{Amplitude} $A$ : valeur maximale du déplacement.
-                \item \textbf{Pulsation} $\omega = \frac{2\pi}{T} = 2\pi f$ (rad.s$^{-1}$), avec $T$ la période temporelle (s) et $f$ la fréquence (Hz).
-                \item \textbf{Nombre d'onde} $k = \frac{\omega}{c} = \frac{2\pi f}{c} = \frac{2\pi f}{\lambda f} = \frac{2\pi}{\lambda}$ (rad.m$^{-1}$), avec $\lambda$ la longueur d'onde (m).
+                \item \textbf{Pulsation :} $\omega = \frac{2\pi}{T} = 2\pi f$
+                \item \textbf{Nombre d'onde :} $k = \frac{2\pi}{\lambda} = \frac{\omega}{c}$
                 \item \textbf{Phase} $(\omega t - kx + \phi)$ : la phase instantanée, avec $\phi$ la phase à l'origine.
             \end{itemize}
+            \textbf{Relations clés :}
+            $$ \boxed{\lambda = cT = \frac{c}{f}} \quad ; \quad \boxed{\omega = ck} $$
 
         \subsection{Relation de dispersion}
             L'injection de la solution harmonique dans l'équation de D'Alembert impose une relation entre les caractéristiques temporelles et spatiales :
             $$ \boxed{\omega = c \cdot k} $$
            
+    \section{Équations de Maxwell}
+        Les équations de Maxwell décrivent le comportement des champs électrique $\va{E}$ et magnétique $\va{B}$ dans la matière ou le vide.
+
+        \begin{itemize}
+            \item \textbf{Maxwell-Gauss :} $\div \va{E} = \frac{\rho}{\varepsilon_0}$
+            \item \textbf{Maxwell-Faraday :} $\rot \va{E} = -\pdv{\va{B}}{t}$
+            \item \textbf{Maxwell-Thomson (Flux) :} $\div \va{B} = 0$
+            \item \textbf{Maxwell-Ampère :} $\rot \va{B} = \mu_0 \va{j} + \mu_0 \varepsilon_0 \pdv{\va{E}}{t}\, , \qquad (\mu_0\varepsilon_0 = \frac{1}{c^2})$
+        \end{itemize}
+
+        \subsection{Propagation dans le vide}
+            Dans le vide en l'absence de sources ($\rho=0$ et $\va{j}=\va{0}$), on applique l'opérateur rotationnel à l'équation de Maxwell-Faraday :
+            $$ \rot(\rot \va{E}) = \rot(-\pdv{\va{B}}{t}) = -\pdv{(\rot \va{B})}{t} $$
+            En utilisant l'identité vectorielle $\rot(\rot \va{E}) = \grad(\div \va{E}) - \Delta \va{E}$ :
+            $$ \grad(\div \va{E}) - \Delta \va{E} = -\pdv{(\rot \va{B})}{t} $$
+            Or, dans le vide, $\div \va{E} = 0$ (Maxwell-Gauss) et $\rot \va{B} = \mu_0 \varepsilon_0 \pdv{\va{E}}{t}$ (Maxwell-Ampère) :
+            $$ \va{0} - \Delta \va{E} = -\mu_0 \varepsilon_0 \pdv[2]{\va{E}}{t} \implies \Delta \va{E} - \frac{1}{c^2} \pdv[2]{\va{E}}{t} = \va{0} $$
+            Les champs électrique et magnétique vérifient donc l'équation de D'Alembert :
+            $$ \boxed{ \Delta \va{E} = \frac{1}{c^2} \pdv[2]{\va{E}}{t} } \quad \text{et} \quad \boxed{ \Delta \va{B} = \frac{1}{c^2} \pdv[2]{\va{B}}{t} } $$
+            où $c = \frac{1}{\sqrt{\mu_0 \varepsilon_0}} \approx 3 \cdot 10^8 \text{ m.s}^{-1}$ est la célérité de la lumière.
+
+        \subsection{Structure de l'onde plane harmonique}
+            Pour une OPPH de vecteur d'onde $\va{k}$ et de pulsation $\omega$ se propageant dans le vide, les équations de Maxwell imposent :
+            \begin{itemize}
+                \item \textbf{Transversalité :} $\va{k} \vdot \va{E} = 0$ et $\va{k} \vdot \va{B} = 0$. Les champs sont perpendiculaires à la direction de propagation.
+                \item \textbf{Relation de structure :} $\va{B} = \frac{\va{k} \wedge \va{E}}{\omega}$
+                \item \textbf{Propriétés :} Les champs $\va{E}$ et $\va{B}$ sont en phase, perpendiculaires entre eux, et vérifient $\norm{\va{E}} = c \norm{\va{B}}$. Le trièdre $(\va{k}, \va{E}, \va{B})$ est orthogonal direct.
+            \end{itemize}
+
+        \subsection{Aspect énergétique et Intensité}
+            \begin{itemize}
+                \item \textbf{Vecteur de Poynting :} $\va{\Pi} = \frac{\va{E} \wedge \va{B}}{\mu_0}$ (W.m$^{-2}$). Il donne la direction et le flux de puissance.
+                \item \textbf{Densité volumique d'énergie :} $u_{em} = \frac{\varepsilon_0 E^2}{2} + \frac{B^2}{2\mu_0}$. Dans le vide, il y a équipartition : $u_e = u_m$.
+                \item \textbf{Intensité (moyenne temporelle) :} Pour une OPPH :
+                $$ \langle \Pi \rangle = I = \frac{E_0^2}{2\mu_0 c} = \frac{1}{2}\varepsilon_0 c E_0^2 $$
+                \item \textbf{Impédance du vide :} $Z_0 = \sqrt{\frac{\mu_0}{\varepsilon_0}} = \frac{E}{H} \approx 377 \, \Omega$ (avec $\va{B} = \mu_0 \va{H}$).
+            \end{itemize}
+
+        \subsection{Relations de passage}
+            À l'interface entre deux milieux (1) et (2), de normale unitaire $\va{n}_{1 \to 2}$, les champs subissent des discontinuités si des charges ou courants de surface sont présents :
+            \begin{itemize}
+                \item \textbf{Composantes normales :} 
+                $$ E_{2n} - E_{1n} = \frac{\sigma}{\varepsilon_0} \quad \text{et} \quad B_{2n} - B_{1n} = 0 $$
+                \item \textbf{Composantes tangentielles :}
+                $$ \va{E}_{2t} - \va{E}_{1t} = \va{0} \quad \text{et} \quad \va{B}_{2t} - \va{B}_{1t} = \mu_0 (\va{j}_s \wedge \va{n}_{1 \to 2}) $$
+            \end{itemize}
+            Où $\sigma$ est la densité surfacique de charge et $\va{j}_s$ la densité surfacique de courant.
 
 \end{document}

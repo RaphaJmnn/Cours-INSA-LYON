@@ -1,0 +1,269 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper,margin=1.5cm]{geometry}
+\usepackage{multicol}
+
+
+\title{Fiche -- Fonctions de $\mathbb{R}^n$ dans $\mathbb{R}$}
+\author{Raphaël Jamann}
+\date{}
+
+\begin{document}
+
+    \maketitle
+    
+    \begin{multicols}{2}[
+    \section*{Cadre}
+    ]
+        On considère une fonction
+        $$
+        f : \mathbb{R}^n \to \mathbb{R}
+        $$
+
+        \begin{itemize}
+            \item Entrée : vecteur de $\mathbb{R}^n$
+            \item Sortie : un réel
+        \end{itemize}
+
+        On note souvent
+        $$
+        x=(x_1,\dots,x_n)
+        $$
+
+        et
+        $$
+        h=(h_1,\dots,h_n)
+        $$
+
+        avec $h$ un vecteur d'incrément.
+
+    \section*{1. Dérivées partielles}
+
+        La dérivée partielle par rapport à $x_i$ est :
+
+        $$
+        \frac{\partial f}{\partial x_i}(x)
+        =
+        \lim_{t\to 0}
+        \frac{f(x_1,\dots,x_i+t,\dots,x_n)-f(x)}{t}
+        $$
+
+        \subsection*{Nature}
+
+        $$
+        \frac{\partial f}{\partial x_i}(x)\in\mathbb{R}
+        $$
+
+        C'est donc :
+        \begin{itemize}
+            \item un scalaire
+            \item un nombre réel
+        \end{itemize}
+
+        \subsection*{Interprétation}
+
+        Variation de $f$ quand seule la variable $x_i$ varie.
+
+    \section*{2. Gradient}
+
+        Le gradient de $f$ est le vecteur :
+
+        $$
+        \nabla f(x)
+        =
+        \left(
+        \frac{\partial f}{\partial x_1}(x),
+        \dots,
+        \frac{\partial f}{\partial x_n}(x)
+        \right)
+        $$
+
+        \subsection*{Nature}
+
+        $$
+        \nabla f(x)\in\mathbb{R}^n
+        $$
+
+        C'est donc :
+        \begin{itemize}
+            \item un vecteur
+        \end{itemize}
+
+        \subsection*{Interprétation}
+
+        Le gradient donne :
+        \begin{itemize}
+            \item la direction de plus forte croissance
+            \item la vitesse maximale de variation
+        \end{itemize}
+
+    \section*{3. Dérivée directionnelle}
+
+        Soit $u\in\mathbb{R}^n$ une direction.
+
+        La dérivée directionnelle de $f$ en $x$ selon $u$ est :
+
+        $$
+        D_u f(x)
+        =
+        \lim_{t\to 0}
+        \frac{f(x+tu)-f(x)}{t}
+        $$
+
+        Si $f$ est différentiable :
+
+        $$
+        D_u f(x)=\nabla f(x)\cdot u
+        $$
+
+        \subsection*{Nature}
+
+        $$
+        D_u f(x)\in\mathbb{R}
+        $$
+
+        C'est donc :
+        \begin{itemize}
+            \item un scalaire
+        \end{itemize}
+
+        \subsection*{Interprétation}
+
+        Taux de variation de $f$ dans la direction $u$.
+
+    \section*{4. Différentielle}
+
+        La différentielle de $f$ en $x$ est l'application linéaire :
+
+        $$
+        df(x):\mathbb{R}^n\to\mathbb{R}
+        $$
+
+        définie par :
+
+        $$
+        df(x)(h)
+        =
+        \sum_{i=1}^n
+        \frac{\partial f}{\partial x_i}(x)h_i
+        $$
+
+        ou encore :
+
+        $$
+        df(x)(h)=\nabla f(x)\cdot h
+        $$
+
+        \subsection*{Nature}
+
+        $$
+        df(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R})
+        $$
+
+        C'est donc :
+        \begin{itemize}
+            \item une application linéaire
+        \end{itemize}
+
+        Et :
+
+        $$
+        df(x)(h)\in\mathbb{R}
+        $$
+
+        est un scalaire.
+
+        \subsection*{Approximation locale}
+
+        Si $f$ est différentiable :
+
+        $$
+        f(x+h)
+        =
+        f(x)+df(x)(h)+o(\|h\|)
+        $$
+
+    \section*{5. Hessienne}
+
+        La matrice hessienne est :
+
+        $$
+        H_f(x)
+        =
+        \left(
+        \frac{\partial^2 f}{\partial x_i\partial x_j}(x)
+        \right)_{1\le i,j\le n}
+        $$
+
+        \subsection*{Nature}
+
+        $$
+        H_f(x)\in\mathcal{M}_n(\mathbb{R})
+        $$
+
+        C'est donc :
+        \begin{itemize}
+            \item une matrice carrée
+        \end{itemize}
+
+    \section*{6. Développement limité d'ordre 2}
+
+        Si $f$ est de classe $C^2$ :
+
+        $$
+        f(x+h)
+        =
+        f(x)
+        +
+        df(x)(h)
+        +
+        \frac12 [h]^T H_f(x) [h]
+        +
+        o(\|h\|^2)
+        $$
+
+        ou encore :
+
+        $$
+        f(x+h)
+        =
+        f(x)
+        +
+        \nabla f(x)\cdot h
+        +
+        \frac12 [h]^T H_f(x) [h]
+        +
+        o(\|h\|^2)
+        $$
+
+    \end{multicols}
+
+
+    \section*{Résumé rapide}
+
+        \begin{center}
+        \begin{tabular}{|c|c|}
+        \hline
+        Objet & Nature \\
+        \hline
+        $\dfrac{\partial f}{\partial x_i}(x)$ & Scalaire \\
+        \hline
+        $\nabla f(x)$ & Vecteur de $\mathbb{R}^n$ \\
+        \hline
+        $D_u f(x)$ & Scalaire \\
+        \hline
+        $df(x)$ & Application linéaire \\
+        \hline
+        $df(x)(h)$ & Scalaire \\
+        \hline
+        $H_f(x)$ & Matrice \\
+        \hline
+        $h^T H_f(x)h$ & Scalaire \\
+        \hline
+        \end{tabular}
+        \end{center}
+
+\end{document}
