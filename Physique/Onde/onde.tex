@@ -51,16 +51,19 @@
 \makeatother
 
 \usepackage{tikz}
-\usetikzlibrary{calc} % for pic
-\usetikzlibrary{angles,quotes} % for pic (angle labels)
-%\usetikzlibrary{arrows.meta} % for arrow size
+\usetikzlibrary{calc,angles,quotes,arrows.meta} % for pic, angle labels and arrow size
 \tikzset{>=latex} % for LaTeX arrow head
 \usepackage[outline]{contour} % glow around text
 \contourlength{1.2pt}
 
+\colorlet{wall}{blue!30!black}
 \colorlet{xcol}{blue!70!black}
 \colorlet{vcol}{green!60!black}
 \colorlet{myred}{red!65!black}
+\colorlet{mygreen}{green!60!black}
+\colorlet{mydarkred}{red!50!black}
+\tikzstyle{mysmallarr}=[-{Latex[length=3,width=2]}]
+
 \colorlet{metalcol}{blue!25!black!30!white}
 \tikzstyle{vvec}=[->,vcol,very thick,line cap=round]
 \tikzstyle{force}=[->,myred,thick,line cap=round]
@@ -77,6 +80,19 @@
   ({(#1-0.36)*\xmax},0) to[out=0,in=180,looseness=1] (#1*\xmax,#2*\A)
   to[out=0,in=180,looseness=1]++ (0.36*\xmax,#2*-\A)
 }
+
+\newcommand\rightAngle[4]{
+  \pgfmathanglebetweenpoints{\pgfpointanchor{#2}{center}}{\pgfpointanchor{#3}{center}}
+  \coordinate (tmpRA) at ($(#2)+(\pgfmathresult+45:#4)$);
+  \draw[white,line width=0.6] ($(#2)!(tmpRA)!(#1)$) -- (tmpRA) -- ($(#2)!(tmpRA)!(#3)$);
+  \draw[mydarkred] ($(#2)!(tmpRA)!(#1)$) -- (tmpRA) -- ($(#2)!(tmpRA)!(#3)$);
+}
+\newcommand\lineend[2]{
+  \def\w{0.1} \def\c{30}
+  \draw[mygreen] (#1)++(#2:\w) to[out=#2-180-\c,in=#2+\c] (#1)
+                               to[out=#2+\c-180,in=#2-\c]++ (#2-180:\w);
+}
+
 
 \title{Formulaire d'Onde S4}
 \author{Raphaël Jamann}
@@ -171,10 +187,6 @@
         \subsection{Forme générale (Ondes progressives)}
             La solution générale de l'équation de D'Alembert est la superposition de deux signaux se propageant sans déformation à la célérité $c$ :
             $$ \boxed{y(x,t) = f(x - ct) + g(x + ct)} $$
-            \begin{itemize}
-                \item $f(x - ct)$ : onde progressive se déplaçant dans le sens des $x$ croissants.
-                \item $g(x + ct)$ : onde régressive se déplaçant dans le sens des $x$ décroissants.
-            \end{itemize}
 
         \subsection{Ondes Planes Progressives Harmoniques (OPPH)}
             Une solution particulière fondamentale est l'onde sinusoïdale (ou harmonique). Pour une onde se propageant vers les $x$ croissants :
@@ -240,5 +252,159 @@
                 $$ \va{E}_{2t} - \va{E}_{1t} = \va{0} \quad \text{et} \quad \va{B}_{2t} - \va{B}_{1t} = \mu_0 (\va{j}_s \wedge \va{n}_{1 \to 2}) $$
             \end{itemize}
             Où $\sigma$ est la densité surfacique de charge et $\va{j}_s$ la densité surfacique de courant.
+    \clearpage
+
+    \section{Interférences}
+
+        \subsection*{différence de chemin optique et différence de marche}
+
+            La \textbf{différence de chemin optique} entre deux ondes arrivant en un point $M$ est définie par :
+            $$ \delta = n_1 S_1 + n_2 S_2 + \dots + n_k S_k $$
+            où $n_i$ est l'indice du milieu traversé et $S_i$ la distance parcourue dans ce milieu.
+
+            La \textbf{différence de marche} est la différence de chemin optique exprimée en nombre d'ondes :
+            $$ \Delta = \frac{\delta}{\lambda} $$
+
+
+        % TWO SLIT PATH DIFFERENCE
+        \begin{center}
+        \begin{tikzpicture}[scale=2]
+        
+            \def\L{5.9}       % distance between walls
+            \def\H{3.0}       % total wall height
+            \def\f{0.9}       % fractional height of projection point
+            \def\ang{atan((\f*\H+\a)/\L/2)} % theta
+            \def\t{0.15}      % wall thickness
+            \def\a{1.5}       % slit distance
+            \def\d{0.20}      % slit size
+            \coordinate (T) at (0,\a/2);
+            \coordinate (B) at (0,-\a/2);
+            \coordinate (L) at (0,0);
+            \coordinate (R) at (\L,0);
+            \coordinate (P) at (\L,\f*\H/2);
+            \coordinate (M) at ($(B)!(T)!(P)$);
+            \fill[mygreen!80!black] (T) circle (0.05) node[above=5 ,left=5] {$S_1$};
+            \fill[mygreen!80!black] (B) circle (0.05) node[below=5 ,left=5] {$S_2$};
+            
+            % LINES
+            \draw[mygreen,thick] (T) -- (P) node[midway,above=-1] {$r_1$};
+            \draw[mygreen,thick] (B) -- (P) node[midway,below=3,right=6] {$r_2$}; %right=6,below right=-4
+            \draw[dashed] (L) -- (P);
+            \draw[dashed,black!60] (L) -- (R);
+            
+            % ANGLES
+            \coordinate (Bshift) at ($(B)+({\ang-90}:0.1)$);
+            \coordinate (Mshift) at ($(M)+({\ang-90}:0.1)$);
+            \draw pic[mysmallarr,"$\theta$",mydarkred,draw=mydarkred,angle radius=38,angle eccentricity=1.14]
+                {angle = R--L--P};
+            
+            % MEASURES
+            \draw[<->,black] (0,-0.47*\H) --++ (\L,0) node[midway,fill=white,inner sep=1] {$D$};
+            \draw[<->,black] (-2.1*\t,-\a/2) --++ (0,\a) node[midway,fill=white,inner sep=1] {$a$};
+            \draw[<->,black] ([shift={(2.1*\t,0)}]P) -- ([shift={(2.1*\t,0)}]R)
+                node[midway,fill=white,inner sep=1]{$x$};
+            
+            % WALL
+            \fill[wall]
+                (0,\a/2-\d/2) rectangle (-\t,-\a/2+\d/2)
+                (0,\a/2+\d/2) rectangle (-\t,\H/2)
+                (0,-\a/2-\d/2) rectangle (-\t,-\H/2)
+                (\L,-\H/2) rectangle (\L+\t,\H/2);
+            \fill[mygreen!80!black] (P) circle (0.3*\t) node[right=1,above left=-2] {P};
+            
+        \end{tikzpicture}
+        \end{center}
+
+    \subsection*{Démonstration de la formule de la différence de marche $\Delta = \frac{a x}{\lambda D}$}
+
+        On fait deux hypothèses :
+        \begin{itemize}
+            \item \textbf{Hypothèse 1 :} $D \gg a$ (distance entre les fentes et l'écran est grande devant la distance entre les fentes).
+            \item \textbf{Hypothèse 2 :} $D \gg x$ (distance entre les fentes et l'écran est grande devant la position du point d'observation sur l'écran, petits angles).
+        \end{itemize}
+
+        En développant $r_2^2 - r_1^2$ à l'aide du théorème de Pythagore et en utilisant les hypothèses d'approximation, on trouve :
+        \begin{align*}
+            r_2^2 - r_1^2 &= (D^2 + (x + \frac{a}{2})^2) - (D^2 + (x - \frac{a}{2})^2) \\
+            &= (x + \frac{a}{2})^2 - (x - \frac{a}{2})^2 \\
+            (r_2 - r_1) (r_2 + r_1) &= 4 x \cdot \frac{a}{2} = 2 a x, \quad \text{or } r_2 + r_1 \approx 2D \\
+            \implies r_2 - r_1 &\approx \frac{2 a x}{2 D} = \frac{a x}{D}
+        \end{align*}
+
+    \subsection{Autre démonstration}
+        
+
+        % TWO SLIT PATH DIFFERENCE close up
+        \begin{center}
+        \begin{tikzpicture}
+            
+            \def\L{5.5}       % distance between walls
+            \def\l{3.8}       % distance between walls
+            \def\H{3.5}       % total wall height
+            \def\f{0.9}       % fractional height of projection point
+            \def\t{0.15}      % wall thickness
+            \def\a{1.6}       % slit distance
+            \def\d{0.20}      % slit size
+            \def\ang{27}      % angle
+            \coordinate (T) at (0,+\a/2);
+            \coordinate (B) at (0,-\a/2);
+            \coordinate (L) at (0,0);
+            \coordinate (R) at (\L,0);
+            \coordinate (I) at ({\a/2/tan(\ang)},0);
+            
+            % LINES
+            \draw[mygreen,thick] (T) --++ (\ang:.8*\l) coordinate (PT) node[midway,below=1,above left=-2] {$r_1$};
+            \draw[mygreen,thick] (B) --++ (\ang:\l) coordinate (PB) node[midway,left=2,below right=-1] {$r_2$};
+            \draw[mydarkred,dashed] (T) -- ($(B)!(T)!(PB)$) coordinate (M);
+            \draw[black!60,dashed] (L) --++ (\ang:.9*\l) coordinate (PR);
+            %\draw[black!60,dashed] (T) --++ (.20*\L,0) coordinate (TR);
+            \draw[black!60,dashed] (L) --++ (.6*\L,0) coordinate (LR);
+            %\draw[black!60,dashed] (B) --++ (.20*\L,0) coordinate (BR);
+            
+            % LINE END
+            \lineend{PT}{\ang+70}
+            \lineend{PB}{\ang+70}
+            
+            % ANGLES
+            \draw pic[mysmallarr,"\contour{white}{$\theta$}",mydarkred,draw=mydarkred,angle radius=18.8,angle eccentricity=1.38 ]
+                {angle = B--T--M};
+            %\draw pic[->,"$\theta$",mydarkred,draw=mydarkred,angle radius=16,angle eccentricity=1.41]
+            %  {angle = TR--T--PT};
+            %\draw pic[->,"$\theta$",mydarkred,draw=mydarkred,angle radius=16,angle eccentricity=1.41]
+            %  {angle = BR--B--PB};
+            \draw pic[mysmallarr,"$\theta$",mydarkred,draw=mydarkred,angle radius=22,angle eccentricity=1.25]
+                {angle = LR--L--PR};
+            \draw pic[mysmallarr,"$\theta$",mydarkred,draw=mydarkred,angle radius=22,angle eccentricity=1.30]
+                {angle = LR--I--PB};
+            %\rightAngle{T}{M}{PB}{0.3}
+            
+            % MEASURES
+            \draw[<->,black] (-2.2*\t,-\a/2) --++ (0,\a) node[midway,fill=white,inner sep=1.5] {$a$};
+            \draw[<->,black] ([shift={({\ang-90}:0.1)}]B) -- ([shift={({\ang-90}:0.1)}]M)
+                node[midway,above=1,below right=-3]{$a\sin\theta$};
+            
+            % WALL
+            \fill[wall]
+                (0,\a/2-\d/2) rectangle (-\t,-\a/2+\d/2)
+                (0,\a/2+\d/2) rectangle (-\t,\H/2)
+                (0,-\a/2-\d/2) rectangle (-\t,-\H/2);
+            
+        \end{tikzpicture}
+        \end{center}
+
+    
+    \subsection*{Calcul intensité}
+        $$ I_{\text{tot}} = A^2 = I_1 + I_2 + 2\sqrt{I_1 I_2} \cos(\Delta \Phi) $$
+        \begin{itemize}
+            \item $I_1 = \left(\dfrac{E_{01}}{r_m}\right)^2$ et $I_2 = \left(\dfrac{E_{02}}{r_m}\right)^2$ représentent l'intensité reçue en $P$ lorsqu'une seule source émet.
+            \item $\Delta \Phi = k\,(r_2 - r_1) + (\varphi_1 - \varphi_2) = \dfrac{2\pi}{\lambda}\left((r_2 - r_1) + (\varphi_1 - \varphi_2)\right)$ représente le déphasage entre les deux ondes reçues en $P$.
+            \item Ce déphasage est la somme de deux termes : le premier terme rend compte de la différence $r_2 - r_1$ des trajets géométriques des deux ondes pour aller jusqu'en $P$ ; le deuxième représente la différence de phase $(\varphi_1 - \varphi_2)$ entre les ondes au moment de leur émission. Pour des sources cohérentes, ce terme ne dépend pas du temps.
+            \item $2\sqrt{I_1 I_2} \cos(\Delta \Phi)$ est le terme interférentiel qui rend compte de la variation de l'intensité en fonction du point de mesure.
+        \end{itemize}
+        Pour calculer $A^2$, on utilise $A^2 = \underline{E}_{\text{tot}} \times \overline{\underline{E}_{\text{tot}}}$
+    
+    \section{Rappel schéma en optique}
+
+        
 
 \end{document}
