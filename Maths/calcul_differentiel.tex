@@ -241,6 +241,29 @@
 
     \end{multicols}
 
+    \section{Extrema locaux et globaux d'une fonction de $\mathbb{R}^n$ dans $\mathbb{R}$}
+        \subsection{Recherche points critiques}
+            $$ (x, y) \text{ est un point critique} \Longleftrightarrow \overrightarrow{\text{grad}}f(x, y) = \vec{0} \Longleftrightarrow \begin{cases}
+                \frac{\partial f}{\partial x}(x, y) = 0 \\
+                \frac{\partial f}{\partial y}(x, y) = 0
+            \end{cases}
+            $$
+        
+        \subsection{Nature des points critiques}
+            La matrice hessienne $H_f(x, y)$ est définie par :
+            $$ H_f(x, y) = \begin{pmatrix}
+                \frac{\partial^2 f}{\partial x^2}(x, y) & \frac{\partial^2 f}{\partial x \partial y}(x, y) \\
+                \frac{\partial^2 f}{\partial y \partial x}(x, y) & \frac{\partial^2 f}{\partial y^2}(x, y)
+            \end{pmatrix} $$
+
+            \begin{itemize}
+                \item Si $\text{det}(H_f(x, y)) > 0$ et $\text{tr}(H_f(x, y)) > 0$, alors $(x, y)$ est un minimum local.
+                \item Si $\text{det}(H_f(x, y)) > 0$ et $\text{tr}(H_f(x, y)) < 0$, alors $(x, y)$ est un maximum local.
+                \item Si $\text{det}(H_f(x, y)) < 0$, alors $(x, y)$ est un point selle.
+                \item Si $\text{det}(H_f(x, y)) = 0$, $(x, y)$ est dégénéré, il faut utiliser d'autres méthodes pour déterminer la nature du point critique.
+            \end{itemize}
+            
+
 
     \section*{Résumé rapide}
 

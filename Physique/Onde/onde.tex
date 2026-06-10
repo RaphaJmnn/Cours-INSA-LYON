@@ -268,7 +268,7 @@
 
         % TWO SLIT PATH DIFFERENCE
         \begin{center}
-        \begin{tikzpicture}[scale=2]
+        \begin{tikzpicture}[scale=1.5]
         
             \def\L{5.9}       % distance between walls
             \def\H{3.0}       % total wall height
@@ -332,11 +332,18 @@
         \end{align*}
 
     \subsection{Autre démonstration}
-        
-
+            
+    \begin{minipage}[c]{0.45\textwidth}
+        $$ \delta= n_0 a \sin{(\theta)} \approx n_0 a \theta $$
+        Or 
+        $$ \tan{(\theta)} \approx \theta = \frac{x}{D} $$
+        Donc 
+        $$ \delta = \frac{n_0 a x}{D} = n_0(r_2- r_1)$$
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.5\textwidth}
+        \centering
         % TWO SLIT PATH DIFFERENCE close up
-        \begin{center}
-        \begin{tikzpicture}
+        \begin{tikzpicture}[scale=1.5]
             
             \def\L{5.5}       % distance between walls
             \def\l{3.8}       % distance between walls
@@ -377,6 +384,9 @@
             \draw pic[mysmallarr,"$\theta$",mydarkred,draw=mydarkred,angle radius=22,angle eccentricity=1.30]
                 {angle = LR--I--PB};
             %\rightAngle{T}{M}{PB}{0.3}
+            % angle droit entre t M et PB :
+            \draw[mydarkred] ($(M)!0.15!(T)$) -- ($(M)!0.15!(T)+({\ang}:0.2)$)--($(M)!0.07!(PB)$);
+
             
             % MEASURES
             \draw[<->,black] (-2.2*\t,-\a/2) --++ (0,\a) node[midway,fill=white,inner sep=1.5] {$a$};
@@ -390,7 +400,7 @@
                 (0,-\a/2-\d/2) rectangle (-\t,-\H/2);
             
         \end{tikzpicture}
-        \end{center}
+    \end{minipage}
 
     
     \subsection*{Calcul intensité}
@@ -403,8 +413,6 @@
         \end{itemize}
         Pour calculer $A^2$, on utilise $A^2 = \underline{E}_{\text{tot}} \times \overline{\underline{E}_{\text{tot}}}$
     
-    \section{Rappel schéma en optique}
-
         
 
 \end{document}
