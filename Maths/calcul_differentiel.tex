@@ -143,31 +143,37 @@
 
     \section*{4. Différentielle}
 
-        La différentielle de $f$ en $x$ est l'application linéaire :
+        La différentielle de $f$ en $a$ est l'application linéaire :
 
         $$
-        df(x):\mathbb{R}^n\to\mathbb{R}
+        df(a):\mathbb{R}^n\to\mathbb{R}
         $$
 
         définie par :
 
         $$
-        df(x)(h)
+        df_a(h)
         =
         \sum_{i=1}^n
-        \frac{\partial f}{\partial x_i}(x)h_i
+        \frac{\partial f}{\partial x_i}(a)h_i
         $$
 
         ou encore :
 
         $$
-        df(x)(h)=\nabla f(x)\cdot h
+        df_a(h)=\nabla f(a)\cdot h
         $$
+
+        Lien avec la dérivée directionnelle :
+        $$
+        df_a(h)=D_h f(a)
+        $$
+
 
         \subsection*{Nature}
 
         $$
-        df(x)\in\mathcal{L}(\mathbb{R}^n,\mathbb{R})
+        df_a\in\mathcal{L}(\mathbb{R}^n,\mathbb{R})
         $$
 
         C'est donc :
@@ -178,7 +184,7 @@
         Et :
 
         $$
-        df(x)(h)\in\mathbb{R}
+        df_a(h)\in\mathbb{R}
         $$
 
         est un scalaire.
@@ -188,9 +194,9 @@
         Si $f$ est différentiable :
 
         $$
-        f(x+h)
+        f(a+h)
         =
-        f(x)+df(x)(h)+o(\|h\|)
+        f(a)+df_a(h)+o(\|h\|)
         $$
 
     \section*{5. Hessienne}
@@ -221,13 +227,13 @@
         Si $f$ est de classe $C^2$ :
 
         $$
-        f(x+h)
+        f(a+h)
         =
-        f(x)
+        f(a)
         +
-        df(x)(h)
+        df_a(h)
         +
-        \frac12 [h]^T H_f(x) [h]
+        \frac12 [h]^T H_f(a) [h]
         +
         o(\|h\|^2)
         $$
@@ -235,13 +241,13 @@
         ou encore :
 
         $$
-        f(x+h)
+        f(a+h)
         =
-        f(x)
+        f(a)
         +
-        \nabla f(x)\cdot h
+        \nabla f(a)\cdot h
         +
-        \frac12 [h]^T H_f(x) [h]
+        \frac12 [h]^T H_f(a) [h]
         +
         o(\|h\|^2)
         $$
@@ -297,7 +303,7 @@
         \end{center}
 
 \begin{tikzpicture}
-  \begin{axis}[samples=30,ticks=none,xlabel={$x$},ylabel={$y$},zlabel={$z$}, title={Point Selle}, clip=false]
+  \begin{axis}[samples=30,ticks=none,xlabel={$x$},ylabel={$y$},zlabel={$z$}, title={Point Selle}]
 
     \addplot3[surf,color=blue,opacity=0.5,domain=-2:2,faceted color=black] {x^2-y^2};
     \draw[red, thick, <-] (axis cs:0,0,0) -- (axis cs:1,1,4) node[red, above] {Point selle};
