@@ -1,0 +1,189 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{margin=1.5cm}
+
+% Couleurs et encadrés
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+
+\definecolor{exemplebg}{HTML}{E8F5E9}
+\definecolor{exempleborder}{HTML}{60aa72}
+
+% Environnement pour les exemples
+\newtcbtheorem[
+    number within=section
+]{exemple}{Exemple}{
+    breakable,
+    colback=exemplebg,
+    colframe=exempleborder,
+    boxrule=0.7pt,
+    arc=2mm,
+    fonttitle=\bfseries,
+    coltitle=black,
+}{ex}
+
+\title{Équations Différentielles}
+\author{Raphaël Jamann}
+\date{}
+
+\begin{document}
+
+    \maketitle
+
+    \section{Définitions}
+
+        \subsection*{Forme générale}
+        Une équation différentielle est une équation qui relie une fonction inconnue à ses dérivées. Elle peut être représentée sous la forme :
+        \begin{align*}
+            &\Phi : I \times \mathbb{R}^{n+1} \to \mathbb{R} \text{ ou } \mathbb{C} \\
+            &\Phi(t, f(t), f'(t), f''(t), \ldots, f^{(n)}(t)) = g(t), \quad t \in I,
+        \end{align*}
+
+        \begin{itemize}
+            \item \textbf{Ordre :} L'ordre d'une équation différentielle est le plus grand entier $n$ tel que la dérivée $f^{(n)}(t)$ apparaisse dans l'équation.
+            \item \textbf{Homogène :} Une équation différentielle est dite homogène si $g(t) = 0$ pour tout $t \in I$.
+            \item \textbf{Linéaire :} Une équation différentielle est dite linéaire si elle peut être écrite sous la forme :
+            \begin{align}
+                &\sum_{p=0}^{n} a_p(t) f^{(p)}(t) = g(t), \quad t \in I,
+            \end{align}
+            \item \textbf{A coefficients constants :} Une équation différentielle est dite à coefficients constants si les fonctions $a_p(t)$ sont des constantes.
+        \end{itemize}
+
+    \section{Comment Résoudre une équation différentielle ?}
+        
+        \subsection*{Equations linéaires homogènes à coefficients constants}
+        Ce sont des équations de la forme :
+            \begin{equation}
+                \sum_{p=0}^{n} a_p f^{(p)}(t) = 0,
+            \end{equation}
+
+            Pour résoudre cette équation, on considère le polynôme caractéristique associé :
+            \begin{equation}
+                P(X) = \sum_{p=0}^{n} a_p X^p.
+            \end{equation}
+            Selon les racines de ce polynôme, on peut déterminer les solutions:
+            \begin{itemize}
+                \item Si $P(X)$ a $n$ racines distinctes $\lambda_1, \lambda_2, \ldots, \lambda_n$, alors la solution générale est :
+                \begin{equation}
+                    f(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t} + \ldots + C_n e^{\lambda_n t},
+                \end{equation}
+
+                \item Si $P(X)$ a une racine $\lambda$ de multiplicité $m$, alors la solution générale est :
+                \begin{equation}
+                    f(t) = (C_1 + C_2 t + \ldots + C_m t^{m-1}) e^{\lambda t},
+                \end{equation}
+
+                \item Si $P(X)$ a des racines complexes conjuguées $\alpha \pm i\beta$, alors la solution \textbf{réelle} générale est :
+                    $$ f(t) = e^{\alpha t} (C_1 \cos(\beta t) + C_2 \sin(\beta t)), $$
+                Avec $C_1, C_2, \ldots, C_m$ des constantes dépendant des conditions initiales.
+            \end{itemize}
+
+            \begin{exemple}{Résolution d'une équation différentielle linéaire homogène à coefficients constants}
+                CConsidérons l'équation différentielle suivante :
+                    $$ f''(t) - 3f'(t) + 2f(t) = 0 $$
+                Le polynôme caractéristique associé est :
+                    $$ P(X) = X^2 - 3X + 2 = (X-1)(X-2) $$
+                Les racines sont $\lambda_1 = 1$ et $\lambda_2 = 2$, donc la solution générale est :
+                    $$ f(t) = C_1 e^{t} + C_2 e^{2t}, $$
+                où $C_1$ et $C_2$ sont des constantes déterminées par les conditions initiales.
+            \end{exemple}
+
+            \subsection*{Equations linéaires non homogènes à coefficients constants}
+            Pour résoudre une équation différentielle linéaire non homogène à coefficients constants, on résoud d'abord l'équation homogène associée, puis on cherche une solution particulière de l'équation non homogène. La solution générale est la somme de la solution générale de l'équation homogène et de la solution particulière.
+
+            Pour trouver une solution particulière, on peut utiliser différentes méthodes:
+            \begin{itemize}
+                \item Si le second membre est de la forme $P(t)e^{\lambda t}$ alors on peut chercher une solution particulière de la forme $Q(t)t^m e^{\lambda t}$, où $Q(t)$ est un polynôme de même degré que $P(t)$ et l'entier $m$ représente l'ordre de multiplicité de $\lambda$ comme racine du polynôme caractéristique.
+            \end{itemize}
+
+            \begin{exemple}{Solution particulière de la forme $P(t)e^{\lambda t}$}
+                SSoit l'équation différentielle suivante :
+                \begin{equation}
+                    \tag{E}
+                    f''(t) - f(t) = (4t+6)e^t
+                \end{equation}
+                On  résoud l'équation homogène associée et on obtient $f_h(t) = C_1 e^t + C_2 e^{-t}$
+                Le second membre est de la forme $P(t)e^{\lambda t}$ avec $P(t) = 4t + 6$ et $\lambda = 1$. Comme $\lambda = 1$ est une racine simple du polynôme caractéristique, on cherche une solution particulière de la forme :
+                    $$ f_p(t) = (At + B)te^t = (At^2 + Bt)e^t $$
+                On réinjecte dans (E) et on obtient :
+                    $$ 4At + 2(A+B) = 4t + 6 $$
+                En identifiant les coefficients, on obtient le système :
+                \begin{equation*}
+                    \begin{cases}
+                        4A = 4 \\
+                        2(A+B) = 6
+                    \end{cases}
+                \end{equation*}
+                En résolvant ce système, on trouve $A = 1$ et $B = 2$.
+                Ainsi, une solution particulière est :
+                    $$ f_p(t) = (t^2 + 2t)e^t $$
+                La solution générale de l'équation différentielle (E) est donc :
+                    $$ f(t) = C_1 e^t + C_2 e^{-t} + (t^2 + 2t)e^t $$
+            \end{exemple}
+
+        \subsection*{Méthode de la variation de la constante pour trouver une solution particulière}
+            
+            Afin de trouver une solution particulière d'une équation différentielle linéaire non homogène, on peut utiliser la méthode de la variation de la constante. Cette méthode consiste à chercher une solution particulière sous la forme :
+            
+            \begin{exemple}{Méthode de la variation de la constante}
+                SSoit l'équation différentielle suivante :
+                \begin{equation}
+                    \tag{E}
+                    f'(t) + f(t) = e^t
+                \end{equation}
+                On résout d'abord l'équation homogène associée et on obtient $f_h(t) = A e^{-t}$.
+                
+                Pour trouver une solution particulière, on suppose que $A$ est une fonction de $t$, c'est-à-dire $A(t)$. On cherche donc une solution particulière sous la forme :
+                    $$ f_p(t) = A(t)e^{-t} $$
+                
+                En dérivant, on obtient :
+                    $$ f_p'(t) = A'(t)e^{-t} - A(t)e^{-t} $$
+                
+                En substituant dans (E), on obtient:
+                    $$ A'(t)e^{-t} + A(t)e^{-t} - A(t)e^{-t} = e^t $$
+                    $$ A'(t) = e^{2t} $$
+                En intégrant, on obtient :
+                    $$ A(t) = \frac{1}{2}e^{2t} + K, \quad K \in \mathbb{R} $$
+                Finalement, la solution générale de l'équation différentielle (E) est :
+                    $$ f(t) = A(t)e^{-t} = \left(\frac{1}{2}e^{2t} + K\right)e^{-t} = \frac{1}{2}e^t + Ke^{-t} $$
+            \end{exemple}
+
+    \clearpage
+
+    \subsection*{Equation différentielle d'ordre 1, linéaire et à coefficients non constants}
+            
+        Si les variables sont séparables, on peut réécrire l'équation sous la forme :
+            $$ \frac{dy}{dx} = g(x)h(y) $$
+        Si $h(y) \neq 0$, on peut séparer les variables et intégrer :
+            $$ \frac{1}{h(y)} dy = g(x) dx $$
+        
+        \begin{exemple}{Résolution d'une équation différentielle d'ordre 1, linéaire et à coefficients non constants}
+            SSoit l'équation différentielle suivante :
+            \begin{equation}
+                \tag{E}
+                x f'(x) + 2f(x) = \frac{2}{x^2+1}
+            \end{equation}
+            On cherche d'abord la solution de l'équation homogène associée.
+            On peut réécrire l'équation homogène sous la forme :
+                $$ \frac{f'(x)}{f(x)} = \frac{-2}{x} $$
+            On intègre les deux côtés :
+                $$ \ln|f(x)| = -2\ln|x| + C $$
+                $$ |f(x)| = \frac{A}{x^2}, \quad A = e^C $$
+            Avec la méthode de la variation de la constante, on cherche une solution particulière sous la forme :
+                $$ f_p(x) = \frac{A(x)}{x^2} $$
+                $$ f_p'(x) = \frac{A'(x)x^2 - 2A(x)x}{x^4} $$
+            En substituant dans (E), on obtient :
+                $$ \frac{A'(x)x^2 - 2A(x)x}{x^3} + \frac{2A(x)}{x^2} = \frac{2}{x^2+1} $$
+                $$ A'(x) = \frac{2x^2}{x^2+1} $$
+            En intégrant, on obtient :
+                $$ A(x) = \ln(x^2+1) + K, \quad K \in \mathbb{R} $$
+            Finalement, la solution générale de l'équation différentielle (E) est :
+                $$ f(x) = \frac{\ln(x^2+1) + K}{x^2}, \quad K \in \mathbb{R} $$
+           
+        \end{exemple}
+        
+        
+
+\end{document}
