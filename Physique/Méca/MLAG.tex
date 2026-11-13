@@ -59,19 +59,20 @@
     \vec M(B) = \vec M(A) + \vec{BA} \wedge \vec R
     \]
 
+
+    \subsection*{Transport des Vitesses (formule de Varignon)}
+        Pour appliquer la formule de Varignon, il faut que le point $A$ et $VB$ appartiennent au même solide $S$.
+        $$ \VARK{A}{B}{S} $$
+
     % ======================================================
 
 
     % ======================================================
     \section{Dérivée d'un vecteur tournant}
 
-    \[
-    \left( \frac{d\vec u}{dt} \right)_{i}
-    =
-    \left( \frac{d\vec u}{dt} \right)_{k}
-    +
-    \vec\Omega(k/i) \wedge \vec u
-    \]
+    Cette formule est notamment très utile pour calculer la vitesse d'un point $P$ d'un solide $S_i$ par rapport au repère $R_0$.
+
+    $$ \Din[0]{\Vct{OP}}=\Din[i]{\Vct{OP}}+\Rotation[0]{i}\times\Vct{OP} $$
 
     % ======================================================
     \section{Torseurs}
@@ -158,7 +159,7 @@
 
         Pour trouver les forces généralisées non-consevatives (ou conservatives mais on a la formule pour aller plus vite), il faut calculer la puissance virtuelle puis identifier.
         Par exemple, si on a deux forces généralisées $Q_\alpha$ et $Q_\beta$ associées aux coordonnées généralisées $\alpha$ et $\beta$, on a:
-        $$ \mathscr{P}^* = Q_{\alpha} \dot(\alpha)^* + Q_{\beta} \dot(\beta)^* $$
+        $$ \mathscr{P}^* = Q_{\alpha} \dot{\alpha}^* + Q_{\beta} \dot{\beta}^* $$
 
     % ======================================================
     \section{Principe Fondamental de la Dynamique}
