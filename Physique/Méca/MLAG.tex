@@ -1,0 +1,193 @@
+\documentclass[10pt,a4paper]{article}
+
+% ---------- PACKAGES ----------
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{tikz}
+\usepackage{mecaso}
+\usepackage{xparse}
+
+\usetikzlibrary{calc}
+
+% ---------- MACROS PERSONNALISEES ----------
+
+% Torseur symbolique avec point d'application facultatif
+\NewDocumentCommand{\torseur}{o}{%
+    \IfValueTF{#1}
+        {\left\{\mathscr{T}\right\}_{#1}}
+        {\left\{\mathscr{T}\right\}}%
+}
+
+% ---------- MISE EN FORME ----------
+\setlist[itemize]{noitemsep, topsep=0pt}
+\renewcommand{\vec}{\overrightarrow}
+
+\author{Raphaël Jamann}
+\title{Formulaire Mécanique Lagrangienne \\ 3GM}
+\date{}
+
+% ======================================================
+% DOCUMENT
+% ======================================================
+
+\begin{document}
+
+    \maketitle
+
+    \begin{multicols}{2}
+
+    % ======================================================
+    \section{Actions mécaniques}
+
+    \subsection*{Moment d'une force}
+
+    \[
+    \vec M_O(F) = \vec{OA} \wedge \vec F
+    \]
+
+    Avec A le point d'application de la force.
+
+    \subsection*{Transport du moment (BABAR)}
+
+    \[
+    \vec M(B) = \vec M(A) + \vec{BA} \wedge \vec R
+    \]
+
+    % ======================================================
+
+
+    % ======================================================
+    \section{Dérivée d'un vecteur tournant}
+
+    \[
+    \left( \frac{d\vec u}{dt} \right)_{i}
+    =
+    \left( \frac{d\vec u}{dt} \right)_{k}
+    +
+    \vec\Omega(k/i) \wedge \vec u
+    \]
+
+    % ======================================================
+    \section{Torseurs}
+
+        \subsection*{Cinématique}
+
+        Le mouvement d'un solide $S$ par rapport à $R$ est décrit par le torseur :
+
+        \[ \Ktor[R]{A}{S} \]
+
+        \subsection*{torseur d'actions mécaniques}
+
+        $$ \Stor[0]{A}{S} $$
+
+        $$ \LFtor[S/0]{F}{X}{Y}{Z}{L}{M}{N}{A} $$
+
+        % ======================================================
+        \subsection*{Cinétique}
+
+        \[
+        \Ctor[0]{A}{S}
+        \]
+
+        % ======================================================
+        \subsection*{Dynamique}
+
+        \[
+        \Dtor[0]{A}{S}
+        \]
+
+    \end{multicols}
+
+    \clearpage
+
+    \section{Energie Cinétique}
+
+        \subsection*{du point matériel P}
+            $$ T_{P/0}  = \KineticT[0]{A}{S} $$
+            Lorsqu'on calcule par exemple $\vec v^2 = (\dot{\rho} \vec{u_0} + \rho \dot{\theta} \vec{v_1})^2$, on utilise l'identité remarquable suivante :
+            $$ \vec v^2 = \dot{\rho}^2 + (\rho \dot{\theta})^2 + 2\dot{\rho} \vec{u_0} \cdot \vec{v_1} \rho \dot{\theta} $$
+            Ou alors plus généralement si $\vec v = a \vec u + b \vec v + c \vec w$ alors
+            $$ \vec v^2 = a^2 + b^2 + c^2 + 2a \vec u \cdot \vec v b + 2a \vec u \cdot \vec w c + 2b \vec v \cdot \vec w c $$
+        \subsection*{du solide}
+            $$ T_{1/0} = \KEtor[0]{1} $$
+            Si le point $A \equiv G$ centre de masse du solide :
+            $$ T_{1/0} = \KineticG[0]{S} $$
+            Si le point $A$ est fixe dans $R_0$ alors
+            $$ T_{1/0} = \KineticR[0]{A}{S} $$
+
+        \subsection*{d'un ensemble de solides}
+            Si $\Sigma = \{S_1, S_2, \ldots, S_n\}$ alors
+            $$ T_\Sigma = T_{1/0} + T_{2/0} + \cdots + T_{n/0} $$
+
+    \section{Energie Potentielle}
+        \subsection*{Pesanteur}
+
+        $$ U_{\text{grav}} = -m_i \vec r_{G_i} \cdot \vec g + \text{cste} $$
+
+        \subsection*{Ressort}
+        Traction / Compression :
+        $$ U_{\text{ressort}} = \frac{k}{2} (L- L_0)^2 + \text{cste} $$
+        Torsion:
+        $$ U_{\text{ressort}} = \frac{k}{2} (\theta - \theta_0)^2 + \text{cste} $$
+
+    \section{Puissance}
+        \subsection*{Puissance développée par un torseur des actions mécaniques extérieures au système sur un solide $S_i$}
+            $$ \mathscr{P}_{\text{ext}\rightarrow S_i/0} = \Ptor[0]{S_i}{ext} $$
+
+        \subsection*{Puissance développée dans une liaison entre deux solides $S_i$ et $S_j$ du système considérée}
+            $$ \mathscr{P}_{S_i \leftrightarrow S_j} = \Ptor[i]{S_j}{S_i} $$
+            $$ \mathscr{P}_{S_i \leftrightarrow S_j} = \mathscr{P}_{S_j \leftrightarrow S_i} $$
+
+        \subsection*{Puisance développée par une force conservative}
+            $$ \mathscr{P}_{\text{cons}\rightarrow S_i/0} = - \frac{dU}{dt} $$
+
+
+    \clearpage
+
+    \section{Equation de Lagrange}
+
+        $$ \mathscr{L}(q_i): \qquad \frac{d}{dt} \left( \pdv{T_{\Sigma/0}}{\dot{q}_i} \right) - \pdv{T_{\Sigma/0}}{q_i} = Q_i = Q_i^{\text{c}} + Q_i^{\text{nc}} $$
+        Or les forces généralisées conservatives peuvent se calculer avec $ Q_i^{\text{c}} = - \pdv{U_{\Sigma}}{q_i} $ donc
+        $$ \mathscr{L}(q_i): \qquad \frac{d}{dt} \left( \pdv{T_{\Sigma/0}}{\dot{q}_i} \right) - \pdv{T_{\Sigma/0}}{q_i} + \pdv{U_{\Sigma}}{q_i} = Q_i^{\text{nc}} $$
+
+        Pour trouver les forces généralisées non-consevatives (ou conservatives mais on a la formule pour aller plus vite), il faut calculer la puissance virtuelle puis identifier.
+        Par exemple, si on a deux forces généralisées $Q_\alpha$ et $Q_\beta$ associées aux coordonnées généralisées $\alpha$ et $\beta$, on a:
+        $$ \mathscr{P}^* = Q_{\alpha} \dot(\alpha)^* + Q_{\beta} \dot(\beta)^* $$
+
+    % ======================================================
+    \section{Principe Fondamental de la Dynamique}
+
+
+        \subsection*{Principe Fondamental de la Statique}
+
+        \[
+        \sum \torseur[A] = \{0\}
+        \]
+
+        \subsection*{Théorème de la résultante dynamique}
+        \textbf{TRD :}
+
+        \[
+        \sum \vec F_{\text{ext}}
+        =
+        m\vec A_G
+        =
+        \vec D
+        \]
+
+        \subsection*{Théorème du moment dynamique}
+        \textbf{TMD :}
+
+        \[
+        \sum \vec{\mathcal M}
+        =
+        \vec\delta
+        \]
+
+\end{document}
